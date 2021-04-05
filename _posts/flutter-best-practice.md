@@ -1,9 +1,7 @@
 ---
 title: "Flutter 最佳实践"
-date: "2020-03-16T05:35:07.322Z"
-author:
-  name: KaiChi
-  picture: "/assets/authors/kaichi.jpeg"
+date: "2021-04-04"
+author: kaichi
 ---
 
 #### 命名规范

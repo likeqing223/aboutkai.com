@@ -1,9 +1,7 @@
 ---
-title: "Typescript 辨别联合类型"
-date: "2020-03-16T05:35:07.322Z"
-author:
-  name: KaiChi
-  picture: "/assets/authors/kaichi.jpeg"
+title: Typescript 辨别联合类型
+date: "2021-04-04"
+author: kaichi
 ---
 
 在使用联合类型时，通常需要判断联合类型的具体类型，考虑如下 🌰

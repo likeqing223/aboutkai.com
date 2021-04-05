@@ -1,6 +1,7 @@
 import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
+import Post from "../types/post";
 
 const postsDirectory = join(process.cwd(), "_posts");
 
@@ -8,35 +9,31 @@ export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
 }
 
-export function getPostBySlug(slug: string, fields: string[] = []) {
+export function getPostBySlug(slug: string, fields: string[] = []): Post {
   const realSlug = slug.replace(/\.md$/, "");
   const fullPath = join(postsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  type Items = {
-    [key: string]: string;
-  };
-
-  const items: Items = {};
+  const res = Object.create(null);
 
   fields.forEach((field) => {
     if (field === "slug") {
-      items[field] = realSlug;
+      res.slug = realSlug;
     }
     if (field === "content") {
-      items[field] = content;
+      res.content = content;
     }
 
     if (data[field]) {
-      items[field] = data[field];
+      res[field] = data[field];
     }
   });
 
-  return items;
+  return res;
 }
 
-export function getAllPosts(fields: string[] = []) {
+export function getAllPosts(fields: string[] = []): Post[] {
   const slugs = getPostSlugs();
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields))
