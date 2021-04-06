@@ -4,6 +4,7 @@ module.exports = {
   variants: {
     extend: {
       textOpacity: ["dark"],
+      invert: ["dark"],
     },
   },
   theme: {

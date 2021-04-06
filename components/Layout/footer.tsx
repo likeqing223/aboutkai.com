@@ -6,22 +6,15 @@ const Footer: FC = () => {
   return (
     <footer className="py-4 pb-12 pt-10 border-t border-dashed dark:border-primary">
       <div className="mb-4">
-        <a href="/">
-          <span
-            className="text-4xl dark:text-white"
-            style={{
-              fontFamily: "JCfg, PilGi",
-            }}
-          >
-            kaichi
-          </span>
+        <a href="/" >
+          <img className="filter dark:invert" src="assets/kaichi.webp" />
         </a>
       </div>
       <p className="text-sm font-mono">
         kai chi`s personal blog. made with{" "}
         <Link href="/uses">various tech</Link>.
       </p>
-      <div className="flex py-4 space-x-6">
+      <div className="flex pt-4 space-x-6">
         <a
           href="https://github.com/kaichii"
           aria-label="link Github"

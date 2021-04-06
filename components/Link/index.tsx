@@ -11,7 +11,7 @@ const Link = ({ href, children }: LinkProps) => {
     <a
       href={href}
       className={cn(
-        "text-primary-light dark:text-primary-dark",
+        "text-primary-light dark:text-primary-dark font-bold",
         styles["global-underline"]
       )}
     >

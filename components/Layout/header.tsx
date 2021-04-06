@@ -3,21 +3,13 @@ import NavItem from "../NavItem";
 
 const Header: FC = () => {
   return (
-    <header className="pb-8 flex items-center justify-between bg-white dark:bg-black">
-      <a href="/" className="inline-flex items-center">
-        <span
-          className="text-6xl dark:text-white"
-          style={{
-            fontFamily: "JCfg, PilGi",
-          }}
-        >
-          kaichi
-        </span>
+    <header className="py-8 flex items-center justify-between bg-white dark:bg-black">
+      <a href="/" >
+        <img className="filter dark:invert" src="assets/kaichi.webp" />
       </a>
-      <div className="space-x-6">
+      <div className="space-x-8">
         <NavItem href="/">Home</NavItem>
-        <NavItem href="/tags">Tag</NavItem>
-        <NavItem href="/contact">Contact</NavItem>
+        <NavItem href="/me">Me</NavItem>
       </div>
     </header>
   );

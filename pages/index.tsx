@@ -4,6 +4,7 @@ import Container from "../components/container";
 import HeroPost from "../components/hero-post";
 import Intro from "../components/Intro";
 import Layout from "../components/Layout";
+import Posts from "../components/Posts";
 import { getAllPosts } from "../lib/api";
 import Post from "../types/post";
 
@@ -17,6 +18,7 @@ const Index = ({ allPosts }: Props) => {
       <Head>
         <title>Home | Kai Chi</title>
       </Head>
+      <Posts posts={allPosts} />
     </Layout>
   );
 };
