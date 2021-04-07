@@ -10,12 +10,14 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "logo": "logo"
   },
   "dependencies": {
     "classnames": "2.2.6",
     "date-fns": "2.10.0",
     "gray-matter": "4.0.2",
+    "logo.svg": "^1.0.1",
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -32,6 +34,30 @@
     "autoprefixer": "^10.2.1",
     "postcss": "^8.2.4",
     "tailwindcss": "^2.1.1"
+  },
+  "logo": {
+    "logo": "kaichi",
+    "font": "origami-mommy.ttf",
+    "output": "./public/assets/logo.svg",
+    "divided": true,
+    "path": {
+      "fill": "#6af72e"
+    },
+    "path1": {
+      "fill": "#c6e03c"
+    },
+    "path2": {
+      "fill": "#fc428f"
+    },
+    "path3": {
+      "fill": "#cea2fd"
+    },
+    "path4": {
+      "fill": "#fb3f24"
+    },
+    "path5": {
+      "fill": "#3cc8f6"
+    }
   },
   "license": "MIT"
 }
