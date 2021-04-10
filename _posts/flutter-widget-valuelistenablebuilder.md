@@ -1,7 +1,10 @@
 ---
 title: "Flutter Widget: ValueListenableBuilder"
-date: "2021-04-04"
+date: "2021-04-02"
 author: kaichi
+tags: tag1,tag2
+coverImage: https://picsum.photos/200/300
+excerpt: Tempor sunt tempor voluptate nulla labore nostrud deserunt pariatur commodo elit laborum nisi aliquip.
 ---
 
 相信大家一定用过 `setState`, 在 `StatefulWidget` 中我们常使用 `setState` 来更新组件状态以此来更新 ui。下面这个计数器的 🌰 大家非常熟悉。

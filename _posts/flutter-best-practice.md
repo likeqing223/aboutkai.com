@@ -1,7 +1,10 @@
 ---
 title: "Flutter 最佳实践"
-date: "2021-04-04"
+date: "2021-04-02"
 author: kaichi
+tags: tag1,tag2
+coverImage: https://picsum.photos/200/300
+excerpt: Tempor sunt tempor voluptate nulla labore nostrud deserunt pariatur commodo elit laborum nisi aliquip.
 ---
 
 #### 命名规范

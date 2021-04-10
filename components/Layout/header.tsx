@@ -4,7 +4,7 @@ import NavItem from "../NavItem";
 const Header: FC = () => {
   return (
     <header className="py-8 flex items-center justify-between bg-white dark:bg-black">
-      <a href="/" >
+      <a href="/">
         <img className="filter dark:invert" src="assets/kaichi.webp" />
       </a>
       <div className="space-x-8">

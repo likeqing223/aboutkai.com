@@ -1,24 +1,21 @@
 import Head from "next/head";
 import React from "react";
-import Container from "../components/container";
-import HeroPost from "../components/hero-post";
-import Intro from "../components/Intro";
 import Layout from "../components/Layout";
 import Posts from "../components/Posts";
 import { getAllPosts } from "../lib/api";
 import Post from "../types/post";
 
 type Props = {
-  allPosts: Post[];
+  posts: Post[];
 };
 
-const Index = ({ allPosts }: Props) => {
+const Index = ({ posts }: Props) => {
   return (
     <Layout>
       <Head>
         <title>Home | Kai Chi</title>
       </Head>
-      <Posts posts={allPosts} />
+      <Posts posts={posts} />
     </Layout>
   );
 };
@@ -26,16 +23,17 @@ const Index = ({ allPosts }: Props) => {
 export default Index;
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts([
+  const posts = getAllPosts([
     "title",
     "date",
     "slug",
     "author",
     "coverImage",
     "excerpt",
+    "tags",
   ]);
 
   return {
-    props: { allPosts },
+    props: { posts },
   };
 };

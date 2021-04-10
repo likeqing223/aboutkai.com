@@ -5,10 +5,14 @@ module.exports = {
     extend: {
       textOpacity: ["dark"],
       invert: ["dark"],
+      padding: ["odd", "even"],
     },
   },
   theme: {
     extend: {
+      maxWidth: {
+        "1/2": "50%",
+      },
       colors: {
         transparent: "transparent",
         current: "currentColor",
@@ -35,6 +39,7 @@ module.exports = {
       },
       fontFamily: {
         mono: "'Source Code Pro', monospace",
+        serif: "'Spartan', sans-serif",
       },
       boxShadow: {
         small: "0 5px 10px rgba(0, 0, 0, 0.12)",

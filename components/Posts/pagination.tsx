@@ -7,7 +7,7 @@ interface PaginationProps {
 
 const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
   return (
-    <div className="text-center text-primary-light dark:text-primary-dark">
+    <div className="text-center text-primary-light dark:text-primary-dark pb-16">
       <button className={styles["load-more"]} onClick={props.onClick}></button>
     </div>
   );

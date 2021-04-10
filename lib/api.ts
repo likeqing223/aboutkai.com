@@ -21,11 +21,22 @@ export function getPostBySlug(slug: string, fields: string[] = []): Post {
     if (field === "slug") {
       res.slug = realSlug;
     }
+
     if (field === "content") {
       res.content = content;
     }
 
     if (data[field]) {
+      if (field === "date") {
+        res[field] = new Date(data[field]).getTime() / 1000;
+        return;
+      }
+
+      if (field === "tags") {
+        res[field] = (data[field] as string).split(",");
+        return;
+      }
+
       res[field] = data[field];
     }
   });
@@ -33,7 +44,7 @@ export function getPostBySlug(slug: string, fields: string[] = []): Post {
   return res;
 }
 
-export function getAllPosts(fields: string[] = []): Post[] {
+export function getAllPosts(fields: Array<keyof Post>): Post[] {
   const slugs = getPostSlugs();
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields))

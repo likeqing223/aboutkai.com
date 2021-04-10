@@ -10,10 +10,10 @@ type LayoutProps = {
 
 const Layout: FC<LayoutProps> = ({ preview, children }: LayoutProps) => {
   return (
-    <div className="px-8 bg-white dark:bg-black dark:text-white">
+    <div className="px-8">
       <Meta />
       <Header />
-      <main className="min-h-screen">{children}</main>
+      <main className="max-w-screen-xl m-auto">{children}</main>
       <Footer />
     </div>
   );

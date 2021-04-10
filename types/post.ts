@@ -1,11 +1,12 @@
 type Post = {
-  author: string;
   title: string;
-  date: string;
-  excerpt: string;
+  slug: string;
+  author: string;
+  date: number;
   content: string;
-  slug?: string;
+  excerpt?: string;
   coverImage?: string;
+  tags?: string[];
   ogImage?: {
     url: string;
   };

@@ -1,7 +1,9 @@
 ---
 title: Typescript 辨别联合类型
-date: "2021-04-04"
+date: "2021-04-02"
 author: kaichi
+tags: tag1,tag2
+excerpt: Tempor sunt tempor voluptate nulla labore nostrud deserunt pariatur commodo elit laborum nisi aliquip.
 ---
 
 在使用联合类型时，通常需要判断联合类型的具体类型，考虑如下 🌰
