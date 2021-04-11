@@ -21,6 +21,10 @@ module.exports = {
           light: "#00e6cb",
           dark: "#b690ff",
         },
+        dots: {
+          dark: "#485b73",
+          light: "#141c3a",
+        },
       },
       spacing: {
         28: "7rem",

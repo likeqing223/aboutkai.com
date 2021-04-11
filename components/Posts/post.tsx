@@ -8,11 +8,10 @@ import postImage from "./postImage.module.css";
 
 interface PostProps {
   post: PostType;
-  isHero?: boolean;
 }
 
 const Post: FC<PostProps> = (props: PostProps) => {
-  const { post, isHero } = props;
+  const { post } = props;
   const [imageColors, setImageColor] = useState<chroma.Color[]>([]);
 
   useEffect(() => {
@@ -24,12 +23,8 @@ const Post: FC<PostProps> = (props: PostProps) => {
   }, [post.coverImage]);
 
   return (
-    <article
-      className={classNames(
-        "max-w-full border-l border-dashed dark:border-primary "
-      )}
-    >
-      <div className="relative pl-5 py-2">
+    <article className="max-w-full">
+      <div className="pl-5 py-2 lg:border-l border-dashed dark:border-primary">
         {post.coverImage && (
           <a
             href={`/post/${post.slug}`}
@@ -38,7 +33,7 @@ const Post: FC<PostProps> = (props: PostProps) => {
                 imageColors.length > 0 ? imageColors[0].hex() : "transparent",
             }}
             className={classNames(
-              "relative float-right w-32 h-32 bg-transparent mb-4 ml-6",
+              "relative float-right w-32 h-32 bg-transparent mb-4 ml-6 transition transition-colors",
               postImage["post-image"]
             )}
           >
@@ -60,14 +55,15 @@ const Post: FC<PostProps> = (props: PostProps) => {
         {post.excerpt && (
           <p className="py-2 max-w-md text-sm font-serif">{post.excerpt}</p>
         )}
-        <div>
-          {post.tags &&
-            post.tags.map((t, i) => (
+        {post.tags && (
+          <div>
+            {post.tags.map((t, i) => (
               <a key={i} href={`/tag/${t}`}>
                 <span className="font-mono text-sm mt-3 mr-2">#{t}</span>
               </a>
             ))}
-        </div>
+          </div>
+        )}
       </div>
     </article>
   );

@@ -52,3 +52,18 @@ export function getAllPosts(fields: Array<keyof Post>): Post[] {
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
   return posts;
 }
+
+// export function getPostsByPagination(
+//   fields: Array<keyof Post>,
+//   start = 0,
+//   end = 5
+// ): Post[] {
+//   const slugs = getPostSlugs();
+//   const posts = slugs
+//     .map((slug) => getPostBySlug(slug, fields))
+//     // sort posts by date in descending order
+//     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
+//     .slice(start, end);
+
+//   return posts;
+// }
