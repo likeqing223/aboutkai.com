@@ -7,10 +7,10 @@ const Header: FC = () => {
       <a href="/">
         <img className="filter dark:invert" src="/assets/kaichi.webp" />
       </a>
-      <div className="hidden md:block space-x-8">
+      <nav className="hidden md:block space-x-8">
         <NavItem href="/">Home</NavItem>
         <NavItem href="/me">Me</NavItem>
-      </div>
+      </nav>
     </header>
   );
 };
