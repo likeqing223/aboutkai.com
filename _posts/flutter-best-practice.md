@@ -1,17 +1,16 @@
 ---
 title: "Flutter 最佳实践"
-date: "2021-04-02"
+date: "2021-04-014"
 author: kaichi
-tags: tag1,tag2
-coverImage: https://picsum.photos/200/300
-excerpt: Tempor sunt tempor voluptate nulla labore nostrud deserunt pariatur commodo elit laborum nisi aliquip.
+tags: flutter
+excerpt: flutter 最佳实践
 ---
 
 #### 命名规范
 
 类、枚举、typedef 和 extension 名应为大驼峰(UpperCamelCase)。
 
-```
+```dart
 class HomePage { ... }
 enum PageState { ... }
 typedef Predicate<T> = bool Function(T value);
@@ -20,14 +19,14 @@ extension MyList<T> on List<T> { ... }
 
 库、包、文件夹和文件名应为小写蛇形(lowercase_with_underscores)。
 
-```
+```dart
 library firebase_dynamic_links;
 import 'socket/socket_manager.dart';
 ```
 
 变量、常量、参数和命名参数名应为小驼峰(lowerCamelCase)。
 
-```
+```dart
 var item;
 const bookPrice = 3.14;
 final urlScheme = RegExp('^([a-z]+):');
@@ -40,7 +39,7 @@ void sum(int bookPrice) {
 
 在同时使用相对和绝对路径导入时，使用两种方式导入同一类时可能会造成混乱，为了避免这种情况，在 lib/ 下使用相对路径。
 
-```
+```dart
 // Do
 import "../../utils/demo.dart";
 
@@ -52,7 +51,7 @@ import "package:demo/src/utils/demo.dart";
 
 对于知道类型的值，指定其类型，尽可能避免使用 `var`。
 
-```
+```dart
 //Don't
 var item = 10;
 final car = Car();
@@ -70,7 +69,7 @@ const int timeOut = 20;
 
 `as` 转换类型失败则会抛出异常，为了避免这种情况，应使用 `is` 判断类型。
 
-```
+```dart
 //Don't
 (item as Animal).name = 'Lion';
 
@@ -84,7 +83,7 @@ if (item is Animal)
 
 很多时候我们会根据某些条件去渲染组件，但是如果在某种条件下不需要返回任何组件时应使用 `if`。
 
-```
+```dart
 //Don't
 Widget getText(BuildContext context) {
   return Row(
@@ -112,7 +111,7 @@ Widget getText(BuildContext context) {
 
 使用 `??` 和 `?.` 操作符，避免空值检查。
 
-```
+```dart
 //Don't
 v = a == null ? b : a;
 
@@ -133,7 +132,7 @@ v = a?.b;
 
 使用 `...` 解构让代码看起来更简洁。
 
-```
+```dart
 //Don't
 var y = [4,5,6];
 var x = [1,2];
@@ -149,7 +148,7 @@ var x = [1,2,...y];
 
 使用 `..` 级连运算符对同一对象执行一系列操作。
 
-```
+```dart
 // Don't
 var path = Path();
 path.lineTo(0, size.height);
@@ -170,7 +169,7 @@ var path = Path()
 
 原始字符串可以避免转译 \ 和 $
 
-```
+```dart
 //Don't
 var s = 'This is demo string \\ and \$';
 
@@ -183,7 +182,7 @@ var s = r'This is demo string \ and $';
 
 在 Dart 中，变量的默认值为 null， 初始化为 null 很多余。
 
-```
+```dart
 //Don't
 int a = null;
 
@@ -196,7 +195,7 @@ int a;
 
 对于只有一个表达式的函数，推荐使用 `=>`。
 
-```
+```dart
 //Don't
 get width {
   return right - left;
@@ -233,7 +232,7 @@ Widget getProgressBar() => CircularProgressIndicator(
 
 对于在 `setState` 调用不需要更新的组件，应将其定义为常量，可以防止不必要的重建，从而提高性能。
 
-```
+```dart
 Container(
       padding: const EdgeInsets.only(top: 10),
       color: Colors.black,

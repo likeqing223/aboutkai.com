@@ -1,15 +1,14 @@
 ---
 title: "Flutter Widget: ValueListenableBuilder"
-date: "2021-04-02"
+date: "2021-04-14"
 author: kaichi
-tags: tag1,tag2
-coverImage: https://picsum.photos/200/300
-excerpt: Tempor sunt tempor voluptate nulla labore nostrud deserunt pariatur commodo elit laborum nisi aliquip.
+tags: flutter
+excerpt: ValueListenableBuilder 组件介绍
 ---
 
 相信大家一定用过 `setState`, 在 `StatefulWidget` 中我们常使用 `setState` 来更新组件状态以此来更新 ui。下面这个计数器的 🌰 大家非常熟悉。
 
-```
+```dart
 class _CounterState extends State<Counter> {
   int _count = 0;
 
@@ -38,7 +37,7 @@ class _CounterState extends State<Counter> {
 
 除了上面的两个参数，**ValueListenableBuilder** 还有另外一个参数 _child_。上面的计数器 _builder_ 返回一个 **Text** 组件展示 counter 的值，当 counter 的值改变时需要重构的组件也就是这个 **Text** 组件。但有时 _builder_ 返回了一个非常复杂的组件，但是只有一部分组件依赖 value。这是我们就要用的 _child_ 参数，例如下面这个 🌰。
 
-```
+```dart
 ValueListenableBuilder(
   valueListenable: _counter,
   builder: (context, value, child) => Container(
@@ -60,7 +59,7 @@ ValueListenableBuilder(
 
 > 记得销毁 **ValueNotifier**, 避免内存泄漏。就像这样。
 
-```
+```dart
   @override
   void dispose() {
     _counter.dispose();
