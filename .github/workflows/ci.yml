@@ -5,7 +5,7 @@ on:
     - cron: "0 5 * * *" # everyday at 5am
   push:
     branches:
-      - blog
+      - main
 
 jobs:
   deploy:
@@ -39,6 +39,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
-          publish_branch: main
+          publish_branch: gh-pages
           keep_files: true
           force_orphan: true

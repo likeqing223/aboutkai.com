@@ -1,7 +1,5 @@
 import Head from "next/head";
 import React from "react";
-import Layout from "../components/Layout";
-import Posts from "../components/Posts";
 import { getAllPosts } from "../lib/api";
 import Post from "../types/post";
 
@@ -11,12 +9,12 @@ type Props = {
 
 const Index = ({ posts }: Props) => {
   return (
-    <Layout>
+    <>
       <Head>
         <title>Home | Kai Chi</title>
       </Head>
-      <Posts posts={posts} />
-    </Layout>
+      <h1>Hi! I'am kaichi.</h1>
+    </>
   );
 };
 
