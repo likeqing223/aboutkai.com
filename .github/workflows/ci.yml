@@ -42,3 +42,4 @@ jobs:
           publish_branch: gh-pages
           keep_files: true
           force_orphan: true
+          cname: www.aboutkai.com
