@@ -13,7 +13,7 @@ const Index = ({ posts }: Props) => {
       <Head>
         <title>Home | Kai Chi</title>
       </Head>
-      <h1>Hi! I'am kaichi.</h1>
+      <h1>Hi! I'm kaichi.</h1>
     </>
   );
 };
