@@ -1,11 +1,33 @@
-import { ReactNode, FunctionComponent } from 'react'
+import type { PropsWithChildren } from "react";
+import Head from "next/head";
+import React from "react";
+import Footer from "./Footer";
 
-type Props = {
-  children?: ReactNode
+type ContainerProps = PropsWithChildren<{
+  customMeta?: Record<string, string>;
+}>;
+
+export default function Container(props: ContainerProps) {
+  const { customMeta, children } = props;
+
+  const meta = {
+    title: "",
+    description: "",
+    image: "",
+    type: "",
+    ...customMeta
+  };
+
+  return (
+    <div>
+      <Head>
+        <title>{meta.title}</title>
+        <meta content={meta.description} name="description" />
+      </Head>
+      <main>
+        {children}
+        <Footer />
+      </main>
+    </div>
+  );
 }
-
-const Container: FunctionComponent = ({ children }: Props) => {
-  return <div className="container mx-auto px-5">{children}</div>
-}
-
-export default Container
