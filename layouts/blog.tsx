@@ -11,7 +11,7 @@ export default function BlogLayout({
 }: PropsWithChildren<{ post: Blog }>) {
   return (
     <Container
-      title={`${post.title} - Kaichi`}
+      title={`${post.title} - kaichi`}
       description={post.description}
       date={new Date(post.publishedAt).toISOString()}
       type="article"

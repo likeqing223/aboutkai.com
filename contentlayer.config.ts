@@ -11,15 +11,15 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrism from "rehype-prism-plus";
 
 const computedFields: ComputedFields = {
-  slug: {
-    type: "string",
-    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mds$/, "")
-  },
+  readingTime: { type: "json", resolve: (doc) => readingTime(doc.body.raw) },
   wordCount: {
     type: "number",
     resolve: (doc) => doc.body.raw.split(/\s+/gu).length
   },
-  readingTime: { type: "json", resolve: (doc) => readingTime(doc.body.raw) }
+  slug: {
+    type: "string",
+    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, "")
+  }
 };
 
 const Blog = defineDocumentType(() => ({

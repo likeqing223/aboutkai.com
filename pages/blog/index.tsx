@@ -3,7 +3,7 @@ import BlogPost from "components/BlogPost";
 import { InferGetStaticPropsType } from "next";
 import { pick } from "lib/utils";
 import { allBlogs } from ".contentlayer/data";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function Blog({
   posts

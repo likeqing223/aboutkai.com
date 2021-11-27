@@ -1,8 +1,10 @@
-import Container from "components/Container";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import BlogPost from "components/BlogPost";
+import Container from "components/Container";
+import Videos from "components/bilibili/Videos";
+import Bangumis from "components/bilibili/Bangumis";
 
 export default function Home() {
   return (
@@ -23,7 +25,7 @@ export default function Home() {
           </div>
           <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
             <Image
-              alt="Kai Chi"
+              alt="kaichi"
               height={176}
               width={176}
               src="/avatar.jpeg"
@@ -38,7 +40,7 @@ export default function Home() {
           </h3>
           <Link href="/blog">
             <a className="flex items-center text-gray-600 dark:text-gray-400 leading-7 rounded-md hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6">
-              查看全部
+              全部文章
               <svg
                 viewBox="0 0 1024 1024"
                 xmlns="http://www.w3.org/2000/svg"
@@ -53,22 +55,22 @@ export default function Home() {
           </Link>
         </div>
         <BlogPost
-          slug="1"
-          title="你真的了解 useEffect 吗？"
-          description="useEffect 用法大全。"
-        />
-        <BlogPost
-          slug="2"
+          slug="flutter-best-practice"
           title="Flutter 最佳实践"
-          description="flutter 最佳实践"
+          description="Flutte & Dart 最佳实践。"
         />
         <BlogPost
-          slug="3"
-          title="useState 用法"
-          description="Voluptate laboris nisi voluptate aliquip reprehenderit tempor velit."
+          slug="flutter-widget-value-listenable-builder"
+          title="Flutter Widget: ValueListenableBuilder"
+          description="ValueListenableBuilder 组件用法。"
         />
-        <div className="flex items-center justify-between mt-16 mb-4 w-full">
-          <h3 className="font-medium text-1xl md:text-3xl tracking-light  text-black dark:text-white">
+        <BlogPost
+          slug="typescript-union-type"
+          title="Typescript 辨别联合类型"
+          description="Typescript 联合类型的辨别方式及特性。"
+        />
+        <div className="flex items-center justify-between mt-12 mb-4 w-full">
+          <h3 className="font-medium text-1xl md:text-3xl tracking-light text-black dark:text-white">
             最新视频
           </h3>
           <a
@@ -90,9 +92,13 @@ export default function Home() {
             </svg>
           </a>
         </div>
-        <h3 className="font-medium text-1xl md:text-3xl tracking-light mt-16 mb-4 text-black dark:text-white">
-          追番
-        </h3>
+        <Videos />
+        <div className="flex items-center justify-between mt-12 mb-4 w-full">
+          <h3 className="font-medium text-1xl md:text-3xl tracking-light text-black dark:text-white">
+            最近在看
+          </h3>
+        </div>
+        <Bangumis />
       </div>
     </Container>
   );
