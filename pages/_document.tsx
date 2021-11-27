@@ -9,6 +9,7 @@ export default function Document() {
           href="/font/NotoSansSC-Regular.otf"
           as="font"
           type="font/otf"
+          crossOrigin="anonymous"
         />
         <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
         <link href="/static/favicons/site.webmanifest" rel="manifest" />
@@ -30,7 +31,7 @@ export default function Document() {
           type="image/png"
         />
       </Head>
-      <body>
+      <body className="bg-gray-50 dark:bg-gray-900">
         <Main />
         <NextScript />
       </body>

@@ -2,14 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "Noto Sans SC";
-  src: url(/font/NotoSansSC-Regular.otf) format("woff");
-  font-weight: 400;
+@layer base {
+  @font-face {
+    font-family: "Noto Sans SC";
+    src: url(/font/NotoSansSC-Regular.otf) format("woff");
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: "Noto Sans SC";
+    src: url(/font/NotoSansSC-Medium.otf) format("woff");
+    font-weight: 500;
+  }
 }
 
-@font-face {
-  font-family: "Noto Sans SC";
-  src: url(/font/NotoSansSC-Medium.otf) format("woff");
-  font-weight: 500;
+::selection {
+  background-color: #47a3f3;
+  color: #fefefe;
 }
