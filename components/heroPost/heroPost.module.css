@@ -1,0 +1,91 @@
+.post-container {
+  position: relative;
+  animation: slideTopImage 1s ease;
+}
+
+.post-container::before {
+  position: absolute;
+  width: 100%;
+  content: " ";
+  z-index: -2;
+  top: -6vh;
+  right: 0;
+  bottom: -4vh;
+  max-width: 491px;
+  background-size: 28px 28px;
+  opacity: 0.5;
+  background-image: radial-gradient(currentColor 6%, transparent 0);
+}
+
+.post-container::after {
+  position: absolute;
+  width: 100%;
+  content: " ";
+  z-index: -3;
+  top: -7vh;
+  right: 70px;
+  bottom: 4vh;
+  max-width: 427px;
+  background-color: #f34890;
+}
+
+.post-image {
+  width: 390px;
+  height: 100%;
+  flex: 0 0 390px;
+  animation: slideTopImage 1.8s ease;
+}
+
+@media (max-width: 1024px) {
+  .post-container::before {
+    top: -3.1vh;
+  }
+  .post-container::after {
+    top: -4vh;
+    bottom: 3vh;
+  }
+  .post-image {
+    right: 0;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .post-container::before {
+    max-width: 375px;
+  }
+  .post-container::after {
+    right: 67px;
+    max-width: 314px;
+  }
+  .post-image {
+    flex-basis: 290px;
+    width: 290px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .post-container::before {
+    max-width: 275px;
+  }
+  .post-container::after {
+    right: 26px;
+    max-width: 245px;
+  }
+  .post-image {
+    flex-basis: 200px;
+    width: 200px;
+  }
+}
+
+.post-content {
+  padding-right: 5%;
+}
+
+@keyframes slideTopImage {
+  0% {
+    transform: translateY(40px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,27 @@
+.nav-item {
+  position: relative;
+}
+
+.nav-item::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  right: -6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 100%;
+  background-color: transparent;
+  transition-timing-function: ease;
+  transition-duration: 0.3s;
+  transition-property: background-color, opacity;
+}
+
+.nav-item:hover::before {
+  opacity: 0.3;
+  background-color: #6b7280;
+}
+
+.nav-item.active::before {
+  background-color: currentColor;
+  opacity: 1;
+}
