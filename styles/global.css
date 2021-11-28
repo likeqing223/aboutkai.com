@@ -107,3 +107,8 @@ table {
 blockquote {
   /* @apply  */
 }
+
+.prose a {
+  text-decoration: inherit;
+  font-weight: inherit;
+}

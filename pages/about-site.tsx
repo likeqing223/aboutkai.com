@@ -1,11 +1,21 @@
-import Container from "components/Container";
-import React from "react";
+import { useMDXComponent } from "next-contentlayer/hooks";
+import components from "components/MDXComponents";
+import AboutSiteLayout from "layouts/about-site";
+import { allOtherPages } from ".contentlayer/data";
+import type { OtherPage } from ".contentlayer/types";
 
-export default function AboutSite() {
+export default function Uses({ body: { code } }: OtherPage) {
+  const Component = useMDXComponent(code);
+
   return (
-    <Container
-      title="关于本站 - kaichi"
-      description="构建本网站用到的一些技术"
-    ></Container>
+    <AboutSiteLayout>
+      <Component components={{ ...components }} />
+    </AboutSiteLayout>
   );
+}
+
+export async function getStaticProps() {
+  const uses = allOtherPages.find((page) => page.slug === "about-site")!;
+
+  return { props: uses };
 }
