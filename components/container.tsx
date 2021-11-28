@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import { useRouter } from "next/dist/client/router";
 import cn from "classnames";
 import { useTheme } from "next-themes";
+import MobileMenu from "./MobileMenu";
 
 type ContainerProps = PropsWithChildren<{
   title?: string;
@@ -31,7 +32,7 @@ function NavItem({ href, text }: NavItemProps) {
           isActive
             ? "font-medium text-gray-800 dark:text-gray-200"
             : "text-gray-600 dark:text-gray-400",
-          "hover:bg-gray-200 dark:hover:bg-gray-800 transition-all rounded-md p-1 sm:py-2 sm:px-3"
+          "hidden md:inline-block hover:bg-gray-200 dark:hover:bg-gray-800 transition-all rounded-md p-1 sm:py-2 sm:px-3"
         )}
       >
         <span>{text}</span>
@@ -44,6 +45,12 @@ export default function Container(props: ContainerProps) {
   const { children, ...customMeta } = props;
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
+
+  const menuItems = [
+    { href: "/", text: "主页" },
+    { href: "/blog", text: "博客" },
+    { href: "/about-site", text: "关于本站" }
+  ];
 
   useEffect(() => setMounted(true), []);
 
@@ -60,13 +67,17 @@ export default function Container(props: ContainerProps) {
       <Head>
         <title>{meta.title}</title>
         <meta content={meta.description} name="description" />
+        {meta.date && (
+          <meta property="article:published_time" content={meta.date} />
+        )}
       </Head>
       <div className="flex flex-col justify-center px-8">
-        <nav className="flex items-center justify-between w-full max-w-3xl pt-8 pb-8 mx-auto sm:pb-16">
+        <nav className="flex items-center justify-between w-full max-w-3xl pt-8 pb-8 mx-auto sm:pb-16 relative">
           <div className="ml-[-0.60rem]">
-            <NavItem href="/" text="主页" />
-            <NavItem href="/blog" text="博客" />
-            <NavItem href="/about-site" text="关于本站" />
+            <MobileMenu menuItems={menuItems} />
+            {menuItems.map((m, i) => (
+              <NavItem key={i} href={m.href} text={m.text} />
+            ))}
           </div>
           <button
             aria-label="切换主题"

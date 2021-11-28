@@ -6,6 +6,7 @@ export type BilibiliVideo = {
   created: number;
   bvid: string;
   pic: string;
+  length: string;
 };
 
 export type BilibiliBangumi = {
@@ -20,4 +21,5 @@ export type BilibiliBangumi = {
   publish: {
     pub_time: string;
   };
+  square_cover: string;
 };

@@ -18,7 +18,9 @@ module.exports = {
           700: "#333333",
           800: "#222222",
           900: "#111111"
-        }
+        },
+        biliPink: "#fb7299",
+        biliBlue: "#73c9e5"
       },
       fontFamily: {
         sans: ["Noto Sans SC", ...defaultTheme.fontFamily.sans]

@@ -1,3 +1,7 @@
 const { withContentlayer } = require("next-contentlayer");
 
-module.exports = withContentlayer()({});
+module.exports = withContentlayer()({
+  images: {
+    domains: ["i0.hdslb.com", "i2.hdslb.com"]
+  }
+});

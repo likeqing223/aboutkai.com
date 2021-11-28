@@ -9,7 +9,7 @@ export default function BlogPost({
   return (
     <Link href={`/blog/${slug}`}>
       <a className="w-full">
-        <div className="w-full mb-8 transform hover:scale-[1.01] transition-all">
+        <div className="mb-8">
           <div className="flex flex-col justify-between md:flex-row">
             <h4 className="w-full mb-2 text-lg font-medium text-gray-900 md:text-xl dark:text-gray-100">
               {title}

@@ -35,16 +35,16 @@ export default function Home() {
           </div>
         </div>
         <div className="flex items-center justify-between mb-6 w-full">
-          <h3 className="font-medium text-1xl md:text-3xl tracking-light text-black dark:text-white">
+          <h3 className="font-medium text-xl md:text-2xl tracking-light text-black dark:text-white">
             精选文章
           </h3>
           <Link href="/blog">
-            <a className="flex items-center text-gray-600 dark:text-gray-400 leading-7 rounded-md hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6">
+            <a className="flex text-sm md:text-base items-center text-gray-600 dark:text-gray-400 leading-7 rounded-md hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6">
               全部文章
               <svg
                 viewBox="0 0 1024 1024"
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 ml-1"
+                className="h-3 w-3 ml-1 md:w-4 md:h-4"
               >
                 <path
                   d="M312.888889 995.555556c-17.066667 0-28.444444-5.688889-39.822222-17.066667-22.755556-22.755556-17.066667-56.888889 5.688889-79.644445l364.088888-329.955555c11.377778-11.377778 17.066667-22.755556 17.066667-34.133333 0-11.377778-5.688889-22.755556-17.066667-34.133334L273.066667 187.733333c-22.755556-22.755556-28.444444-56.888889-5.688889-79.644444 22.755556-22.755556 56.888889-28.444444 79.644444-5.688889l364.088889 312.888889c34.133333 28.444444 56.888889 73.955556 56.888889 119.466667s-17.066667 85.333333-51.2 119.466666l-364.088889 329.955556c-11.377778 5.688889-28.444444 11.377778-39.822222 11.377778z"
@@ -69,21 +69,21 @@ export default function Home() {
           title="Typescript 辨别联合类型"
           description="Typescript 联合类型的辨别方式及特性。"
         />
-        <div className="flex items-center justify-between mt-12 mb-4 w-full">
-          <h3 className="font-medium text-1xl md:text-3xl tracking-light text-black dark:text-white">
+        <div className="flex items-center justify-between mt-8 mb-4 w-full">
+          <h3 className="font-medium text-xl md:text-2xl tracking-light text-black dark:text-white">
             最新视频
           </h3>
           <a
             target="_blank"
             rel="noopener noreferrer"
             href="https://space.bilibili.com/12951817"
-            className="flex items-center text-gray-600 dark:text-gray-400 leading-7 rounded-md hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6"
+            className="flex text-sm md:text-base items-center text-gray-600 dark:text-gray-400 leading-7 rounded-md hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6"
           >
             B 站主页
             <svg
               viewBox="0 0 1024 1024"
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4 ml-1"
+              className="h-3 w-3 ml-1 md:w-4 md:h-4"
             >
               <path
                 d="M312.888889 995.555556c-17.066667 0-28.444444-5.688889-39.822222-17.066667-22.755556-22.755556-17.066667-56.888889 5.688889-79.644445l364.088888-329.955555c11.377778-11.377778 17.066667-22.755556 17.066667-34.133333 0-11.377778-5.688889-22.755556-17.066667-34.133334L273.066667 187.733333c-22.755556-22.755556-28.444444-56.888889-5.688889-79.644444 22.755556-22.755556 56.888889-28.444444 79.644444-5.688889l364.088889 312.888889c34.133333 28.444444 56.888889 73.955556 56.888889 119.466667s-17.066667 85.333333-51.2 119.466666l-364.088889 329.955556c-11.377778 5.688889-28.444444 11.377778-39.822222 11.377778z"
@@ -93,8 +93,8 @@ export default function Home() {
           </a>
         </div>
         <Videos />
-        <div className="flex items-center justify-between mt-12 mb-4 w-full">
-          <h3 className="font-medium text-1xl md:text-3xl tracking-light text-black dark:text-white">
+        <div className="flex items-center justify-between mt-8 mb-4 w-full">
+          <h3 className="font-medium text-xl md:text-2xl tracking-light text-black dark:text-white">
             最近在看
           </h3>
         </div>
