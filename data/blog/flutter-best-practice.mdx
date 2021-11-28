@@ -115,8 +115,8 @@ v = a == null ? b : a;
 
 //Do
 v = a ?? b;
-# a != null: v = a
-# a = null: v = b
+// a != null: v = a
+// a = null: v = b
 
 
 //Don't
@@ -208,8 +208,8 @@ Widget getProgressBar() {
 //Do
 get width => right - left;
 Widget getProgressBar() => CircularProgressIndicator(
-      valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
-    );
+  valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+);
 ```
 
 #### 避免使用 `print` 方法

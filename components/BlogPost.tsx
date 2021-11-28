@@ -10,7 +10,7 @@ export default function BlogPost({
     <Link href={`/blog/${slug}`}>
       <a className="w-full">
         <div className="mb-8">
-          <div className="flex flex-col justify-between md:flex-row">
+          <div className="flex flex-row justify-between">
             <h4 className="w-full mb-2 text-lg font-medium text-gray-900 md:text-xl dark:text-gray-100">
               {title}
             </h4>

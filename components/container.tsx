@@ -72,7 +72,7 @@ export default function Container(props: ContainerProps) {
         )}
       </Head>
       <div className="flex flex-col justify-center px-8">
-        <nav className="flex items-center justify-between w-full max-w-3xl pt-8 pb-8 mx-auto sm:pb-16 relative">
+        <nav className="flex items-center justify-between w-full max-w-3xl pt-8 pb-8 mx-auto sm:pb-12 relative">
           <div className="ml-[-0.60rem]">
             <MobileMenu menuItems={menuItems} />
             {menuItems.map((m, i) => (
