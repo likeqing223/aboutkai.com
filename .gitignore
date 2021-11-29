@@ -4,3 +4,5 @@ node_modules
 
 # Contentlayer
 .contentlayer
+
+.pnpm-debug.log

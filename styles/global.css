@@ -23,8 +23,7 @@
 }
 
 ::selection {
-  background-color: #47a3f3;
-  color: #fefefe;
+  @apply bg-black text-white dark:bg-white dark:text-black;
 }
 
 html {
@@ -105,7 +104,7 @@ table {
 }
 
 blockquote {
-  /* @apply  */
+  @apply border-l-2 transition-all pl-3 italic;
 }
 
 .prose a {
