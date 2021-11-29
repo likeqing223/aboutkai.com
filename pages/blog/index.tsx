@@ -1,9 +1,9 @@
-import Container from "components/Container";
-import BlogPost from "components/BlogPost";
-import { InferGetStaticPropsType } from "next";
-import { pick } from "lib/utils";
 import { allBlogs } from ".contentlayer/data";
-import { useEffect, useMemo, useState } from "react";
+import BlogPost from "components/BlogPost";
+import Container from "components/Container";
+import { pick } from "lib/utils";
+import { InferGetStaticPropsType } from "next";
+import { useMemo, useState } from "react";
 
 export default function Blog({
   posts
@@ -29,8 +29,8 @@ export default function Blog({
       description="分享个人观点、新学到的知识以及一些编程经验。 Knowledge Growth in
   Sharing."
     >
-      <div className="flex flex-col items-start justify-center max-w-3xl mx-auto mb-16">
-        <h1 className="mb-4 text-2xl md:text-3xl font-bold tracking-tight text-black dark:text-white">
+      <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-8">
+        <h1 className="mb-4 text-2xl md:text-2xl font-bold tracking-tight text-black dark:text-white">
           博客
         </h1>
         <p className="mb-6 text-gray-600 dark:text-gray-400">

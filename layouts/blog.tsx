@@ -1,8 +1,8 @@
 import type { Blog } from ".contentlayer/types";
-import React, { PropsWithChildren } from "react";
 import Container from "components/Container";
 import { format, parseISO } from "date-fns";
 import Image from "next/image";
+import React, { PropsWithChildren } from "react";
 
 const editUrl = (slug: string) =>
   `https://github.com/kaichii/kaichii.github.io/edit/main/data/blog/${slug}.mdx`;
@@ -18,8 +18,8 @@ export default function BlogLayout({
       date={new Date(post.publishedAt).toISOString()}
       type="article"
     >
-      <article className="flex flex-col items-start justify-center w-full max-w-3xl mx-auto mb-16">
-        <h1 className="mb-6 text-2xl md:text-3xl font-bold tracking-tight text-black dark:text-white">
+      <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-8">
+        <h1 className="mb-6 text-2xl md:text-2xl font-bold tracking-tight text-black dark:text-white">
           {post.title}
         </h1>
         <div className="flex items-start justify-between w-full mb-4">

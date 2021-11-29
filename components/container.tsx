@@ -70,8 +70,8 @@ export default function Container(props: ContainerProps) {
           <meta property="article:published_time" content={meta.date} />
         )}
       </Head>
-      <div className="flex flex-col justify-center px-8 sticky top-0 bg-gray-50 dark:bg-gray-900 z-[1]">
-        <nav className="flex items-center justify-between w-full max-w-3xl pt-8 pb-8 mx-auto sm:pb-12 relative">
+      <div className="flex flex-col justify-center px-8">
+        <nav className="flex items-center justify-between w-full max-w-2xl pt-4 pb-4 md:pt-8 md:pb-8 mx-auto relative">
           <div className="ml-[-0.60rem]">
             <MobileMenu menuItems={menuItems} />
             {menuItems.map((m, i) => (
