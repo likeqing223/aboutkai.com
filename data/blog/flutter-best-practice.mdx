@@ -4,7 +4,7 @@ publishedAt: "2021-04-14"
 description: "Flutte & Dart 最佳实践。"
 ---
 
-#### 命名规范
+## 命名规范
 
 类、枚举、typedef 和 extension 名应为大驼峰(UpperCamelCase)。
 
@@ -33,7 +33,7 @@ void sum(int bookPrice) {
 }
 ```
 
-#### 使用相对路径导入文件
+## 使用相对路径导入文件
 
 在同时使用相对和绝对路径导入时，使用两种方式导入同一类时可能会造成混乱，为了避免这种情况，在 lib/ 下使用相对路径。
 
@@ -45,7 +45,7 @@ import "../../utils/demo.dart";
 import "package:demo/src/utils/demo.dart";
 ```
 
-#### 指定值类型
+## 指定值类型
 
 对于知道类型的值，指定其类型，尽可能避免使用 `var`。
 
@@ -77,7 +77,7 @@ if (item is Animal)
   item.name = 'Lion';
 ```
 
-#### 使用 `if` 而不是条件表达式
+## 使用 `if` 而不是条件表达式
 
 很多时候我们会根据某些条件去渲染组件，但是如果在某种条件下不需要返回任何组件时应使用 `if`。
 
@@ -126,7 +126,7 @@ v = a == null ? null : a.b;
 v = a?.b;
 ```
 
-#### 使用 `...` 解构
+## 使用 `...` 解构
 
 使用 `...` 解构让代码看起来更简洁。
 
@@ -142,7 +142,7 @@ var y = [4,5,6];
 var x = [1,2,...y];
 ```
 
-#### 使用 `..` 级连运算符
+## 使用 `..` 级连运算符
 
 使用 `..` 级连运算符对同一对象执行一系列操作。
 
@@ -163,7 +163,7 @@ var path = Path()
 ..close();
 ```
 
-#### 使用原始字符串
+## 使用原始字符串
 
 原始字符串可以避免转译 \ 和 $
 
@@ -176,7 +176,7 @@ var s = 'This is demo string \\ and \$';
 var s = r'This is demo string \ and $';
 ```
 
-#### 不要显式初始化变量为 null
+## 不要显式初始化变量为 null
 
 在 Dart 中，变量的默认值为 null， 初始化为 null 很多余。
 
@@ -189,7 +189,7 @@ int a = null;
 int a;
 ```
 
-#### 箭头函数
+## 箭头函数
 
 对于只有一个表达式的函数，推荐使用 `=>`。
 
@@ -212,21 +212,21 @@ Widget getProgressBar() => CircularProgressIndicator(
 );
 ```
 
-#### 避免使用 `print` 方法
+## 避免使用 `print` 方法
 
 `print()` 和 `debugPrint()` 都用于在控制台输出，如果使用 `print()` 并且一次输出太多，有时会丢弃输入，为了避免这种情况，建议使用 `debugPrint()`。
 
-#### 拆分复杂组件
+## 拆分复杂组件
 
 当 `setState` 更新状态时，所有的子组件都将重建，为了减少不必要的重建，应将复杂组件拆分为一个个小组件，在小组件内部 `setState` 更新相应部分。
 
-#### 使用 **ListView.builder** 构建长列表
+## 使用 **ListView.builder** 构建长列表
 
 当你有一个无限或是非常长的列表时，通常建议使用 `ListView` 组件来展示。 `ListView` 会一次构建整个列表。
 
 为了提高性能，避免不必要的资源浪费，推荐使用 `ListView.builder`，`ListView.builder` 会创建一个懒加载列表，当用户滚动列表时，**Flutter** 会按需加载。
 
-#### 使用 `const` 声明不需要更新的组件
+## 使用 `const` 声明不需要更新的组件
 
 对于在 `setState` 调用不需要更新的组件，应将其定义为常量，可以防止不必要的重建，从而提高性能。
 

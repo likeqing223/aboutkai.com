@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@tailwindcss/aspect-ratio': ^0.3.0
   '@tailwindcss/typography': ^0.4.1
   '@types/lodash': ^4.14.177
   '@types/react': ^17.0.37
@@ -30,6 +31,7 @@ specifiers:
   use-delayed-render: ^0.0.7
 
 dependencies:
+  '@tailwindcss/aspect-ratio': registry.npmmirror.com/@tailwindcss/aspect-ratio/0.3.0_tailwindcss@2.2.19
   '@tailwindcss/typography': registry.npmmirror.com/@tailwindcss/typography/0.4.1_tailwindcss@2.2.19
   classnames: registry.nlark.com/classnames/2.3.1
   contentlayer: registry.npmmirror.com/contentlayer/0.0.32_date-fns@2.26.0
@@ -4239,6 +4241,17 @@ packages:
     name: '@rushstack/eslint-patch'
     version: 1.1.0
     dev: true
+
+  registry.npmmirror.com/@tailwindcss/aspect-ratio/0.3.0_tailwindcss@2.2.19:
+    resolution: {integrity: sha1-93mrPwfKyEj7hEEi1mYrplYAELg=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@tailwindcss/aspect-ratio/download/@tailwindcss/aspect-ratio-0.3.0.tgz}
+    id: registry.npmmirror.com/@tailwindcss/aspect-ratio/0.3.0
+    name: '@tailwindcss/aspect-ratio'
+    version: 0.3.0
+    peerDependencies:
+      tailwindcss: '>=2.0.0 || >=3.0.0-alpha.1'
+    dependencies:
+      tailwindcss: registry.npmmirror.com/tailwindcss/2.2.19_343577c3dd31b4e787406ab8c6576ff6
+    dev: false
 
   registry.npmmirror.com/@tailwindcss/typography/0.4.1_tailwindcss@2.2.19:
     resolution: {integrity: sha1-Ud287qag7pkCxknb5YhxyBqDEhI=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@tailwindcss/typography/download/@tailwindcss/typography-0.4.1.tgz}

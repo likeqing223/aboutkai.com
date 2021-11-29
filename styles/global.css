@@ -5,6 +5,18 @@
 @layer base {
   @font-face {
     font-family: "Noto Sans SC";
+    src: url(/font/NotoSansSC-Thin.otf) format("woff");
+    font-weight: 100;
+  }
+
+  @font-face {
+    font-family: "Noto Sans SC";
+    src: url(/font/NotoSansSC-Light.otf) format("woff");
+    font-weight: 300;
+  }
+
+  @font-face {
+    font-family: "Noto Sans SC";
     src: url(/font/NotoSansSC-Regular.otf) format("woff");
     font-weight: 400;
   }
@@ -21,6 +33,12 @@
     font-weight: 700;
   }
 
+  @font-face {
+    font-family: "Noto Sans SC";
+    src: url(/font/NotoSansSC-Black.otf) format("woff");
+    font-weight: 900;
+  }
+
   /* Assume light mode by default */
   @import "prism-themes/themes/prism-one-light.min.css" screen;
   /* Supersede dark mode when applicable */
@@ -29,7 +47,7 @@
 }
 
 ::selection {
-  @apply bg-black text-white dark:bg-white dark:text-black;
+  @apply bg-black text-white dark:bg-white dark:text-black !important;
 }
 
 html {
@@ -57,12 +75,6 @@ html {
   @apply text-gray-800 dark:text-gray-200 border-0 bg-transparent dark:bg-transparent;
 }
 
-.prose > :first-child {
-  /* Override removing top margin, causing layout shift */
-  margin-top: 1.25em !important;
-  margin-bottom: 1.25em !important;
-}
-
 pre::-webkit-scrollbar {
   display: none;
 }
@@ -79,11 +91,62 @@ table {
   white-space: nowrap;
 }
 
-blockquote {
-  @apply border-l-2 transition-all pl-3 italic;
-}
-
 .prose a {
   text-decoration: inherit;
   font-weight: inherit;
+}
+
+.prose .anchor {
+  @apply absolute invisible;
+
+  margin-left: -1em;
+  padding-right: 0.5em;
+  width: 80%;
+  max-width: 700px;
+  cursor: pointer;
+}
+
+.anchor:hover {
+  @apply visible no-underline;
+}
+
+.prose a {
+  @apply transition-all font-medium text-[#539bf5] hover:text-[#2563eb] hover:underline;
+}
+
+.prose .anchor:after {
+  @apply text-gray-300 dark:text-gray-700;
+  content: "#";
+}
+
+.prose *:hover > .anchor {
+  @apply visible no-underline;
+}
+
+.prose h2 {
+  @apply mt-8 mb-4;
+}
+
+.prose h1 {
+  @apply text-3xl font-medium;
+}
+
+.prose h2 {
+  @apply text-2xl font-medium;
+}
+
+.prose h3 {
+  @apply text-xl font-medium;
+}
+
+.prose h4 {
+  @apply text-lg font-medium;
+}
+
+.prose p {
+  @apply text-base my-5 text-gray-800 dark:text-gray-200;
+}
+
+.prose blockquote {
+  @apply font-medium italic border-l-2 my-5 pl-4;
 }

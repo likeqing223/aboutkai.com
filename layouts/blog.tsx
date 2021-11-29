@@ -19,7 +19,7 @@ export default function BlogLayout({
       type="article"
     >
       <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-8">
-        <h1 className="mb-6 text-2xl md:text-2xl font-bold tracking-tight text-black dark:text-white">
+        <h1 className="mb-6 text-2xl md:text-2xl font-medium tracking-tight text-black dark:text-white">
           {post.title}
         </h1>
         <div className="flex items-start justify-between w-full mb-4">

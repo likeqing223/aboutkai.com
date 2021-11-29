@@ -29,13 +29,9 @@ class _CounterState extends State<Counter> {
 
 今天给大家介绍的 **ValueListenableBuilder**, 可以让我们更新的的组件状态而不需要使用`setState`。**ValueListenableBuilder** 有两个必须必需的参数。_valueListenable_ 是 **ValueNotifier** 实例，_builder_ 是一个回调函数，该回调函数根据所监听的值来构建组件，使用 **ValueListenableBuilder** 实现一个计数器。
 
-<br />
 你会发现这样一个计数器依旧是正常工作的，既然我们没有使用 `setState` 方法，组件是如何更新的呢？
-<br />
 
 **ValueListenableBuilder** 会监听 **ValueListenable** 上的任何更改，因此可以在值更改后重建 UI。这也是目前为止唯一可以基于组件当前状态重构 UI 的方法，当点击按钮使 counter 的 value 更新后，更新的也只是 Text 组件，而不需要整个页面重构。
-
-<br />
 
 除了上面的两个参数，**ValueListenableBuilder** 还有另外一个参数 _child_。上面的计数器 _builder_ 返回一个 **Text** 组件展示 counter 的值，当 counter 的值改变时需要重构的组件也就是这个 **Text** 组件。但有时 _builder_ 返回了一个非常复杂的组件，但是只有一部分组件依赖 value。这是我们就要用的 _child_ 参数，例如下面这个例子。
 

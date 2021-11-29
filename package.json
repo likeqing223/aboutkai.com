@@ -10,6 +10,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.3.0",
     "@tailwindcss/typography": "^0.4.1",
     "classnames": "^2.3.1",
     "contentlayer": "^0.0.32",
