@@ -18,7 +18,7 @@ export default function Home() {
             <h2 className="mb-4 text-gray-700 dark:text-gray-200">
               前端开发工程师 <span className="font-medium">@面向甩锅编程</span>
             </h2>
-            <p className="mb-16 text-gray-600 dark:text-gray-400">
+            <p className="mb-12 text-gray-600 dark:text-gray-400">
               分享个人观点、新学到的知识以及一些编程经验。 Knowledge Growth in
               Sharing.
             </p>

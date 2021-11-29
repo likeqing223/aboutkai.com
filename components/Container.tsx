@@ -71,7 +71,7 @@ export default function Container(props: ContainerProps) {
         )}
       </Head>
       <div className="flex flex-col justify-center px-8">
-        <nav className="flex items-center justify-between w-full max-w-2xl pt-4 pb-4 md:pt-8 md:pb-8 mx-auto relative">
+        <nav className="flex items-center justify-between w-full max-w-2xl pt-4 pb-8 md:pt-8 md:pb-12 mx-auto relative">
           <div className="ml-[-0.60rem]">
             <MobileMenu menuItems={menuItems} />
             {menuItems.map((m, i) => (
@@ -81,7 +81,7 @@ export default function Container(props: ContainerProps) {
           <button
             aria-label="切换主题"
             type="button"
-            className="p-2 hover:bg-gray-200 focus:bg-gray-200 rounded-md dark:hover:bg-gray-600 dark:focus:bg-gray-600 flex items-center justify-center transition-all"
+            className="p-2 bg-gray-200 hover:ring-2 ring-gray-300 rounded-md dark:bg-gray-600  flex items-center justify-center transition-all"
             onClick={() =>
               setTheme(resolvedTheme === "dark" ? "light" : "dark")
             }

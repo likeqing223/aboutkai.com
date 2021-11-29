@@ -11,7 +11,7 @@ export default function BlogPost({
       <a className="w-full">
         <div className="mb-8">
           <div className="flex flex-row justify-between">
-            <h4 className="w-full mb-2 text-lg font-medium text-gray-900 md:text-xl dark:text-gray-100">
+            <h4 className="w-full mb-2 text-[18px] font-medium text-gray-900 md:text-xl dark:text-gray-100">
               {title}
             </h4>
             <div className="flex items-center text-gray-800 dark:text-gray-200">

@@ -3,6 +3,7 @@ import fetcher from "lib/fetcher";
 import { BilibiliVideo } from "lib/types";
 import React from "react";
 import useSWR from "swr";
+import Image from "next/image";
 
 export default function Videos() {
   const { data } = useSWR<{ data: BilibiliVideo[] }>(
@@ -14,7 +15,27 @@ export default function Videos() {
     return <p className="text-gray-600 dark:text-gray-400">暂无视频</p>;
 
   return (
-    <div className="flex w-full gap-6 flex-col md:flex-row">
+    <div className="flex w-full gap-2 flex-col md:flex-row">
+      {/* {data.data.slice(0, 4).map((v) => (
+        <div
+          key={v.bvid}
+          className="w-[160px] h-[148px] hover:text-white text-transparent"
+        >
+          <div className="relative w-[160px] h-[100px]">
+            <Image
+              src={v.pic}
+              alt={v.title}
+              width={160}
+              height={100}
+              className="aspect-w-16 aspect-h-10 rounded"
+            />
+            <p className="absolute left-2 bottom-2 text-xs opacity-0 transition-opacity duration-300">
+              {v.length}
+            </p>
+            <div className="absolute inset-0 hover:bg-[rgba(0,0,0,.2)] transition-all duration-300" />
+          </div>
+        </div>
+      ))} */}
       {data.data.slice(0, 3).map((v) => (
         <a
           key={v.bvid}

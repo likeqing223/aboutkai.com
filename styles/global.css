@@ -150,3 +150,22 @@ table {
 .prose blockquote {
   @apply font-medium italic border-l-2 my-5 pl-4;
 }
+
+.prose ul {
+  @apply my-5;
+}
+
+.prose li {
+  @apply my-2;
+}
+
+.prose ul > li {
+  @apply relative pl-7;
+}
+
+.prose ul > li:before {
+  content: "";
+  border-radius: 50%;
+  top: calc(50% - 0.375em / 2);
+  @apply absolute bg-gray-300 dark:bg-gray-500 w-[0.375em] h-[0.375em] left-1;
+}
