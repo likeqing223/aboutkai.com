@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
 import cn from "classnames";
-import styles from "styles/mobile-menu.module.css";
 import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import styles from "styles/mobile-menu.module.css";
 import useDelayedRender from "use-delayed-render";
 
 export default function MobileMenu({
@@ -72,7 +72,7 @@ export default function MobileMenu({
 function MenuIcon(props: JSX.IntrinsicElements["svg"]) {
   return (
     <svg
-      className="h-5 w-5 absolute text-gray-900 dark:text-gray-100"
+      className="h-6 w-6 absolute text-gray-900 dark:text-gray-100"
       width="20"
       height="20"
       viewBox="0 0 20 20"
@@ -100,7 +100,7 @@ function MenuIcon(props: JSX.IntrinsicElements["svg"]) {
 function CrossIcon(props: JSX.IntrinsicElements["svg"]) {
   return (
     <svg
-      className="h-5 w-5 absolute text-gray-900 dark:text-gray-100"
+      className="h-6 w-6 absolute text-gray-900 dark:text-gray-100"
       viewBox="0 0 24 24"
       width="24"
       height="24"

@@ -20,6 +20,12 @@
     src: url(/font/NotoSansSC-Bold.otf) format("woff");
     font-weight: 700;
   }
+
+  /* Assume light mode by default */
+  @import "prism-themes/themes/prism-one-light.min.css" screen;
+  /* Supersede dark mode when applicable */
+  @import "prism-themes/themes/prism-one-dark.min.css" screen and
+    (prefers-color-scheme: dark);
 }
 
 ::selection {
@@ -71,36 +77,6 @@ table {
   max-width: fit-content;
   overflow-x: auto;
   white-space: nowrap;
-}
-
-/* global content style */
-.token.comment {
-  @apply text-gray-500 dark:text-gray-300;
-}
-
-.token.keyword {
-  @apply text-[#c176d8];
-}
-
-.token.function {
-  @apply text-[#61afef];
-}
-
-.token.punctuation {
-  @apply text-gray-700 dark:text-gray-300;
-}
-
-.token.builtin,
-.token.class-name {
-  @apply text-[#e5c07b];
-}
-
-.token.string {
-  @apply text-[#98c379];
-}
-
-.token.operator {
-  @apply text-[#56b6c2];
 }
 
 blockquote {

@@ -70,7 +70,7 @@ export default function Container(props: ContainerProps) {
           <meta property="article:published_time" content={meta.date} />
         )}
       </Head>
-      <div className="flex flex-col justify-center px-8">
+      <div className="flex flex-col justify-center px-8 sticky top-0 bg-gray-50 dark:bg-gray-900 z-[1]">
         <nav className="flex items-center justify-between w-full max-w-3xl pt-8 pb-8 mx-auto sm:pb-12 relative">
           <div className="ml-[-0.60rem]">
             <MobileMenu menuItems={menuItems} />
@@ -81,7 +81,7 @@ export default function Container(props: ContainerProps) {
           <button
             aria-label="切换主题"
             type="button"
-            className="w-9 h-9 hover:bg-gray-200 focus:bg-gray-200 rounded-md dark:hover:bg-gray-600 dark:focus:bg-gray-600 flex items-center justify-center transition-all"
+            className="p-2 hover:bg-gray-200 focus:bg-gray-200 rounded-md dark:hover:bg-gray-600 dark:focus:bg-gray-600 flex items-center justify-center transition-all"
             onClick={() =>
               setTheme(resolvedTheme === "dark" ? "light" : "dark")
             }
@@ -91,7 +91,6 @@ export default function Container(props: ContainerProps) {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                // stroke="currentColor"
                 className="w-6 h-6 text-gray-800 dark:text-gray-200"
               >
                 {resolvedTheme === "dark" ? (

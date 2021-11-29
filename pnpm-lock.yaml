@@ -15,6 +15,7 @@ specifiers:
   next-contentlayer: ^0.0.32
   next-themes: ^0.0.15
   postcss: ^8.4.1
+  prism-themes: ^1.9.0
   react: ^17.0.2
   react-dom: ^17.0.2
   reading-time: ^1.5.0
@@ -37,6 +38,7 @@ dependencies:
   next: 12.0.4_react-dom@17.0.2+react@17.0.2
   next-contentlayer: registry.npmmirror.com/next-contentlayer/0.0.32_f195614718841b3c14a81ac95268ce58
   next-themes: registry.npmmirror.com/next-themes/0.0.15_f195614718841b3c14a81ac95268ce58
+  prism-themes: registry.npmmirror.com/prism-themes/1.9.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   swr: 1.0.1_react@17.0.2
@@ -6556,6 +6558,12 @@ packages:
       nanoid: registry.npmmirror.com/nanoid/3.1.30
       picocolors: registry.npmmirror.com/picocolors/1.0.0
       source-map-js: registry.npmmirror.com/source-map-js/1.0.1
+
+  registry.npmmirror.com/prism-themes/1.9.0:
+    resolution: {integrity: sha1-GcA08yBfHijXXYlyjlTM10X3490=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/prism-themes/download/prism-themes-1.9.0.tgz}
+    name: prism-themes
+    version: 1.9.0
+    dev: false
 
   registry.npmmirror.com/property-information/6.1.1:
     resolution: {integrity: sha512-hrzC564QIl0r0vy4l6MvRLhafmUowhO/O3KgVSoXIbbA2Sz4j8HGpJc6T2cubRVwMwpdiG/vKGfhT4IixmKN9w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/property-information/download/property-information-6.1.1.tgz}
