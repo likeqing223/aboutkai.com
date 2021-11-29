@@ -7,8 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "lint": "next lint",
-    "start": "next start",
-    "export": "next export"
+    "start": "next start"
   },
   "dependencies": {
     "@tailwindcss/aspect-ratio": "^0.3.0",
