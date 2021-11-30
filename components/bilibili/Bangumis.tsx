@@ -44,9 +44,9 @@ export default function Bangumis() {
                 alt={d.title}
                 width="165px"
                 height="210px"
-                className="rounded-md aspect-w-11 aspect-h-14"
+                className="rounded-md"
               />
-              <p className="text-sm">{d.title}</p>
+              <p className="text-sm mt-1">{d.title}</p>
             </a>
           </div>
         );

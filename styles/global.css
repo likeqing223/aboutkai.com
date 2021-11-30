@@ -21,11 +21,7 @@
     font-weight: 500;
   }
 
-  /* Assume light mode by default */
   @import "prism-themes/themes/prism-one-light.min.css" screen;
-  /* Supersede dark mode when applicable */
-  @import "prism-themes/themes/prism-one-dark.min.css" screen and
-    (prefers-color-scheme: dark);
 }
 
 ::selection {

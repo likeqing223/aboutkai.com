@@ -69,7 +69,7 @@ export default function Home() {
           title="Typescript 辨别联合类型"
           description="Typescript 联合类型的辨别方式及特性。"
         />
-        <div className="flex items-center justify-between mt-8 mb-4 w-full">
+        <div className="flex items-center justify-between mt-8 mb-6 w-full">
           <h3 className="font-medium text-xl md:text-2xl tracking-light text-black dark:text-white">
             最新视频
           </h3>
@@ -93,7 +93,7 @@ export default function Home() {
           </a>
         </div>
         <Videos />
-        <div className="flex items-center justify-between mt-8 mb-4 w-full">
+        <div className="flex items-center justify-between mt-8 mb-6 w-full">
           <h3 className="font-medium text-xl md:text-2xl tracking-light text-black dark:text-white">
             最近在看
           </h3>
