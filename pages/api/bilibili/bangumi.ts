@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { get } from "lodash";
+import get from "lodash.get";
 
 export default async function handler(
   req: NextApiRequest,
