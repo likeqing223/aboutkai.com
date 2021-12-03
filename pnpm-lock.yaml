@@ -17,6 +17,7 @@ specifiers:
   next-themes: ^0.0.15
   postcss: ^8.4.1
   prism-themes: ^1.9.0
+  prisma: ^3.6.0
   react: ^17.0.2
   react-dom: ^17.0.2
   reading-time: ^1.5.0
@@ -25,6 +26,7 @@ specifiers:
   rehype-prism-plus: ^1.1.3
   rehype-slug: ^5.0.0
   remark-gfm: ^3.0.1
+  remark-toc: ^8.0.1
   swr: ^1.0.1
   tailwindcss: ^2.2.19
   typescript: ^4.5.2
@@ -54,12 +56,14 @@ devDependencies:
   eslint: registry.npmmirror.com/eslint/7.32.0
   eslint-config-next: registry.npmmirror.com/eslint-config-next/12.0.4_97474a4dbadaeb5c2c29b7d438fbde20
   postcss: registry.npmmirror.com/postcss/8.4.1
+  prisma: registry.npmmirror.com/prisma/3.6.0
   reading-time: registry.npmmirror.com/reading-time/1.5.0
   rehype-autolink-headings: registry.npmmirror.com/rehype-autolink-headings/6.1.0
   rehype-code-titles: registry.npmmirror.com/rehype-code-titles/1.0.3
   rehype-prism-plus: registry.npmmirror.com/rehype-prism-plus/1.1.3
   rehype-slug: registry.npmmirror.com/rehype-slug/5.0.0
   remark-gfm: registry.npmmirror.com/remark-gfm/3.0.1
+  remark-toc: registry.npmmirror.com/remark-toc/8.0.1
   typescript: 4.5.2
 
 packages:
@@ -4236,6 +4240,13 @@ packages:
     engines: {node: '>=8.0.0'}
     dev: false
 
+  registry.npmmirror.com/@prisma/engines/3.6.0-24.dc520b92b1ebb2d28dc3161f9f82e875bd35d727:
+    resolution: {integrity: sha512-dRClHS7DsTVchDKzeG72OaEyeDskCv91pnZ72Fftn0mp4BkUvX2LvWup65hCNzwwQm5IDd6A88APldKDnMiEMA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@prisma/engines/download/@prisma/engines-3.6.0-24.dc520b92b1ebb2d28dc3161f9f82e875bd35d727.tgz}
+    name: '@prisma/engines'
+    version: 3.6.0-24.dc520b92b1ebb2d28dc3161f9f82e875bd35d727
+    requiresBuild: true
+    dev: true
+
   registry.npmmirror.com/@protobufjs/eventemitter/1.1.0:
     resolution: {integrity: sha1-NVy8mLr61ZePntCV85diHx0Ga3A=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@protobufjs/eventemitter/download/@protobufjs/eventemitter-1.1.0.tgz}
     name: '@protobufjs/eventemitter'
@@ -4312,6 +4323,18 @@ packages:
     name: '@types/estree'
     version: 0.0.50
     dev: false
+
+  registry.npmmirror.com/@types/extend/3.0.1:
+    resolution: {integrity: sha1-kj3C1wfZRDgkM+AdbMDGkDCrLHU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/extend/download/@types/extend-3.0.1.tgz}
+    name: '@types/extend'
+    version: 3.0.1
+    dev: true
+
+  registry.npmmirror.com/@types/github-slugger/1.3.0:
+    resolution: {integrity: sha1-Fqs5OzDYrioRGsdIoBWsBaH8VSQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/github-slugger/download/@types/github-slugger-1.3.0.tgz}
+    name: '@types/github-slugger'
+    version: 1.3.0
+    dev: true
 
   registry.npmmirror.com/@types/glob/7.2.0:
     resolution: {integrity: sha1-vBtb86qS8lvV3TnzXFc2G9zlsus=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/glob/download/@types/glob-7.2.0.tgz}
@@ -5960,6 +5983,21 @@ packages:
       unist-util-visit: registry.npmmirror.com/unist-util-visit/4.1.0
       zwitch: registry.nlark.com/zwitch/2.0.2
 
+  registry.npmmirror.com/mdast-util-toc/6.1.0:
+    resolution: {integrity: sha1-HzhBn1zndEScjaqHs5pNlAskvnw=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mdast-util-toc/download/mdast-util-toc-6.1.0.tgz}
+    name: mdast-util-toc
+    version: 6.1.0
+    dependencies:
+      '@types/extend': registry.npmmirror.com/@types/extend/3.0.1
+      '@types/github-slugger': registry.npmmirror.com/@types/github-slugger/1.3.0
+      '@types/mdast': registry.npmmirror.com/@types/mdast/3.0.10
+      extend: registry.nlark.com/extend/3.0.2
+      github-slugger: registry.nlark.com/github-slugger/1.4.0
+      mdast-util-to-string: registry.nlark.com/mdast-util-to-string/3.1.0
+      unist-util-is: registry.nlark.com/unist-util-is/5.1.1
+      unist-util-visit: registry.npmmirror.com/unist-util-visit/3.1.0
+    dev: true
+
   registry.npmmirror.com/mdx-bundler/6.0.3_esbuild@0.13.15:
     resolution: {integrity: sha1-XPw3s+QI86vl6juTX8YsSrqLdAI=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mdx-bundler/download/mdx-bundler-6.0.3.tgz}
     id: registry.npmmirror.com/mdx-bundler/6.0.3
@@ -6592,6 +6630,17 @@ packages:
     version: 1.9.0
     dev: false
 
+  registry.npmmirror.com/prisma/3.6.0:
+    resolution: {integrity: sha512-6SqgHS/5Rq6HtHjsWsTxlj+ySamGyCLBUQfotc2lStOjPv52IQuDVpp58GieNqc9VnfuFyHUvTZw7aQB+G2fvQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/prisma/download/prisma-3.6.0.tgz}
+    name: prisma
+    version: 3.6.0
+    engines: {node: '>=12.6'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      '@prisma/engines': registry.npmmirror.com/@prisma/engines/3.6.0-24.dc520b92b1ebb2d28dc3161f9f82e875bd35d727
+    dev: true
+
   registry.npmmirror.com/property-information/6.1.1:
     resolution: {integrity: sha512-hrzC564QIl0r0vy4l6MvRLhafmUowhO/O3KgVSoXIbbA2Sz4j8HGpJc6T2cubRVwMwpdiG/vKGfhT4IixmKN9w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/property-information/download/property-information-6.1.1.tgz}
     name: property-information
@@ -6789,6 +6838,16 @@ packages:
       mdast-util-to-hast: registry.npmmirror.com/mdast-util-to-hast/11.3.0
       unified: registry.npmmirror.com/unified/10.1.1
     dev: false
+
+  registry.npmmirror.com/remark-toc/8.0.1:
+    resolution: {integrity: sha1-8+B+oTc08cUx49NGDli6vjHRfNc=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/remark-toc/download/remark-toc-8.0.1.tgz}
+    name: remark-toc
+    version: 8.0.1
+    dependencies:
+      '@types/mdast': registry.npmmirror.com/@types/mdast/3.0.10
+      mdast-util-toc: registry.npmmirror.com/mdast-util-toc/6.1.0
+      unified: registry.npmmirror.com/unified/10.1.1
+    dev: true
 
   registry.npmmirror.com/rxjs/7.4.0:
     resolution: {integrity: sha1-oSpE1+6/AW9f8kQbh/KMmlHOvGg=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/rxjs/download/rxjs-7.4.0.tgz?cache=0&sync_timestamp=1633558464026&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Frxjs%2Fdownload%2Frxjs-7.4.0.tgz}

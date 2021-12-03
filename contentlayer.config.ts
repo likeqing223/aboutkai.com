@@ -5,6 +5,7 @@ import {
 } from "contentlayer/source-files";
 import readingTime from "reading-time";
 import remarkGfm from "remark-gfm";
+import remarkTOC from "remark-toc";
 import rehypeSlug from "rehype-slug";
 import rehypeCodeTitles from "rehype-code-titles";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -39,7 +40,7 @@ const contentLayerConfig = makeSource({
   contentDirPath: "data",
   documentTypes: [Blog],
   mdx: {
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [remarkGfm, remarkTOC],
     rehypePlugins: [
       rehypeSlug,
       rehypeCodeTitles,
