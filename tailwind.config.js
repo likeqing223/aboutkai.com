@@ -1,3 +1,4 @@
+const { margin } = require("tailwindcss/defaultTheme");
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
@@ -36,7 +37,9 @@ module.exports = {
               },
               code: { color: theme("colors.blue.400") }
             },
-            "h2,h3,h4": {},
+            "h2,h3,h4": {
+              color: theme("colors.gray.800")
+            },
             thead: {
               borderBottomColor: theme("colors.gray.200")
             },

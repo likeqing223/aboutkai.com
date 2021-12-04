@@ -1,0 +1,166 @@
+---
+title: 记录博客文章浏览数量
+publishedAt: "2021-12-04"
+description: 使用 Severless 数据库 PlantScale 和 Prisma 实现文章浏览数量记录。
+---
+
+文章的阅读数量数据我们储存在 Severless 数据库 [PlantScale](https://planetscale.com) 中，创建好账户和数据库后就可以开始使用了，具体的步骤参考[官方文档](https://docs.planetscale.com)。
+
+### 连接数据库
+
+- 测试连接数据库
+
+先用 [PlanetScale CLI](https://github.com/planetscale/cli#installation) 看能否连接上数据库。首次连接需要先登录。
+
+```bash
+// 登陆
+$ pscale auth login
+
+// 连接数据库指定分支
+$ pscale shell <database-name> <branch>
+```
+
+- [ORM](https://www.prisma.io)
+
+```bash
+$ pnpm i -D prisma
+```
+
+- [Prisma](https://www.prisma.io) Schema
+
+创建 shadow 分支以供调试。
+
+点击 [PlanetScale](https://planetscale.com) 右上角的 connect 按钮，创建新密码，下方选择 Prisma，复制。url 添加到环境变量。
+
+```js:.env
+DATABASE_URL=<复制的 url>
+```
+
+Schema 配置[详解](https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference)。
+
+```js:prisma/prisma.schema
+datasource db {
+  url               = env("DATABASE_URL") // 正式
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL") // 测试
+  provider          = "mysql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+```
+
+### 创建表
+
+- 我们先需要在数据库里创建表存储数据，修改 schema.prisma。
+
+```diff
+datasource db {
+  url               = env("DATABASE_URL") // 正式
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL") // 测试
+  provider          = "mysql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
++ model views {
++   slug  String @id @db.VarChar(128)
++   count BigInt @default(1)
++ }
+```
+
+- Migrate
+
+```bash
+$ pnpm exec prisma db push
+```
+
+> 远程连接数据库，需要将 schema push 到远程，而不是直接 migrate，[参考](https://www.prisma.io/docs/concepts/components/prisma-migrate/shadow-database#:~:text=hosted%20shadow%20databases-,If%20you%20are%20developing%20against%20a%20cloud%2Dbased%20database%20%28for,prisma%20db%20push%20instead%20of%20the%20prisma%20migrate%20dev%20command.,-Important%3A%20The%20shadow)。
+
+migrate 成功后，查看 `views` 表是否创建成功。
+
+```bash
+blog/shadow> show tables;
++----------------+
+| Tables_in_blog |
++----------------+
+| views          |
++----------------+
+```
+
+### 记录文章浏览数据
+
+- 初始化 Prisma Client。
+
+```ts:lib/prisma.ts
+import { PrismaClient } from "@prisma/client";
+
+declare global {
+  var prisma: PrismaClient | undefined;
+}
+
+export const prisma = global.prisma || new PrismaClient();
+
+if (process.env.NODE_ENV !== "production") global.prisma = prisma;
+```
+
+- 记录浏览次数 API
+
+```ts:pages/api/views/[slug].ts
+if (req.method === "POST") {
+  const upsertViews = await prisma.views.upsert({
+    where: { slug },
+    create: {
+      slug
+    },
+    update: {
+      count: {
+        increment: 1
+      }
+    }
+  });
+
+  return res.status(200).json({
+    total: upsertViews.count.toString()
+  });
+```
+
+- 查询浏览次数 API
+
+```ts:pages/api/views/[slug].ts
+if (req.method === "GET") {
+  const views = await prisma.views.findUnique({
+    where: {
+      slug
+    }
+  });
+
+  return res.status(200).json({ total: views?.count.toString() });
+}
+```
+
+- 在文章页面打开时记录浏览
+
+```ts
+useEffect(() => {
+  const registerView = () =>
+    fetch(`/api/views/${post.slug}`, {
+      method: "POST"
+    });
+
+  registerView();
+}, [post.slug]);
+```
+
+### 部署
+
+- 将 shadow 分支的修改合并到 main 分支
+
+![deploy request](/static/images/add-post-views/deploy-request.png)
+
+### 其他链接
+
+- [aboutkai.com](https://github.com/kaichii/aboutkai.com) 项目源码
+- [leerob.io](https://leerob.io/) 参考项目
