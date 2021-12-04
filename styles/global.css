@@ -100,24 +100,20 @@ table {
   @apply visible no-underline;
 }
 
-.prose h2 {
-  @apply mt-8 mb-4;
-}
-
 .prose h1 {
-  @apply text-3xl font-medium;
+  @apply text-3xl font-medium  mt-8 mb-4;
 }
 
 .prose h2 {
-  @apply text-2xl font-medium;
+  @apply text-2xl font-medium mt-8 mb-4;
 }
 
 .prose h3 {
-  @apply text-xl font-medium;
+  @apply text-xl font-medium mt-8 mb-4;
 }
 
 .prose h4 {
-  @apply text-lg font-medium;
+  @apply text-lg font-medium mt-8 mb-4;
 }
 
 .prose p {

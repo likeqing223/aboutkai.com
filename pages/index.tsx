@@ -55,9 +55,9 @@ export default function Home() {
           </Link>
         </div>
         <BlogPost
-          slug="flutter-best-practice"
-          title="Flutter 最佳实践"
-          description="Flutte & Dart 最佳实践。"
+          slug="add-post-views"
+          title="记录博客文章浏览数量"
+          description="使用 Severless 数据库 PlantScale 和 Prisma 实现文章浏览数量记录。"
         />
         <BlogPost
           slug="flutter-widget-value-listenable-builder"

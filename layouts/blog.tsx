@@ -1,8 +1,10 @@
 import type { Blog } from ".contentlayer/types";
 import Container from "components/Container";
 import { format, parseISO } from "date-fns";
+import fetcher from "lib/fetcher";
 import Image from "next/image";
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren, useEffect } from "react";
+import useSWR from "swr";
 
 const editUrl = (slug: string) =>
   `https://github.com/kaichii/kaichii.github.io/edit/main/data/blog/${slug}.mdx`;
@@ -11,6 +13,21 @@ export default function BlogLayout({
   children,
   post
 }: PropsWithChildren<{ post: Blog }>) {
+  const { data } = useSWR<{ total: string }>(
+    `/api/views/${post.slug}`,
+    fetcher
+  );
+  const views = new Number(data?.total);
+
+  useEffect(() => {
+    const registerView = () =>
+      fetch(`/api/views/${post.slug}`, {
+        method: "POST"
+      });
+
+    registerView();
+  }, [post.slug]);
+
   return (
     <Container
       title={`${post.title} - kaichi`}
@@ -37,7 +54,7 @@ export default function BlogLayout({
             </p>
           </div>
           <p className="text-sm text-gray-600 dark:text-gray-400 min-w-32">
-            {post.readingTime.text}
+            {post.readingTime.text} • {views ? `${views} views` : null}
           </p>
         </div>
         <div className="w-full prose dark:prose-dark max-w-none mb-4">
