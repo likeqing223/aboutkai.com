@@ -48,7 +48,7 @@ export default function Container(props: ContainerProps) {
   const menuItems = [
     { href: "/", text: "主页" },
     { href: "/blog", text: "博客" },
-    // { href: "/about-site", text: "关于本站" }
+    { href: "/guestbook", text: "留言板" }
   ];
 
   useEffect(() => setMounted(true), []);

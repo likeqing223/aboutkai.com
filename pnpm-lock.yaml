@@ -1,6 +1,8 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@giscus/react': ^1.0.1
+  '@prisma/client': ^3.6.0
   '@tailwindcss/aspect-ratio': ^0.3.0
   '@tailwindcss/typography': ^0.4.1
   '@types/lodash.get': ^4.4.6
@@ -33,6 +35,8 @@ specifiers:
   use-delayed-render: ^0.0.7
 
 dependencies:
+  '@giscus/react': registry.npmmirror.com/@giscus/react/1.0.1_react-dom@17.0.2+react@17.0.2
+  '@prisma/client': registry.npmmirror.com/@prisma/client/3.6.0_prisma@3.6.0
   '@tailwindcss/aspect-ratio': registry.npmmirror.com/@tailwindcss/aspect-ratio/0.3.0_tailwindcss@2.2.19
   '@tailwindcss/typography': registry.npmmirror.com/@tailwindcss/typography/0.4.1_tailwindcss@2.2.19
   classnames: registry.nlark.com/classnames/2.3.1
@@ -667,10 +671,6 @@ packages:
       supports-color: registry.npmmirror.com/supports-color/8.1.1
     dev: false
 
-  /js-tokens/4.0.0:
-    resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
-    dev: false
-
   /lodash.sortby/4.7.0:
     resolution: {integrity: sha1-7dFMgk4sycHgsKG0K7UhBRakJDg=}
     dev: false
@@ -679,7 +679,7 @@ packages:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
     dependencies:
-      js-tokens: 4.0.0
+      js-tokens: registry.nlark.com/js-tokens/4.0.0
     dev: false
 
   /make-dir/3.1.0:
@@ -1017,7 +1017,7 @@ packages:
   /scheduler/0.20.2:
     resolution: {integrity: sha512-2eWfGgAqqWFGqtdMmcL5zCMK1U8KlXv8SQFGglL3CEtd0aDVDWgeF/YoCmvln55m5zSk3J/20hTaSBeSObsQDQ==}
     dependencies:
-      loose-envify: 1.4.0
+      loose-envify: registry.nlark.com/loose-envify/1.4.0
       object-assign: 4.1.1
     dev: false
 
@@ -2627,7 +2627,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: registry.nlark.com/js-tokens/4.0.0
-    dev: true
 
   registry.nlark.com/lower-case/2.0.2:
     resolution: {integrity: sha1-b6I3xj29xKgsoP2ILkci3F5jTig=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/lower-case/download/lower-case-2.0.2.tgz}
@@ -3536,6 +3535,14 @@ packages:
       '@types/unist': registry.npmmirror.com/@types/unist/2.0.6
       unist-util-stringify-position: registry.nlark.com/unist-util-stringify-position/3.0.0
 
+  registry.nlark.com/warning/4.0.3:
+    resolution: {integrity: sha1-Fungd+uKhtavfWSqHgX9hbRnjKM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/warning/download/warning-4.0.3.tgz}
+    name: warning
+    version: 4.0.3
+    dependencies:
+      loose-envify: registry.nlark.com/loose-envify/1.4.0
+    dev: false
+
   registry.nlark.com/which-boxed-primitive/1.0.2:
     resolution: {integrity: sha1-E3V7yJsgmwSf5dhkMOIc9AqJqOY=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/which-boxed-primitive/download/which-boxed-primitive-1.0.2.tgz}
     name: which-boxed-primitive
@@ -3839,6 +3846,21 @@ packages:
     resolution: {integrity: sha1-wF7TWtgt+OasYWxouSwigr0IO6Q=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@fal-works/esbuild-plugin-global-externals/download/@fal-works/esbuild-plugin-global-externals-2.1.2.tgz}
     name: '@fal-works/esbuild-plugin-global-externals'
     version: 2.1.2
+    dev: false
+
+  registry.npmmirror.com/@giscus/react/1.0.1_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-vViRGjfmDy9xvRIx+6+hocL3iAipbKx4gxtSpQBzOksDwnZS0QbB+r19bYQ08vw8CfHRwE6ws8AOO9yEUrzUyQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@giscus/react/download/@giscus/react-1.0.1.tgz}
+    id: registry.npmmirror.com/@giscus/react/1.0.1
+    name: '@giscus/react'
+    version: 1.0.1
+    peerDependencies:
+      prop-types: ^15.7.2
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+    dependencies:
+      iframe-resizer-react: registry.npmmirror.com/iframe-resizer-react/1.1.0_react-dom@17.0.2+react@17.0.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
     dev: false
 
   registry.npmmirror.com/@grpc/grpc-js/1.4.4:
@@ -4238,6 +4260,29 @@ packages:
     name: '@opentelemetry/semantic-conventions'
     version: 1.0.1
     engines: {node: '>=8.0.0'}
+    dev: false
+
+  registry.npmmirror.com/@prisma/client/3.6.0_prisma@3.6.0:
+    resolution: {integrity: sha512-ycSGY9EZGROtje0iCNsgC5Zqi/ttX2sO7BNMYaLsUMiTlf3F69ZPH+08pRo0hrDfkZzyimXYqeXJlaoYDH1w7A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@prisma/client/download/@prisma/client-3.6.0.tgz}
+    id: registry.npmmirror.com/@prisma/client/3.6.0
+    name: '@prisma/client'
+    version: 3.6.0
+    engines: {node: '>=12.6'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      '@prisma/engines-version': registry.npmmirror.com/@prisma/engines-version/3.6.0-24.dc520b92b1ebb2d28dc3161f9f82e875bd35d727
+      prisma: registry.npmmirror.com/prisma/3.6.0
+    dev: false
+
+  registry.npmmirror.com/@prisma/engines-version/3.6.0-24.dc520b92b1ebb2d28dc3161f9f82e875bd35d727:
+    resolution: {integrity: sha512-vtoO2ys6mSfc8ONTWdcYztKN3GBU1tcKBj0aXObyjzSuGwHFcM/pEA0xF+n1W4/0TAJgfoPX2khNEit6g0jtNA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@prisma/engines-version/download/@prisma/engines-version-3.6.0-24.dc520b92b1ebb2d28dc3161f9f82e875bd35d727.tgz}
+    name: '@prisma/engines-version'
+    version: 3.6.0-24.dc520b92b1ebb2d28dc3161f9f82e875bd35d727
     dev: false
 
   registry.npmmirror.com/@prisma/engines/3.6.0-24.dc520b92b1ebb2d28dc3161f9f82e875bd35d727:
@@ -5679,6 +5724,30 @@ packages:
     dependencies:
       quick-lru: registry.npmmirror.com/quick-lru/5.1.1
       resolve-alpn: registry.nlark.com/resolve-alpn/1.2.1
+    dev: false
+
+  registry.npmmirror.com/iframe-resizer-react/1.1.0_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha1-UAngGbelx/HACb/1vN8NvzNVdGU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/iframe-resizer-react/download/iframe-resizer-react-1.1.0.tgz}
+    id: registry.npmmirror.com/iframe-resizer-react/1.1.0
+    name: iframe-resizer-react
+    version: 1.1.0
+    engines: {node: '>=8', npm: '>=5'}
+    peerDependencies:
+      prop-types: '>=15.7.2'
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      iframe-resizer: registry.npmmirror.com/iframe-resizer/4.3.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      warning: registry.nlark.com/warning/4.0.3
+    dev: false
+
+  registry.npmmirror.com/iframe-resizer/4.3.2:
+    resolution: {integrity: sha1-Qt2INF0YueN3tgRN3bmMZkqwzms=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/iframe-resizer/download/iframe-resizer-4.3.2.tgz}
+    name: iframe-resizer
+    version: 4.3.2
+    engines: {node: '>=0.8.0'}
     dev: false
 
   registry.npmmirror.com/ignore/4.0.6:
