@@ -35,11 +35,11 @@ export default function BlogLayout({
       date={new Date(post.publishedAt).toISOString()}
       type="article"
     >
-      <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-8">
-        <h1 className="mb-6 text-2xl md:text-3xl font-medium tracking-tight text-black dark:text-white">
+      <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-8 p-1">
+        <h1 className="mb-6 text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight text-black dark:text-white">
           {post.title}
         </h1>
-        <div className="flex items-start justify-between w-full mb-4">
+        <div className="flex items-start justify-between w-full p-1">
           <div className="flex items-center">
             <Image
               alt="kaichi"
@@ -48,7 +48,7 @@ export default function BlogLayout({
               src="/avatar.jpeg"
               className="rounded-full"
             />
-            <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
+            <p className="text-sm text-gray-700 dark:text-gray-300 ml-1">
               {"kaichi / "}
               {format(parseISO(post.publishedAt), "yyyy-MM-dd")}
             </p>

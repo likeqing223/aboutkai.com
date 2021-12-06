@@ -29,7 +29,7 @@ export default function Blog({
       description="分享个人观点、新学到的知识以及一些编程经验。 Knowledge Growth in
   Sharing."
     >
-      <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-8">
+      <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-8 p-1">
         <h1 className="mb-4 text-2xl md:text-2xl font-medium tracking-tight text-black dark:text-white">
           博客
         </h1>

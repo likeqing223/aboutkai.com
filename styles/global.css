@@ -101,18 +101,22 @@ table {
 }
 
 .prose h1 {
-  @apply text-3xl font-medium  mt-8 mb-4;
+  @apply text-4xl font-medium mt-8 mb-4;
 }
 
 .prose h2 {
-  @apply text-2xl font-medium mt-8 mb-4;
+  @apply text-3xl font-medium mt-8 mb-4;
 }
 
 .prose h3 {
-  @apply text-xl font-medium mt-8 mb-4;
+  @apply text-2xl font-medium mt-8 mb-4;
 }
 
 .prose h4 {
+  @apply text-xl font-medium mt-8 mb-4;
+}
+
+.prose h5 {
   @apply text-lg font-medium mt-8 mb-4;
 }
 

@@ -45,7 +45,7 @@ export default function Videos() {
           rel="noopener noreferrer"
           aria-label={v.title}
         >
-          <div className="border-2 flex flex-col justify-between h-full bg-white dark:bg-gray-900 p-4 rounded-md">
+          <div className="border flex flex-col justify-between h-full bg-white dark:bg-gray-900 p-4 rounded-md">
             <h4>{v.title}</h4>
             <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mt-1">
               <span>{format(fromUnixTime(v.created), "yyyy-MM-dd")}</span>

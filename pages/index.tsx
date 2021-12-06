@@ -9,7 +9,7 @@ import React from "react";
 export default function Home() {
   return (
     <Container title="主页 - kaichi">
-      <div className="flex flex-col justify-center items-start max-w-2xl border-gray-200 dark:border-gray-700 mx-auto pb-8">
+      <div className="flex flex-col justify-center items-start max-w-2xl border-gray-200 dark:border-gray-700 mx-auto p-1 pb-8">
         <div className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex flex-col pr-8">
             <h1 className="font-medium text-2xl md:text-4xl tracking-tight mb-2 text-black dark:text-white">
@@ -34,7 +34,7 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="flex items-center justify-between mb-6 w-full">
+        <div className="flex items-center justify-between mt-4 mb-6 w-full">
           <h3 className="font-medium text-xl md:text-2xl tracking-light text-black dark:text-white">
             精选文章
           </h3>
