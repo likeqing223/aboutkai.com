@@ -6,3 +6,5 @@ node_modules
 .contentlayer
 
 .pnpm-debug.log
+
+public/feed.xml

@@ -1,7 +1,6 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@giscus/react': ^1.0.1
   '@prisma/client': ^3.6.0
   '@tailwindcss/aspect-ratio': ^0.3.0
   '@tailwindcss/typography': ^0.4.1
@@ -29,13 +28,13 @@ specifiers:
   rehype-slug: ^5.0.0
   remark-gfm: ^3.0.1
   remark-toc: ^8.0.1
+  rss: ^1.2.2
   swr: ^1.0.1
   tailwindcss: ^2.2.19
   typescript: ^4.5.2
   use-delayed-render: ^0.0.7
 
 dependencies:
-  '@giscus/react': registry.npmmirror.com/@giscus/react/1.0.1_react-dom@17.0.2+react@17.0.2
   '@prisma/client': registry.npmmirror.com/@prisma/client/3.6.0_prisma@3.6.0
   '@tailwindcss/aspect-ratio': registry.npmmirror.com/@tailwindcss/aspect-ratio/0.3.0_tailwindcss@2.2.19
   '@tailwindcss/typography': registry.npmmirror.com/@tailwindcss/typography/0.4.1_tailwindcss@2.2.19
@@ -68,6 +67,7 @@ devDependencies:
   rehype-slug: registry.npmmirror.com/rehype-slug/5.0.0
   remark-gfm: registry.npmmirror.com/remark-gfm/3.0.1
   remark-toc: registry.npmmirror.com/remark-toc/8.0.1
+  rss: registry.npmmirror.com/rss/1.2.2
   typescript: 4.5.2
 
 packages:
@@ -3535,14 +3535,6 @@ packages:
       '@types/unist': registry.npmmirror.com/@types/unist/2.0.6
       unist-util-stringify-position: registry.nlark.com/unist-util-stringify-position/3.0.0
 
-  registry.nlark.com/warning/4.0.3:
-    resolution: {integrity: sha1-Fungd+uKhtavfWSqHgX9hbRnjKM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/warning/download/warning-4.0.3.tgz}
-    name: warning
-    version: 4.0.3
-    dependencies:
-      loose-envify: registry.nlark.com/loose-envify/1.4.0
-    dev: false
-
   registry.nlark.com/which-boxed-primitive/1.0.2:
     resolution: {integrity: sha1-E3V7yJsgmwSf5dhkMOIc9AqJqOY=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/which-boxed-primitive/download/which-boxed-primitive-1.0.2.tgz}
     name: which-boxed-primitive
@@ -3846,21 +3838,6 @@ packages:
     resolution: {integrity: sha1-wF7TWtgt+OasYWxouSwigr0IO6Q=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@fal-works/esbuild-plugin-global-externals/download/@fal-works/esbuild-plugin-global-externals-2.1.2.tgz}
     name: '@fal-works/esbuild-plugin-global-externals'
     version: 2.1.2
-    dev: false
-
-  registry.npmmirror.com/@giscus/react/1.0.1_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-vViRGjfmDy9xvRIx+6+hocL3iAipbKx4gxtSpQBzOksDwnZS0QbB+r19bYQ08vw8CfHRwE6ws8AOO9yEUrzUyQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@giscus/react/download/@giscus/react-1.0.1.tgz}
-    id: registry.npmmirror.com/@giscus/react/1.0.1
-    name: '@giscus/react'
-    version: 1.0.1
-    peerDependencies:
-      prop-types: ^15.7.2
-      react: ^16 || ^17 || ^18
-      react-dom: ^16 || ^17 || ^18
-    dependencies:
-      iframe-resizer-react: registry.npmmirror.com/iframe-resizer-react/1.1.0_react-dom@17.0.2+react@17.0.2
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
     dev: false
 
   registry.npmmirror.com/@grpc/grpc-js/1.4.4:
@@ -5726,30 +5703,6 @@ packages:
       resolve-alpn: registry.nlark.com/resolve-alpn/1.2.1
     dev: false
 
-  registry.npmmirror.com/iframe-resizer-react/1.1.0_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha1-UAngGbelx/HACb/1vN8NvzNVdGU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/iframe-resizer-react/download/iframe-resizer-react-1.1.0.tgz}
-    id: registry.npmmirror.com/iframe-resizer-react/1.1.0
-    name: iframe-resizer-react
-    version: 1.1.0
-    engines: {node: '>=8', npm: '>=5'}
-    peerDependencies:
-      prop-types: '>=15.7.2'
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
-    dependencies:
-      iframe-resizer: registry.npmmirror.com/iframe-resizer/4.3.2
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
-      warning: registry.nlark.com/warning/4.0.3
-    dev: false
-
-  registry.npmmirror.com/iframe-resizer/4.3.2:
-    resolution: {integrity: sha1-Qt2INF0YueN3tgRN3bmMZkqwzms=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/iframe-resizer/download/iframe-resizer-4.3.2.tgz}
-    name: iframe-resizer
-    version: 4.3.2
-    engines: {node: '>=0.8.0'}
-    dev: false
-
   registry.npmmirror.com/ignore/4.0.6:
     resolution: {integrity: sha1-dQ49tYYgh7RzfrrIIH/9HvJ7Jfw=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ignore/download/ignore-4.0.6.tgz?cache=0&sync_timestamp=1635927263218&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fignore%2Fdownload%2Fignore-4.0.6.tgz}
     name: ignore
@@ -6471,6 +6424,22 @@ packages:
       - supports-color
     dev: false
 
+  registry.npmmirror.com/mime-db/1.25.0:
+    resolution: {integrity: sha1-wY29fHOl2/b0SgJNwNFloeexw5I=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mime-db/download/mime-db-1.25.0.tgz}
+    name: mime-db
+    version: 1.25.0
+    engines: {node: '>= 0.6'}
+    dev: true
+
+  registry.npmmirror.com/mime-types/2.1.13:
+    resolution: {integrity: sha1-4HqqnGxrmnyjASxpADrSWjnpKog=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mime-types/download/mime-types-2.1.13.tgz}
+    name: mime-types
+    version: 2.1.13
+    engines: {node: '>= 0.6'}
+    dependencies:
+      mime-db: registry.npmmirror.com/mime-db/1.25.0
+    dev: true
+
   registry.npmmirror.com/ms/2.0.0:
     resolution: {integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ms/download/ms-2.0.0.tgz}
     name: ms
@@ -6918,6 +6887,15 @@ packages:
       unified: registry.npmmirror.com/unified/10.1.1
     dev: true
 
+  registry.npmmirror.com/rss/1.2.2:
+    resolution: {integrity: sha1-UKFpiHYTgTOnT5oF0r3I240nqSE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/rss/download/rss-1.2.2.tgz}
+    name: rss
+    version: 1.2.2
+    dependencies:
+      mime-types: registry.npmmirror.com/mime-types/2.1.13
+      xml: registry.npmmirror.com/xml/1.0.1
+    dev: true
+
   registry.npmmirror.com/rxjs/7.4.0:
     resolution: {integrity: sha1-oSpE1+6/AW9f8kQbh/KMmlHOvGg=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/rxjs/download/rxjs-7.4.0.tgz?cache=0&sync_timestamp=1633558464026&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Frxjs%2Fdownload%2Frxjs-7.4.0.tgz}
     name: rxjs
@@ -7268,6 +7246,12 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: false
+
+  registry.npmmirror.com/xml/1.0.1:
+    resolution: {integrity: sha1-eLpyAgApxbyHuKgaPPzXS0ovweU=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/xml/download/xml-1.0.1.tgz}
+    name: xml
+    version: 1.0.1
+    dev: true
 
   registry.npmmirror.com/yaml/1.10.2:
     resolution: {integrity: sha1-IwHF/78StGfejaIzOkWeKeeSDks=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/yaml/download/yaml-1.10.2.tgz}

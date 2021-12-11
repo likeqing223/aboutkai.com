@@ -15,9 +15,9 @@ export default function Home() {
             <h1 className="font-medium text-2xl md:text-4xl tracking-tight mb-2 text-black dark:text-white">
               kaichi
             </h1>
-            <h2 className="mb-4 text-gray-700 dark:text-gray-200">
-              前端开发工程师 <span className="font-medium">@面向甩锅编程</span>
-            </h2>
+            <span className="mb-4 text-gray-700 dark:text-gray-200 font-medium">
+              前端开发
+            </span>
             <p className="mb-12 text-gray-600 dark:text-gray-400">
               分享个人观点、新学到的知识以及一些编程经验。 Knowledge Growth in
               Sharing.
