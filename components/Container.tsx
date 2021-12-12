@@ -54,10 +54,9 @@ export default function Container(props: ContainerProps) {
   useEffect(() => setMounted(true), []);
 
   const meta = {
-    title: "",
-    description: "",
-    image: "",
-    type: "",
+    title: "https://aboutkai.com",
+    description:
+      "分享个人观点、新学到的知识以及一些编程经验。 Knowledge Growth in Sharing.",
     ...customMeta
   };
 

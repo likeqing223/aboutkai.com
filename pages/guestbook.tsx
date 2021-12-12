@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Guestbook() {
   return (
-    <Container title="留言板 - kaichi">
+    <Container title="留言板 - kaichi" description="欢迎大家评论留言。">
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-8 w-full p-1">
         <h1 className="mb-4 text-2xl md:text-2xl font-medium tracking-tight text-black dark:text-white">
           留言板

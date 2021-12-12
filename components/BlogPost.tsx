@@ -16,7 +16,7 @@ export default function BlogPost({
       <a className="w-full">
         <div className="mb-6">
           <div className="flex flex-row justify-between">
-            <h4 className="w-full mb-2 text-base font-medium text-gray-900 dark:text-gray-100">
+            <h4 className="w-full mb-3 text-base font-medium text-gray-900 dark:text-gray-100">
               {title}
             </h4>
             {views && (

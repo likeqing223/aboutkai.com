@@ -26,15 +26,16 @@ export default function Blog({
   return (
     <Container
       title="博客 - kaichi"
-      description="分享个人观点、新学到的知识以及一些编程经验。 Knowledge Growth in
-  Sharing."
+      description="在学习的过程中，优质的知识分享博客是我能够成长的主要输入来源，非常感谢认真做知识分享的博主。在分享中传播知识的同时有利于知识的巩固，所以我决定记录下我的学习历程。包括
+      JavaScript & TypeScript、 React、GraphQL、Flutter..."
     >
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-8 p-1">
         <h1 className="mb-4 text-2xl md:text-2xl font-medium tracking-tight text-black dark:text-white">
           博客
         </h1>
         <p className="mb-6 text-gray-600 dark:text-gray-400">
-          {`在学习的过程中，优质的知识分享博客是我能够成长的主要输入来源，非常感谢认真做知识分享的博主。在分享中传播知识的同时有利于知识的巩固，所以我决定记录下我的学习历程。包括 Javascript & Typescript、 React、GraphQL、Flutter...`}
+          在学习的过程中，优质的知识分享博客是我能够成长的主要输入来源，非常感谢认真做知识分享的博主。在分享中传播知识的同时有利于知识的巩固，所以我决定记录下我的学习历程。包括
+          JavaScript & TypeScript、 React、GraphQL、Flutter...
         </p>
         <div className="relative w-full mb-6">
           <input
