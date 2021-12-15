@@ -44,7 +44,7 @@ export default function Footer() {
         </div>
         <div className="flex flex-col space-y-4">
           <Link href="/feed.xml">
-            <a className="text-gray-500 hover:text-gray-600 transition">RSS</a>
+            <a className="text-gray-500 hover:text-gray-700 transition">RSS</a>
           </Link>
         </div>
       </div>

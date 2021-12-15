@@ -7,18 +7,26 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      backgroundImage: {
+        "dots-black": "url('/static/bg/dots-black.webp')",
+        "dots-white": "url('/static/bg/dots-white.webp')"
+      },
+      backgroundSize: {
+        47: "3rem"
+      },
       colors: {
         gray: {
           0: "#fff",
+          50: "#ddd",
           100: "#fafafa",
           200: "#eaeaea",
           300: "#999999",
           400: "#888888",
           500: "#666666",
           600: "#444444",
-          700: "#333333",
+          700: "#3d3d3d",
           800: "#222222",
-          900: "#111111"
+          900: "#1e1e1e"
         },
         biliPink: "#fb7299",
         biliBlue: "#73c9e5"
