@@ -5,6 +5,12 @@
 @layer base {
   @font-face {
     font-family: "Noto Sans SC";
+    src: url(/font/NotoSansSC-Light.otf) format("woff");
+    font-weight: 300;
+  }
+
+  @font-face {
+    font-family: "Noto Sans SC";
     src: url(/font/NotoSansSC-Regular.otf) format("woff");
     font-weight: 400;
   }
@@ -28,7 +34,7 @@ html {
 }
 
 #__next {
-  @apply bg-gray-50 dark:bg-gray-700 bg-dots-white dark:bg-dots-black bg-47;
+  @apply bg-gray-50 dark:bg-gray-900;
   display: flex;
   flex-direction: column;
   min-height: 100vh;

@@ -61,7 +61,7 @@ export default function Container(props: ContainerProps) {
   };
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-700 bg-dots-white dark:bg-dots-black bg-47">
+    <div className="bg-gray-50 dark:bg-gray-900">
       <Head>
         <title>{meta.title}</title>
         <meta content={meta.description} name="description" />
@@ -70,7 +70,7 @@ export default function Container(props: ContainerProps) {
         )}
       </Head>
       <div className="flex flex-col justify-center px-8">
-        <nav className="flex items-center justify-between w-full max-w-2xl pt-4 pb-8 md:pt-8 md:pb-12 mx-auto relative ">
+        <nav className="flex items-center justify-between w-full max-w-2xl pt-4 pb-8 md:pt-8 md:pb-12 mx-auto relative">
           <div className="ml-[-0.60rem]">
             <MobileMenu menuItems={menuItems} />
             {menuItems.map((m, i) => (
@@ -102,7 +102,7 @@ export default function Container(props: ContainerProps) {
           </button>
         </nav>
       </div>
-      <main className="px-8 flex flex-col justify-center bg-gray-50 dark:bg-gray-700 bg-dots-white dark:bg-dots-black bg-47">
+      <main className="px-8 flex flex-col justify-center bg-gray-50 dark:bg-gray-900">
         {children}
         <Footer />
       </main>
