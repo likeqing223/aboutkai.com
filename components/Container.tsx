@@ -31,7 +31,7 @@ function NavItem({ href, text }: NavItemProps) {
           isActive
             ? "font-medium text-gray-800 dark:text-gray-200"
             : "text-gray-600 dark:text-gray-400",
-          "hidden md:inline-block hover:bg-gray-200 dark:hover:bg-gray-800 transition-all rounded-md p-1 sm:py-2 sm:px-3"
+          "hidden md:inline-block hover:bg-gray-200 dark:hover:bg-gray-800 transition-all rounded-md p-1 sm:py-2 sm:px-3 md:font-"
         )}
       >
         <span>{text}</span>
@@ -61,7 +61,7 @@ export default function Container(props: ContainerProps) {
   };
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-900">
+    <div className="">
       <Head>
         <title>{meta.title}</title>
         <meta content={meta.description} name="description" />
@@ -70,7 +70,7 @@ export default function Container(props: ContainerProps) {
         )}
       </Head>
       <div className="flex flex-col justify-center px-8">
-        <nav className="flex items-center justify-between w-full max-w-2xl pt-4 pb-8 md:pt-8 md:pb-12 mx-auto relative">
+        <nav className="flex items-center justify-between w-full max-w-2xl mx-auto relative pt-8 pb-12">
           <div className="ml-[-0.60rem]">
             <MobileMenu menuItems={menuItems} />
             {menuItems.map((m, i) => (
@@ -102,7 +102,7 @@ export default function Container(props: ContainerProps) {
           </button>
         </nav>
       </div>
-      <main className="px-8 flex flex-col justify-center bg-gray-50 dark:bg-gray-900">
+      <main className="px-8 flex flex-col justify-center">
         {children}
         <Footer />
       </main>

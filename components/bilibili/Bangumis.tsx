@@ -9,8 +9,7 @@ export default function Bangumis() {
     fetcher
   );
 
-  if (!data?.data)
-    return <p className="text-gray-600 dark:text-gray-400">暂无追番</p>;
+  if (!data?.data) return <p>暂无追番</p>;
 
   return (
     <div className="flex w-full gap-6 md:gap-8 flex-row">
@@ -22,7 +21,7 @@ export default function Bangumis() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={d.title}
-              className="md:hidden relative"
+              className="md:hidden relative select-none"
             >
               <Image
                 src={d.square_cover}
@@ -37,7 +36,7 @@ export default function Bangumis() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={d.title}
-              className="relative hidden md:inline-block"
+              className="relative hidden md:inline-block select-none"
             >
               <Image
                 src={d.cover}
@@ -46,7 +45,6 @@ export default function Bangumis() {
                 height="210px"
                 className="rounded-md"
               />
-              <p className="text-sm mt-1">{d.title}</p>
             </a>
           </div>
         );

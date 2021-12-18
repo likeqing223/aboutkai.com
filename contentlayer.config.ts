@@ -12,7 +12,10 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrism from "rehype-prism-plus";
 
 const computedFields: ComputedFields = {
-  readingTime: { type: "json", resolve: (doc) => readingTime(doc.body.raw) },
+  readingTime: {
+    type: "number",
+    resolve: (doc) => readingTime(doc.body.raw).minutes
+  },
   wordCount: {
     type: "number",
     resolve: (doc) => doc.body.raw.split(/\s+/gu).length

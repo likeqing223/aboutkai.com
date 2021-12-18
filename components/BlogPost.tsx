@@ -14,20 +14,16 @@ export default function BlogPost({
   return (
     <Link href={`/blog/${slug}`}>
       <a className="w-full">
-        <div className="mb-6">
+        <div className="py-3">
           <div className="flex flex-row justify-between">
-            <h4 className="w-full mb-3 text-base font-medium text-gray-900 dark:text-gray-100">
-              {title}
-            </h4>
+            <p className="w-full mb-2 text-base font-medium">{title}</p>
             {views && (
-              <span className="text-sm min-w-max text-gray-600 dark:text-gray-400">
+              <span className="text-sm min-w-max">
                 {Number(views).toLocaleString()} 阅读
               </span>
             )}
           </div>
-          <p className="text-gray-600 dark:text-gray-400 text-sm">
-            {description}
-          </p>
+          <p>{description}</p>
         </div>
       </a>
     </Link>

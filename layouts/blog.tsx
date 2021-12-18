@@ -17,16 +17,20 @@ export default function BlogLayout({
     `/api/views/${post.slug}`,
     fetcher
   );
-  const views = new Number(data?.total);
+
+  const views = new Number(data?.total) ?? 0;
 
   useEffect(() => {
     const registerView = () =>
       fetch(`/api/views/${post.slug}`, {
         method: "POST"
       });
-
-    registerView();
+    if (process.env.NODE_ENV === "production") {
+      registerView();
+    }
   }, [post.slug]);
+
+  console.log(post.readingTime);
 
   return (
     <Container
@@ -35,11 +39,11 @@ export default function BlogLayout({
       date={new Date(post.publishedAt).toISOString()}
       type="article"
     >
-      <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-8 p-1">
-        <h1 className="mb-6 text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight text-black dark:text-white">
+      <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-8">
+        <h1 className="mb-6 text-3xl md:text-4xl lg:text-4xl font-medium tracking-tight text-gray-800 dark:text-gray-200">
           {post.title}
         </h1>
-        <div className="flex items-start justify-between w-full p-1">
+        <div className="flex items-start justify-between w-full">
           <div className="flex items-center">
             <Image
               alt="kaichi"
@@ -54,10 +58,10 @@ export default function BlogLayout({
             </p>
           </div>
           <p className="text-sm text-gray-600 dark:text-gray-400 min-w-32">
-            {post.readingTime.text} • {views ? `${views} views` : null}
+            {`${Math.round(post.readingTime)} 分钟`} • {`${views} 阅读`}
           </p>
         </div>
-        <div className="w-full prose dark:prose-dark max-w-none mb-4">
+        <div className="w-full prose dark:prose-dark max-w-none mb-4 xl:prose-xl">
           {children}
         </div>
         <a

@@ -48,14 +48,14 @@ export default function MobileMenu({
         <ul
           className={cn(
             styles.menu,
-            "flex flex-col absolute bg-gray-100 dark:bg-gray-900",
+            "flex flex-col absolute bg-white dark:bg-gray-900",
             rendered && styles.menuRendered
           )}
         >
           {menuItems.map((m, i) => (
             <li
               key={i}
-              className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-medium"
+              className="border-b border-gray-300 dark:border-gray-800 text-gray-900 dark:text-gray-100 text-sm font-medium"
               style={{ transitionDelay: `${150 + i * 25}ms` }}
             >
               <Link href={m.href}>

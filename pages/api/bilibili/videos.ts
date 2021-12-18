@@ -10,7 +10,7 @@ export default async function handler(
       return res.status(404).send("缺少参数 userId");
     }
 
-    const api = `https://api.bilibili.com/x/space/arc/search?mid=${req.query.userId.toString()}&pn=1&ps=25&index=1&jsonp=jsonp`;
+    const api = `https://api.bilibili.com/x/space/arc/search?mid=${req.query.userId.toString()}&pn=1&ps=4&index=1&jsonp=jsonp`;
 
     const response = await fetch(api);
 

@@ -1,26 +1,7 @@
 @tailwind base;
-@tailwind components;
 @tailwind utilities;
 
 @layer base {
-  @font-face {
-    font-family: "Noto Sans SC";
-    src: url(/font/NotoSansSC-Light.otf) format("woff");
-    font-weight: 300;
-  }
-
-  @font-face {
-    font-family: "Noto Sans SC";
-    src: url(/font/NotoSansSC-Regular.otf) format("woff");
-    font-weight: 400;
-  }
-
-  @font-face {
-    font-family: "Noto Sans SC";
-    src: url(/font/NotoSansSC-Medium.otf) format("woff");
-    font-weight: 500;
-  }
-
   @import "prism-themes/themes/prism-one-dark.min.css" screen;
 }
 
@@ -29,12 +10,8 @@ html {
   scroll-behavior: smooth;
 }
 
-::selection {
-  @apply bg-black text-white dark:bg-white dark:text-black;
-}
-
 #__next {
-  @apply bg-gray-50 dark:bg-gray-900;
+  @apply bg-white dark:bg-gray-900;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -45,7 +22,7 @@ html {
 }
 
 .prose code {
-  @apply px-1 py-0.5 rounded bg-gray-200 dark:bg-gray-800;
+  @apply px-1 py-0.5 border border-gray-200 rounded bg-gray-200 dark:bg-gray-800;
 }
 
 .prose pre code {
@@ -100,7 +77,7 @@ table {
   @apply visible no-underline;
 }
 
-.prose h1 {
+/* .prose h1 {
   @apply text-4xl font-medium mt-8 mb-4;
 }
 
@@ -118,7 +95,7 @@ table {
 
 .prose h5 {
   @apply text-lg font-medium mt-8 mb-4;
-}
+} */
 
 .prose p {
   @apply text-base my-5 text-gray-800 dark:text-gray-200;
