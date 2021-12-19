@@ -1,13 +1,26 @@
 @tailwind base;
+@tailwind components;
 @tailwind utilities;
 
 @layer base {
   @import "prism-themes/themes/prism-one-dark.min.css" screen;
-}
 
-html {
-  min-width: 360px;
-  scroll-behavior: smooth;
+  html {
+    min-width: 360px;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-gray-700 dark:text-gray-500;
+  }
+
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-xl
+  }
 }
 
 #__next {
@@ -77,7 +90,7 @@ table {
   @apply visible no-underline;
 }
 
-/* .prose h1 {
+.prose h1 {
   @apply text-4xl font-medium mt-8 mb-4;
 }
 
@@ -95,7 +108,7 @@ table {
 
 .prose h5 {
   @apply text-lg font-medium mt-8 mb-4;
-} */
+}
 
 .prose p {
   @apply text-base my-5 text-gray-800 dark:text-gray-200;

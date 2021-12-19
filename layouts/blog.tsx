@@ -30,8 +30,6 @@ export default function BlogLayout({
     }
   }, [post.slug]);
 
-  console.log(post.readingTime);
-
   return (
     <Container
       title={`${post.title} - kaichi`}

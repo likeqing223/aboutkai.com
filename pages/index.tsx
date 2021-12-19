@@ -32,7 +32,7 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="flex items-center justify-between w-full">
+        <div className="flex items-center justify-between w-full mt-12 mb-2">
           <h3 className="text-xl md:text-2xl tracking-light">精选文章</h3>
           <Link href="/blog">
             <a className="flex text-sm md:text-base items-center transition-all ">
@@ -61,7 +61,7 @@ export default function Home() {
           title="TypeScript 辨别联合类型"
           description="TypeScript 联合类型的辨别方式及特性。"
         />
-        <div className="flex items-center justify-between w-full">
+        <div className="flex items-center justify-between w-full mt-8 mb-2">
           <h3 className="text-xl md:text-2xl tracking-light">最新视频</h3>
           <Link href="/blog">
             <a className="flex text-sm md:text-base items-center transition-all">
@@ -77,7 +77,7 @@ export default function Home() {
         </div>
 
         <Videos />
-        <div className="flex items-center justify-between w-full">
+        <div className="flex items-center justify-between w-full mt-8 mb-6">
           <h3 className="text-xl md:text-2xl tracking-light">最近在看</h3>
         </div>
         <Bangumis />
