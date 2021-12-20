@@ -1,5 +1,6 @@
 import type { Blog } from ".contentlayer/types";
 import Container from "components/Container";
+import MDWrapper from "components/MDWrapper";
 import { format, parseISO } from "date-fns";
 import fetcher from "lib/fetcher";
 import Image from "next/image";
@@ -18,7 +19,7 @@ export default function BlogLayout({
     fetcher
   );
 
-  const views = new Number(data?.total) ?? 0;
+  const views = isNaN(Number(data?.total)) ? 0 : Number(data?.total);
 
   useEffect(() => {
     const registerView = () =>
@@ -38,10 +39,10 @@ export default function BlogLayout({
       type="article"
     >
       <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-8">
-        <h1 className="mb-6 text-3xl md:text-4xl lg:text-4xl font-medium tracking-tight text-gray-800 dark:text-gray-200">
+        <h1 className="text-3xl md:text-4xl font-medium tracking-tight mb-8">
           {post.title}
         </h1>
-        <div className="flex items-start justify-between w-full">
+        <div className="flex items-start justify-between w-full text-gray-600 mb-6">
           <div className="flex items-center">
             <Image
               alt="kaichi"
@@ -50,20 +51,18 @@ export default function BlogLayout({
               src="/avatar.jpeg"
               className="rounded-full"
             />
-            <p className="text-sm text-gray-700 dark:text-gray-300 ml-1">
+            <p className="text-sm ml-1">
               {"kaichi / "}
               {format(parseISO(post.publishedAt), "yyyy-MM-dd")}
             </p>
           </div>
-          <p className="text-sm text-gray-600 dark:text-gray-400 min-w-32">
+          <p className="text-sm min-w-32">
             {`${Math.round(post.readingTime)} 分钟`} • {`${views} 阅读`}
           </p>
         </div>
-        <div className="w-full prose dark:prose-dark max-w-none mb-4 xl:prose-xl">
-          {children}
-        </div>
+        <MDWrapper>{children}</MDWrapper>
         <a
-          className="flex items-center text-sm text-gray-400 dark:text-gray-300 font-medium"
+          className="flex items-center text-sm text-gray-600 hover:text-gray-700 dark:hover:text-gray-400 font-medium mt-8"
           href={editUrl(post.slug)}
           target="_blank"
           rel="noopener noreferrer"

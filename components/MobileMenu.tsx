@@ -55,7 +55,7 @@ export default function MobileMenu({
           {menuItems.map((m, i) => (
             <li
               key={i}
-              className="border-b border-gray-300 dark:border-gray-800 text-gray-900 dark:text-gray-100 text-sm font-medium"
+              className="border-b border-gray-300 dark:border-gray-800 text-gray-900 dark:text-gray-400 text-sm font-medium"
               style={{ transitionDelay: `${150 + i * 25}ms` }}
             >
               <Link href={m.href}>
@@ -72,7 +72,7 @@ export default function MobileMenu({
 function MenuIcon(props: JSX.IntrinsicElements["svg"]) {
   return (
     <svg
-      className="h-6 w-6 absolute text-gray-900 dark:text-gray-100"
+      className="h-6 w-6 absolute text-gray-900 dark:text-gray-300"
       width="20"
       height="20"
       viewBox="0 0 20 20"
@@ -100,7 +100,7 @@ function MenuIcon(props: JSX.IntrinsicElements["svg"]) {
 function CrossIcon(props: JSX.IntrinsicElements["svg"]) {
   return (
     <svg
-      className="h-6 w-6 absolute text-gray-900 dark:text-gray-100"
+      className="h-6 w-6 absolute text-gray-900 dark:text-gray-300"
       viewBox="0 0 24 24"
       width="24"
       height="24"

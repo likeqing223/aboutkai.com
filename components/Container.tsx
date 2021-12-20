@@ -70,7 +70,10 @@ export default function Container(props: ContainerProps) {
         )}
       </Head>
       <div className="flex flex-col justify-center px-8">
-        <nav className="flex items-center justify-between w-full max-w-2xl mx-auto relative pt-8 pb-12">
+        <nav className="flex items-center justify-between w-full max-w-2xl mx-auto relative pt-8 pb-8 md:pb-12">
+          <a href="#skip" className="skip-nav">
+            Skip to content
+          </a>
           <div className="ml-[-0.60rem]">
             <MobileMenu menuItems={menuItems} />
             {menuItems.map((m, i) => (
@@ -80,7 +83,7 @@ export default function Container(props: ContainerProps) {
           <button
             aria-label="切换主题"
             type="button"
-            className="p-2 bg-gray-200 hover:ring-2 ring-gray-300 rounded-md dark:bg-gray-600  flex items-center justify-center transition-all"
+            className="p-2 bg-gray-100 hover:ring-2 ring-gray-200 dark:ring-gray-600 rounded-md dark:bg-gray-700 flex items-center justify-center transition-all"
             onClick={() =>
               setTheme(resolvedTheme === "dark" ? "light" : "dark")
             }
@@ -102,7 +105,7 @@ export default function Container(props: ContainerProps) {
           </button>
         </nav>
       </div>
-      <main className="px-8 flex flex-col justify-center">
+      <main id="skip" className="px-8 flex flex-col justify-center">
         {children}
         <Footer />
       </main>

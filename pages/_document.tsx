@@ -4,13 +4,6 @@ export default function Document() {
   return (
     <Html lang="zh-Hans">
       <Head>
-        <link
-          rel="preload"
-          href="/font/NotoSansSC-Regular.otf"
-          as="font"
-          type="font/otf"
-          crossOrigin="anonymous"
-        />
         <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
         <link href="/static/favicons/site.webmanifest" rel="manifest" />
         <link
@@ -31,7 +24,7 @@ export default function Document() {
           type="image/png"
         />
       </Head>
-      <body className="bg-white dark:bg-gray-900">
+      <body>
         <Main />
         <NextScript />
       </body>

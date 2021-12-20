@@ -30,7 +30,7 @@ export default function Blog({
       JavaScript & TypeScript、 React、GraphQL、Flutter..."
     >
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-8">
-        <h1 className="mb-4 text-2xl md:text-2xl font-medium tracking-tight text-gray-800 dark:text-gray-200">
+        <h1 className="mb-4 text-2xl md:text-3xl font-medium tracking-tight text-gray-800 dark:text-gray-200">
           博客
         </h1>
         <p className="mb-6 text-gray-600 dark:text-gray-400">
@@ -43,7 +43,7 @@ export default function Blog({
             type="text"
             onChange={(e) => setSearchValue(e.target.value)}
             placeholder="通过标题搜索"
-            className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-md dark:border-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-400"
+            className="appearance-none block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-md dark:border-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-400"
           />
           <svg
             className="absolute w-5 h-5 text-gray-400 right-3 top-3 dark:text-gray-300"
