@@ -12,11 +12,13 @@ export default function Home() {
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto pb-8">
         <div className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex flex-col pr-8">
-            <h1 className="font-medium text-4xl md:text-5xl tracking-tight mb-2 text-gray-800 dark:text-gray-200">
+            <h1 className="font-medium text-4xl md:text-5xl tracking-tight mb-2">
               kaichi
             </h1>
-            <p className="mb-2 text-gray-700 dark:text-gray-400">前端开发</p>
-            <p className="text-gray-600 dark:text-gray-500">
+            <p className="mb-2 font-medium text-gray-800 dark:text-gray-400">
+              前端开发
+            </p>
+            <p className="text-gray-700 dark:text-gray-500">
               分享个人观点、新学到的知识以及一些编程经验。 Knowledge Growth in
               Sharing.
             </p>
@@ -37,16 +39,15 @@ export default function Home() {
             精选文章
           </h3>
         </div>
-
+        <BlogPost
+          slug="javascript-value-vs-reference"
+          title="JavaScript 中的值和引用"
+          description="理解 JavaScript 中的值和引用，以及其在程序中如何传递。"
+        />
         <BlogPost
           slug="add-post-views"
           title="记录博客文章浏览数量"
           description="使用 Severless 数据库 PlantScale 和 Prisma 实现文章浏览数量记录。"
-        />
-        <BlogPost
-          slug="flutter-widget-value-listenable-builder"
-          title="Flutter Widget: ValueListenableBuilder"
-          description="ValueListenableBuilder 组件用法。"
         />
         <BlogPost
           slug="typescript-union-type"
@@ -54,7 +55,7 @@ export default function Home() {
           description="TypeScript 联合类型的辨别方式及特性。"
         />
         <Link href="/blog">
-          <a className="flex text-sm md:text-base items-center transition-all text-gray-600 hover:text-gray-700 dark:hover:text-gray-400 mt-4">
+          <a className="flex text-sm md:text-base items-center transition-all text-gray-700 dark:text-gray-500 mt-4">
             全部文章
             <svg className="h-6 w-6" viewBox="0 0 24 24">
               <path
@@ -71,7 +72,7 @@ export default function Home() {
         </div>
         <Videos />
         <Link href="/blog">
-          <a className="flex text-sm md:text-base items-center transition-all text-gray-600 hover:text-gray-700 dark:hover:text-gray-400 mt-6">
+          <a className="flex text-sm md:text-base items-center transition-all text-gray-700 dark:text-gray-500 mt-6">
             B 站主页
             <svg className="h-6 w-6" viewBox="0 0 24 24">
               <path

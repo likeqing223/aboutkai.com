@@ -62,7 +62,7 @@ export default function BlogLayout({
         </div>
         <MDWrapper>{children}</MDWrapper>
         <a
-          className="flex items-center text-sm text-gray-600 hover:text-gray-700 dark:hover:text-gray-400 font-medium mt-8"
+          className="flex items-center text-sm text-gray-600 hover:text-gray-700 dark:hover:text-gray-400 font-medium mt-6"
           href={editUrl(post.slug)}
           target="_blank"
           rel="noopener noreferrer"

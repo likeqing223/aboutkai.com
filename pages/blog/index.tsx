@@ -30,10 +30,10 @@ export default function Blog({
       JavaScript & TypeScript、 React、GraphQL、Flutter..."
     >
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-8">
-        <h1 className="mb-4 text-2xl md:text-3xl font-medium tracking-tight text-gray-800 dark:text-gray-200">
+        <h1 className="mb-4 text-2xl md:text-3xl font-medium tracking-tight">
           博客
         </h1>
-        <p className="mb-6 text-gray-600 dark:text-gray-400">
+        <p className="mb-6 text-gray-700 dark:text-gray-500">
           在学习的过程中，优质的知识分享博客是我能够成长的主要输入来源，非常感谢认真做知识分享的博主。在分享中传播知识的同时有利于知识的巩固，所以我决定记录下我的学习历程。包括
           JavaScript & TypeScript、 React、GraphQL、Flutter...
         </p>

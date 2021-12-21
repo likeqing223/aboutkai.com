@@ -4,7 +4,7 @@ import {
   ComputedFields
 } from "contentlayer/source-files";
 import readingTime from "reading-time";
-import remarkGfm from "remark-gfm";
+import remarkGfm, { Root } from "remark-gfm";
 import remarkTOC from "remark-toc";
 import rehypeSlug from "rehype-slug";
 import rehypeCodeTitles from "rehype-code-titles";
@@ -51,6 +51,7 @@ const contentLayerConfig = makeSource({
       [
         rehypeAutolinkHeadings,
         {
+          test: [`h2`, `h3`, `h4`, `h5`, `h6`],
           properties: {
             className: ["anchor"]
           }
