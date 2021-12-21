@@ -16,14 +16,12 @@ export default function BlogPost({
       <a className="w-full">
         <div className="py-3">
           <div className="flex flex-row justify-between">
-            <p className="w-full mb-2 text-base font-medium">{title}</p>
-            {views && (
-              <span className="text-sm min-w-max">
-                {Number(views).toLocaleString()} 阅读
-              </span>
-            )}
+            <p className="w-full mb-1 text-base font-medium">{title}</p>
+            <span className="text-sm min-w-max text-gray-700 dark:text-gray-500">
+              {views ? Number(views).toLocaleString() : 0} 阅读
+            </span>
           </div>
-          <p>{description}</p>
+          <p className="text-gray-700 dark:text-gray-400">{description}</p>
         </div>
       </a>
     </Link>

@@ -1,0 +1,330 @@
+---
+title: JavaScript 中的值和引用
+publishedAt: 2021-12-22
+description: "理解 JavaScript 中的值和引用，以及其在程序中如何传递。"
+---
+
+在 JavaScript 中，有 7 种原始数据类型通过值传递: `null`、`undefined`、`Boolean`、`Number`、`String`、`BigInt` 和 `Symbol`。
+
+另外对象数据类型通过引用传递，其中包括 `Object`、`Array`、`Function`、`Map`、`Set`...除原始类型外的类型。
+
+## 原始类型
+
+如果原始类型的值被赋值给变量，我们可以认为该变量持有该原始值。
+
+```js
+var x = 10;
+var y = "abc";
+var z = null;
+```
+
+现在 `x` 持有值 `10`，`y` 持有值 `abc`，我们可以想象他们在内存里是这样的。
+
+| 变量 | 值    |
+| ---- | ----- |
+| x    | 10    |
+| y    | 'abc' |
+| z    | null  |
+
+当我们把变量用 `=` 赋值给另一个变量时，我们复制了该变量的值，被赋值的变量则拥有了被复制的值。
+
+```js
+var x = 10;
+var y = "abc";
+
+var a = x;
+var b = y;
+
+console.log(x, y, a, b); // -> 10, 'abc', 10, 'abc'
+```
+
+现在 `x` 和 `a` 持有值 `10`，`y` 和 `b` 持有值 `'abc'`，但是他们的值之间没有关系。
+
+| 变量 | 值    |
+| ---- | ----- |
+| x    | 10    |
+| y    | 'abc' |
+| a    | 10    |
+| b    | 'abc' |
+
+改变其中一个不会影响到另外一个，因为这些值之间是没有联系的。
+
+```js
+var x = 10;
+var y = "abc";
+
+var a = x;
+var b = y;
+
+a = 5;
+b = "def";
+
+console.log(x, y, a, b); // -> 10, 'abc', 5, 'def'
+```
+
+## 对象类型
+
+当非原始类型的值被赋值给变量时，变量得到的是该值的引用（一个内存地址），该引用指向值存储的位置，变量并没有获得该值。
+
+当我们在写 `arr = []` 时，会在分配内存中的一块用于储存该数组，变量 `arr` 得到一个指向该数组的 `address`。
+
+我们假设这个 `address` 和 `Number` 或 `String` 这些原始数据类型一样通过值传递。`address` 指向值在内存中的位置。我们使用 `<>` 表示，像字符串用引号表示一样。
+
+```js
+1) var arr = [];
+2) arr.push(1);
+```
+
+我们将上面两行代码在内存中表示:
+
+1
+
+| 变量 | 值         | 地址 | 对象 |
+| ---- | ---------- | ---- | ---- |
+| arr  | {'<#001>'} | #001 | []   |
+
+2
+
+| 变量 | 值         | 地址 | 对象 |
+| ---- | ---------- | ---- | ---- |
+| arr  | {'<#001>'} | #001 | [1]  |
+
+变量 `arr` 持有的值和地址是静态的，内存中的数组是变化的。当我们往 `arr` 中添加一个元素时，JS 引擎会找到内存中数组所在的位置并操作储存的数据。
+
+### 引用赋值
+
+我们将一个对象，通过 `=` 操作符赋值给一个变量时，该变量接受到该对象的地址的复制，就像原始类型赋值那样。对象被复制的是其引用而不是其值。
+
+```js
+var reference = [1];
+var refCopy = reference;
+```
+
+在内存中表示:
+
+| 变量      | 值         | 地址 | 对象 |
+| --------- | ---------- | ---- | ---- |
+| reference | {'<#001>'} | #001 | [1]  |
+| refCopy   | {'<#001>'} |      |      |
+
+数组对象的值没有被复制一份，复制的是其引用。现在 `reference` 和 `refCopy` 持有同一个数组的引用。当我们修改 `reference`，`refCopy` 也会被修改。
+
+```js
+reference.push(2);
+console.log(reference, refCopy); // -> [1, 2], [1, 2]
+```
+
+| 变量      | 值         | 地址 | 对象  |
+| --------- | ---------- | ---- | ----- |
+| reference | {'<#001>'} | #001 | [1,2] |
+| refCopy   | {'<#001>'} |      |       |
+
+当给变量重新赋值新的引用时，新引用将替换旧的引用。
+
+```js
+var obj = { first: "reference" };
+```
+
+| 变量      | 值         | 地址 | 对象                     |
+| --------- | ---------- | ---- | ------------------------ |
+| reference | {'<#234>'} | #234 | \{ first: "reference" \} |
+
+当我们给 `obj` 重新赋值时，变量获得了新的引用。
+
+```js
+var obj = { first: "reference" };
+obj = { second: "ref2" };
+```
+
+`obj` 持有的引用改变了，对象依然存在在内存中。
+
+| 变量      | 值         | 地址 | 对象                     |
+| --------- | ---------- | ---- | ------------------------ |
+| reference | {'<#234>'} | #234 | \{ first: "reference" \} |
+|           |            | #678 | \{ second: "ref2" \}     |
+
+此时上面的对象 `#234` 没有被别的变量引用，JS 引擎可以对其进行垃圾回收。这意味着我们不再引用该对象，因此 JS 引擎可以放心地将其从内存中删除。
+
+### == 和 ===
+
+当我们在用 `==` 和 `===` 操作符比较引用类型的变量是否相等时，比较的是引用。如果两个变量持有相同的引用，则返回 `true`。
+
+```js
+var arrRef = ["Hi!"];
+var arrRef2 = arrRef;
+console.log(arrRef === arrRef2); // -> true
+```
+
+如果他们是不同的对象，即使他们包含相同的值，结果也为 `false`。
+
+```js
+var arr1 = ["Hi!"];
+var arr2 = ["Hi!"];
+console.log(arr1 === arr2); // -> false
+```
+
+最简单比较两个对象包含的属性值是否相同的方法是将其转换为字符串，然后比对字符串的值是否相同，当我们用操作符比对原始类型时，比较的是值是否相同。
+
+〉== 和 === 在比较时的差别在此不做探讨。
+
+```js
+var arr1str = JSON.stringify(arr1);
+var arr2str = JSON.stringify(arr2);
+
+console.log(arr1str === arr2str); // -> true
+```
+
+这种比较方法的弊端较多，属性顺序的不同也会导致不等，除非这是你所期望的。另外此方法也没有办法区分某些值。
+
+```js
+JSON.stringify(NaN) === JSON.stringify(null);
+// -> true
+
+JSON.stringify(Infinity) === JSON.stringify(null);
+// -> true
+
+JSON.stringify({ val1: 1 / 0, val2: parseInt("hi there"), val3: NaN }) ===
+  JSON.stringify({ val1: NaN, val2: null, val3: null });
+// -> true
+```
+
+## 函数传参
+
+当我们给方法传递原始类型值的参数时，可以看作使用 `=` 赋值。
+
+```js
+var hundred = 100;
+var two = 2;
+
+function multiply(x, y) {
+  // PAUSE
+  return x * y;
+}
+
+var twoHundred = multiply(hundred, two);
+```
+
+现在 `hundred` 的值是 `100`，当其被当作参数被传给方法 `multiply` 时，`x` 得到一份 `hundred` 的值的拷贝，和上面提到的[原始数据类型赋值](#原始类型)行为一致。同样的，`hundred` 的值没有被影响。让我们看一下在注释 `PAUSE` 处内存的样子。
+
+| 变量     | 值         | 地址 | 对象             |
+| -------- | ---------- | ---- | ---------------- |
+| hundred  | 100        | #333 | function(x,y)... |
+| two      | 2          |      |                  |
+| multiply | {'<#333>'} |      |                  |
+| x        | 100        |      |                  |
+| y        | 2          |      |                  |
+
+### Pure Function
+
+如果方法只影响自身作用域，则可称为 _pure function_。如果函数的入参都是原始数据类型并且没有使用外围作用域的变量，那么这个函数天然就是 _pure function_。函数内声明的变量在函数返回后被回收。
+
+如果方法接受外部作用域的对象作为参数，并在内部用其传递进来的对象引用对其进行修改，例如接受一个数组参数，然后给其添加元素，被传递到函数内部的数组引用和外部该数组的引用是同一个（和上面提到的[引用赋值](#引用赋值)）行为类似，该数组就被修改了。当函数返回时，就彻底影响了外部作用域。这可能会导致难以追踪的副作用。
+
+因此数组的很多原生方法（包括 `Array.map` 和 `Array.filter`）都被写成 _pure function_。它们在内部接受一个数组的引用，然后复制该数组，内部操作复制的数组，最后返回新的数组的引用。保证了原始数组不被修改，不会影响到外部作用域。
+
+pure vs impure function.
+
+```js
+function changeAgeImpure(person) {
+  person.age = 25;
+  return person;
+}
+
+var alex = {
+  name: "Alex",
+  age: 30
+};
+
+var changedAlex = changeAgeImpure(alex);
+
+console.log(alex); // -> { name: 'Alex', age: 25 }
+console.log(changedAlex); // -> { name: 'Alex', age: 25 }
+```
+
+`changeAgeImpure` 接受 `person` 参数后，在内部将 `age` 修改为了 25。因为实际操作的对象的引用是同一个，所以 `alex` 被改变了。当 `person` 被返回时，实际返回的对象和传入的为同一个。`alex` 和 `changedAlex` 持有相同的引用，返回 `person` 变量并储存应用到新的变量中是多余的。
+
+让我们看看 _pure function_ 写法。
+
+```js
+function changeAgePure(person) {
+  var newPersonObj = { ...person };
+  newPersonObj.age = 25;
+  return newPersonObj;
+}
+
+var alex = {
+  name: "Alex",
+  age: 30
+};
+
+var alexChanged = changeAgePure(alex);
+
+console.log(alex); // -> { name: 'Alex', age: 30 }
+console.log(alexChanged); // -> { name: 'Alex', age: 25 }
+```
+
+_changeAgePure_ 方法复制传入对象的值到一个新的对象，`newPersonObj` 现在持有通过复制 `person` 得到的新对象的引用。后续修改的是这个新的对象，并不会影响方法外部的 `alex`。最后 `newPersonObj` 需要返回并储存到变量 `alexChanged` 中，因为当方法调用完成后，`newPersonObj` 会被回收。
+
+## 写在最后
+
+看到这里，我想你已经理解了 JavaScript 中值和引用。那么下面的代码会输出什么呢？
+
+```js
+function changeAgeAndReference(person) {
+  person.age = 25;
+  person = {
+    name: "John",
+    age: 50
+  };
+
+  return person;
+}
+
+var personObj1 = {
+  name: "Alex",
+  age: 30
+};
+
+var personObj2 = changeAgeAndReference(personObj1);
+
+console.log(personObj1); // -> ?
+console.log(personObj2); // -> ?
+```
+
+`changeAgeAndReference` 接收参数 `personObj1` 并在内部修改了其 `age` 属性，然后用新的对象给 `person` 赋值，最后返回 `person`。打印结果，和你的答案一样吗？
+
+```js
+console.log(personObj1); // -> { name: "Alex", age: 25 }
+console.log(personObj2); // -> { name: "John", age: 50 }
+```
+
+函数参数的传递可以看作和使用 `=` 操作符赋值的行为类似。将 `personObj1` 传给 `changeAgeAndReference` 时，相当于 `person = personObj1`，此时 `person` 和 `personObj1` 都持有对象 `{ name: "Alex", age: 30 }` 的引用。修改 `person.age = 25`，`{ name: "Alex", age: 30 }` => `{ name: "Alex", age: 25 }`，然后给 `person` 赋值新的对象 `{ name: "John", age: 50 }`，此时 `person` 持有该对象的引用。最后返回给 `personObj2` 的是 `{ name: "John", age: 50 }` 的引用。
+
+等效的代码:
+
+```js
+var personObj1 = {
+  name: "Alex",
+  age: 30
+};
+
+var person = personObj1;
+
+person.age = 25;
+
+person = {
+  name: "john",
+  age: 50
+};
+
+var personObj2 = person;
+
+console.log(personObj1); // -> { name: 'Alex', age: 25 }
+console.log(personObj2); // -> { name: 'John', age: '50' }
+```
+
+唯一的区别是，`person` 一直存在于全局作用域中。
+
+### 其他链接 🔗
+
+- [Explaining Value vs. Reference in Javascript](https://codeburst.io/explaining-value-vs-reference-in-javascript-647a975e12a0)

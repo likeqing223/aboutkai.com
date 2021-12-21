@@ -12,11 +12,13 @@ export default function Home() {
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto pb-8">
         <div className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex flex-col pr-8">
-            <h1 className="font-medium text-2xl md:text-4xl tracking-tight mb-2 ">
+            <h1 className="font-medium text-4xl md:text-5xl tracking-tight mb-2">
               kaichi
             </h1>
-            <p className="mb-2">前端开发</p>
-            <p className="">
+            <p className="mb-2 font-medium text-gray-800 dark:text-gray-400">
+              前端开发
+            </p>
+            <p className="text-gray-700 dark:text-gray-500">
               分享个人观点、新学到的知识以及一些编程经验。 Knowledge Growth in
               Sharing.
             </p>
@@ -32,53 +34,58 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="flex items-center justify-between w-full mt-12 mb-2">
-          <h3 className="text-xl md:text-2xl tracking-light">精选文章</h3>
-          <Link href="/blog">
-            <a className="flex text-sm md:text-base items-center transition-all ">
-              全部文章
-              <svg className="h-6 w-6" viewBox="0 0 24 24">
-                <path
-                  fill="currentColor"
-                  d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-                />
-              </svg>
-            </a>
-          </Link>
+        <div className="flex items-center justify-between w-full mt-10 mb-2">
+          <h3 className="text-xl md:text-2xl tracking-tight text-gray-800 dark:text-gray-200">
+            精选文章
+          </h3>
         </div>
+        <BlogPost
+          slug="javascript-value-vs-reference"
+          title="JavaScript 中的值和引用"
+          description="理解 JavaScript 中的值和引用，以及其在程序中如何传递。"
+        />
         <BlogPost
           slug="add-post-views"
           title="记录博客文章浏览数量"
           description="使用 Severless 数据库 PlantScale 和 Prisma 实现文章浏览数量记录。"
         />
         <BlogPost
-          slug="flutter-widget-value-listenable-builder"
-          title="Flutter Widget: ValueListenableBuilder"
-          description="ValueListenableBuilder 组件用法。"
-        />
-        <BlogPost
           slug="typescript-union-type"
           title="TypeScript 辨别联合类型"
           description="TypeScript 联合类型的辨别方式及特性。"
         />
+        <Link href="/blog">
+          <a className="flex text-sm md:text-base items-center transition-all text-gray-700 dark:text-gray-500 mt-4">
+            全部文章
+            <svg className="h-6 w-6" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+              />
+            </svg>
+          </a>
+        </Link>
         <div className="flex items-center justify-between w-full mt-8 mb-2">
-          <h3 className="text-xl md:text-2xl tracking-light">最新视频</h3>
-          <Link href="/blog">
-            <a className="flex text-sm md:text-base items-center transition-all">
-              B 站主页
-              <svg className="h-6 w-6" viewBox="0 0 24 24">
-                <path
-                  fill="currentColor"
-                  d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
-                />
-              </svg>
-            </a>
-          </Link>
+          <h3 className="text-xl md:text-2xl tracking-tight text-gray-800 dark:text-gray-200">
+            最新视频
+          </h3>
         </div>
-
         <Videos />
+        <Link href="/blog">
+          <a className="flex text-sm md:text-base items-center transition-all text-gray-700 dark:text-gray-500 mt-6">
+            B 站主页
+            <svg className="h-6 w-6" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+              />
+            </svg>
+          </a>
+        </Link>
         <div className="flex items-center justify-between w-full mt-8 mb-6">
-          <h3 className="text-xl md:text-2xl tracking-light">最近在看</h3>
+          <h3 className="text-xl md:text-2xl tracking-tight text-gray-800 dark:text-gray-200">
+            最近在看
+          </h3>
         </div>
         <Bangumis />
       </div>

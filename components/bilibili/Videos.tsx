@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { format, fromUnixTime } from "date-fns";
 import fetcher from "lib/fetcher";
 import { BilibiliVideo } from "lib/types";
@@ -14,7 +15,7 @@ export default function Videos() {
 
   return (
     <div className="w-full">
-      {data.data.map((v) => (
+      {data.data.map((v, i) => (
         <a
           key={v.bvid}
           className="w-full"
@@ -23,10 +24,15 @@ export default function Videos() {
           rel="noopener noreferrer"
           aria-label={v.title}
         >
-          <div className="border-b py-4 px-2 flex font-medium items-center justify-between border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 rounded">
+          <div
+            className={classNames(
+              "transform hover:scale-[1.01] transition-all",
+              "border-b py-4 flex font-medium items-center justify-between border-gray-200 dark:border-gray-700"
+            )}
+          >
             <p>{v.title}</p>
             <span className=" text-sm flex items-center">
-              {v.length}
+              <span className="text-gray-600">{v.length}</span>
               <svg className="h-6 w-6 ml-1 md:ml-2" viewBox="0 0 24 24">
                 <path
                   fill="currentColor"

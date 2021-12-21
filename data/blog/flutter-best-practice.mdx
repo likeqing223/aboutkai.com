@@ -213,11 +213,11 @@ Widget getProgressBar() => CircularProgressIndicator(
 
 当 `setState` 更新状态时，所有的子组件都将重建，为了减少不必要的重建，应将复杂组件拆分为一个个小组件，在小组件内部 `setState` 更新相应部分。
 
-### 使用 **ListView.builder** 构建长列表
+### 使用 _ListView.builder_ 构建长列表
 
 当你有一个无限或是非常长的列表时，通常建议使用 `ListView` 组件来展示。 `ListView` 会一次构建整个列表。
 
-为了提高性能，避免不必要的资源浪费，推荐使用 `ListView.builder`，`ListView.builder` 会创建一个懒加载列表，当用户滚动列表时，**Flutter** 会按需加载。
+为了提高性能，避免不必要的资源浪费，推荐使用 `ListView.builder`，`ListView.builder` 会创建一个懒加载列表，当用户滚动列表时，_Flutter_ 会按需加载。
 
 ### 使用 `const` 声明不需要更新的组件
 
