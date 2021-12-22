@@ -1,7 +1,7 @@
 import { allBlogs } from ".contentlayer/data";
+import components from "components/MDXComponents";
 import BlogLayout from "layouts/blog";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
-import components from "components/MDXComponents";
 import { useMDXComponent } from "next-contentlayer/hooks";
 
 export default function Post({
@@ -10,7 +10,7 @@ export default function Post({
   const Component = useMDXComponent(post.body.code);
   return (
     <BlogLayout post={post}>
-      <Component components={{ ...components }} />
+      <Component components={components} />
     </BlogLayout>
   );
 }

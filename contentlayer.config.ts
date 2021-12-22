@@ -4,12 +4,14 @@ import {
   ComputedFields
 } from "contentlayer/source-files";
 import readingTime from "reading-time";
-import remarkGfm, { Root } from "remark-gfm";
+import remarkGfm from "remark-gfm";
 import remarkTOC from "remark-toc";
 import rehypeSlug from "rehype-slug";
 import rehypeCodeTitles from "rehype-code-titles";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrism from "rehype-prism-plus";
+import rehypeRewrite from "rehype-rewrite";
+import { Element } from "hast";
 
 const computedFields: ComputedFields = {
   readingTime: {
@@ -54,6 +56,24 @@ const contentLayerConfig = makeSource({
           test: [`h2`, `h3`, `h4`, `h5`, `h6`],
           properties: {
             className: ["anchor"]
+          }
+        }
+      ],
+      [
+        rehypeRewrite,
+        {
+          selector: "a",
+          rewrite: (node: Element) => {
+            const href = node.properties?.href?.toString();
+            const isInternalLink =
+              href && (href.startsWith("/") || href?.startsWith("#"));
+
+            if (!isInternalLink) {
+              if (node.properties) {
+                node.properties.target = "_blank";
+                node.properties.rel = "noopener noreferrer";
+              }
+            }
           }
         }
       ]

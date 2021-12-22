@@ -1,29 +1,34 @@
 import Image, { ImageProps } from "next/image";
-import Link from "next/link";
-import React, { AnchorHTMLAttributes } from "react";
+import React from "react";
 
-const CustomLink = (props: AnchorHTMLAttributes<HTMLAnchorElement>) => {
-  const { href } = props;
-  const isInternalLink =
-    href && (href?.startsWith("/") || href?.startsWith("#"));
+// eslint-disable-next-line react/display-name
+// const CustomLink = forwardRef(
+//   (
+//     props: AnchorHTMLAttributes<HTMLAnchorElement>,
+//     ref: LegacyRef<HTMLAnchorElement>
+//   ) => {
+//     const { href } = props;
+//     const isInternalLink =
+//       href && (href?.startsWith("/") || href?.startsWith("#"));
 
-  if (isInternalLink) {
-    return (
-      <Link href={href}>
-        <a {...props}>{props.children}</a>
-      </Link>
-    );
-  }
+//     if (isInternalLink) {
+//       return (
+//         <Link href={href} {...props} passHref>
+//           <a ref={ref}>{props.children}</a>
+//         </Link>
+//       );
+//     }
 
-  return <a target="_blank" rel="noopener noreferrer" {...props} />;
-};
+//     return <a target="_blank" rel="noopener noreferrer" {...props} />;
+//   }
+// );
 
 function RoundedImage(props: ImageProps) {
   return <Image alt={props.alt} className="rounded-lg" {...props} />;
 }
 
 const MDXCompnents = {
-  a: CustomLink,
+  // a: CustomLink,
   Image: RoundedImage
 };
 
