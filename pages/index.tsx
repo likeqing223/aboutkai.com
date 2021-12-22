@@ -15,7 +15,7 @@ export default function Home() {
             <h1 className="font-medium text-4xl md:text-5xl tracking-tight mb-2">
               kaichi
             </h1>
-            <p className="mb-2 font-medium text-gray-800 dark:text-gray-400">
+            <p className="mb-4 font-medium text-gray-800 dark:text-gray-400">
               前端开发
             </p>
             <p className="text-gray-700 dark:text-gray-500">

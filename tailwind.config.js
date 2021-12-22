@@ -53,7 +53,7 @@ module.exports = {
             "--tw-prose-pre-code": theme("colors.gray[100]"),
             "--tw-prose-pre-bg": theme("colors.gray[900]"),
             "--tw-prose-th-borders": theme("colors.gray[300]"),
-            "--tw-prose-td-borders": theme("colors.gray[200]"),
+            "--tw-prose-td-borders": theme("colors.gray[300]"),
             // invert
             "--tw-prose-invert-body": theme("colors.gray[400]"),
             "--tw-prose-invert-headings": theme("colors.gray[300]"),
@@ -69,15 +69,15 @@ module.exports = {
             "--tw-prose-invert-code": theme("colors.gray[200]"),
             "--tw-prose-invert-pre-code": theme("colors.pink[300]"),
             "--tw-prose-invert-pre-bg": "rgb(0 0 0 / 50%)",
-            "--tw-prose-invert-th-borders": theme("colors.gray[600]"),
+            "--tw-prose-invert-th-borders": theme("colors.gray[700]"),
             "--tw-prose-invert-td-borders": theme("colors.gray[700]")
           }
         }
       })
     },
-    variants: {
-      typography: ["dark"]
-    }
+    // variants: {
+    //   typography: ["dark"]
+    // }
   },
   plugins: [require("@tailwindcss/typography")]
 };

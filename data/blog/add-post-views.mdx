@@ -6,9 +6,9 @@ description: 使用 Severless 数据库 PlantScale 和 Prisma 实现文章浏览
 
 文章的阅读数量数据我们储存在 Severless 数据库 [PlantScale](https://planetscale.com) 中，创建好账户和数据库后就可以开始使用了，具体的步骤参考[官方文档](https://docs.planetscale.com)。
 
-### 连接数据库
+## 连接数据库
 
-- 测试连接数据库
+测试连接数据库
 
 先用 [PlanetScale CLI](https://github.com/planetscale/cli#installation) 看能否连接上数据库。首次连接需要先登录。
 
@@ -20,13 +20,13 @@ $ pscale auth login
 $ pscale shell <database-name> <branch>
 ```
 
-- [ORM](https://www.prisma.io)
+[ORM](https://www.prisma.io)
 
 ```bash
 $ pnpm i -D prisma
 ```
 
-- [Prisma](https://www.prisma.io) Schema
+[Prisma](https://www.prisma.io) Schema
 
 创建 shadow 分支以供调试。
 
@@ -50,9 +50,9 @@ generator client {
 }
 ```
 
-### 创建表
+## 创建表
 
-- 我们先需要在数据库里创建表存储数据，修改 schema.prisma。
+我们先需要在数据库里创建表存储数据，修改 schema.prisma。
 
 ```diff
 datasource db {
@@ -71,7 +71,7 @@ generator client {
 + }
 ```
 
-- Migrate
+Migrate
 
 ```bash
 $ pnpm exec prisma db push
@@ -90,9 +90,9 @@ blog/shadow> show tables;
 +----------------+
 ```
 
-### 记录文章浏览数据
+## 记录文章浏览数据
 
-- 初始化 Prisma Client。
+初始化 Prisma Client。
 
 ```ts:lib/prisma.ts
 import { PrismaClient } from "@prisma/client";
@@ -106,7 +106,7 @@ export const prisma = global.prisma || new PrismaClient();
 if (process.env.NODE_ENV !== "production") global.prisma = prisma;
 ```
 
-- 记录浏览次数 API
+记录浏览次数 API
 
 ```ts:pages/api/views/[slug].ts
 if (req.method === "POST") {
@@ -127,7 +127,7 @@ if (req.method === "POST") {
   });
 ```
 
-- 查询浏览次数 API
+查询浏览次数 API
 
 ```ts:pages/api/views/[slug].ts
 if (req.method === "GET") {
@@ -141,7 +141,7 @@ if (req.method === "GET") {
 }
 ```
 
-- 在文章页面打开时记录浏览
+在文章页面打开时记录浏览
 
 ```ts
 useEffect(() => {
@@ -153,9 +153,3 @@ useEffect(() => {
   registerView();
 }, [post.slug]);
 ```
-
-### 部署
-
-- 将 shadow 分支的修改合并到 main 分支
-
-![deploy request](/static/images/add-post-views/deploy-request.png)

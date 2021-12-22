@@ -6,8 +6,8 @@
 
 - [nextjs](https://nextjs.org) - 网站搭建
 - [pnpm]() - 依赖管理
-- [mdx](https://mdxjs.com) - 内容构建
+- [mdx](https://mdxjs.com) - 内容
+- [contentlayer](https://www.contentlayer.dev) - 内容构建
 - [swr](https://github.com/vercel/swr) - 数据请求
 - [tailwindcss](https://tailwindcss.com) - 样式提供
 - [vercel](https://vercel.com)- 网站部署
-- ...
