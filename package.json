@@ -5,10 +5,13 @@
   "homepage": "https://aboutkai.com",
   "scripts": {
     "dev": "next dev",
-    "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/gen-rss.mjs && node ./scripts/gen-sitemap.mjs",
-    "build": "next build",
+    "build": "yarn postbuild && next build",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "gen:contentlayer": "contentlayer build --config ./contentlayer.config.ts --verbose",
+    "gen:rss": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/gen-rss.mjs",
+    "gen:sitemap": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/gen-sitemap.mjs",
+    "postbuild": "yarn gen:contentlayer && yarn gen:sitemap && yarn gen:rss"
   },
   "dependencies": {
     "@prisma/client": "^3.6.0",
