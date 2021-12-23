@@ -11,6 +11,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrism from "rehype-prism-plus";
 import { Element } from "hast";
 import rehypeUrls from "rehype-urls";
+import pkg from "./package.json";
 
 const computedFields: ComputedFields = {
   readingTime: {
@@ -62,7 +63,9 @@ const contentLayerConfig = makeSource({
         rehypeUrls,
         (url: URL, node: Element) => {
           const isInternalLink =
-            url.href && (url.href.startsWith("/") || url.href.startsWith("#"));
+            url.href.startsWith("/") ||
+            url.href.startsWith("#") ||
+            url.host === new URL(pkg.homepage).host;
 
           if (!isInternalLink) {
             if (node.properties) {
@@ -70,6 +73,8 @@ const contentLayerConfig = makeSource({
               node.properties.rel = "noopener noreferrer";
             }
           }
+
+          console.log(isInternalLink, url.href, new URL(pkg.homepage).host);
         }
       ]
     ]

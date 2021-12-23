@@ -41,7 +41,7 @@ export default function Footer() {
           <ExternalLink href="https://space.bilibili.com/12951817">
             B 站
           </ExternalLink>
-          <ExternalLink href="https://github.com/kaichii">GitHub</ExternalLink>
+          <ExternalLink href="https://github.com/kaichii/aboutkai.com">GitHub</ExternalLink>
           <ExternalLink href="https://music.163.com/#/user/home?id=276894900">
             网易云
           </ExternalLink>
@@ -50,6 +50,11 @@ export default function Footer() {
           <Link href="/feed.xml">
             <a className="text-gray-600 hover:text-gray-700 dark:hover:text-gray-400">
               RSS
+            </a>
+          </Link>
+          <Link href="/404">
+            <a className="text-gray-600 hover:text-gray-700 dark:hover:text-gray-400">
+              404 - 状态码
             </a>
           </Link>
         </div>

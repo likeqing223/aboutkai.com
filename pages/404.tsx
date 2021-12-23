@@ -1,13 +1,60 @@
 import Container from "components/Container";
+import MDWrapper from "components/MDWrapper";
+import {
+  ReasonPhrases,
+  StatusCodes,
+  getReasonPhrase,
+  getStatusCode
+} from "http-status-codes";
+import React from "react";
 
 export default function Custom404() {
+  const codes = Object.keys(StatusCodes)
+    .filter((c) => !isNaN(Number(c)))
+    .reduce<Record<number, string[]>>((p, c) => {
+      p[+c.charAt(0)] = [...(p[+c.charAt(0)] ?? []), c];
+      return p;
+    }, {});
+
+  const CodeInfos: Record<number, string> = {
+    1: "信息响应",
+    2: "成功响应",
+    3: "重定向",
+    4: "客户端错误",
+    5: "服务器错误"
+  };
+
   return (
     <Container>
-      <div className="max-w-2xl mx-auto mb-8 text-center">
-        <h1 className="mb-8">404 - Page Not Found</h1>
-        <p className="text-gray-700 dark:text-gray-500">
+      <div className="max-w-2xl mx-auto mb-8 w-full">
+        <h1 className="mb-6">404 - 资源未找到</h1>
+        <p className="text-gray-700 dark:text-gray-500 mb-8">
           这里本来有什么？或者什么也没有。
         </p>
+        <MDWrapper>
+          <h2>HTTP 状态码</h2>
+          {Object.entries(codes).map(([i, cs]) => (
+            <div key={i}>
+              <h3 className="text-lg">
+                {i}xx - {CodeInfos[+i]}
+              </h3>
+              <ul>
+                {cs.map((c) => (
+                  <li key={c}>
+                    <a
+                      target="_blank"
+                      href={`https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/${c}`}
+                    >
+                      {c}
+                    </a>
+                    <span> - </span>
+                    {getReasonPhrase(c)}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </MDWrapper>
       </div>
     </Container>
   );

@@ -15,8 +15,15 @@ export default function Home() {
             <h1 className="font-medium text-4xl md:text-5xl tracking-tight mb-2">
               kaichi
             </h1>
-            <p className="mb-4 font-medium text-gray-800 dark:text-gray-400">
-              前端开发
+            <p className="mb-4 text-gray-800 dark:text-gray-400">
+              前端开发{" "}
+              <a
+                className="font-medium"
+                target="_blank"
+                href="https://github.com/kaichii"
+              >
+                @kaichii
+              </a>
             </p>
             <p className="text-gray-700 dark:text-gray-500">
               分享个人观点、新学到的知识以及一些编程经验。 Knowledge Growth in
