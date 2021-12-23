@@ -73,8 +73,6 @@ const contentLayerConfig = makeSource({
               node.properties.rel = "noopener noreferrer";
             }
           }
-
-          console.log(isInternalLink, url.href, new URL(pkg.homepage).host);
         }
       ]
     ]
