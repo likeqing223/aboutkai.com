@@ -5,13 +5,12 @@ import {
 } from "contentlayer/source-files";
 import readingTime from "reading-time";
 import remarkGfm from "remark-gfm";
-import remarkTOC from "remark-toc";
 import rehypeSlug from "rehype-slug";
 import rehypeCodeTitles from "rehype-code-titles";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrism from "rehype-prism-plus";
-import rehypeRewrite from "rehype-rewrite";
 import { Element } from "hast";
+import rehypeUrls from "rehype-urls";
 
 const computedFields: ComputedFields = {
   readingTime: {
@@ -45,7 +44,7 @@ const contentLayerConfig = makeSource({
   contentDirPath: "data",
   documentTypes: [Blog],
   mdx: {
-    remarkPlugins: [remarkGfm, remarkTOC],
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [
       rehypeSlug,
       rehypeCodeTitles,
@@ -60,19 +59,15 @@ const contentLayerConfig = makeSource({
         }
       ],
       [
-        rehypeRewrite,
-        {
-          selector: "a",
-          rewrite: (node: Element) => {
-            const href = node.properties?.href?.toString();
-            const isInternalLink =
-              href && (href.startsWith("/") || href?.startsWith("#"));
+        rehypeUrls,
+        (url: URL, node: Element) => {
+          const isInternalLink =
+            url.href && (url.href.startsWith("/") || url.href.startsWith("#"));
 
-            if (!isInternalLink) {
-              if (node.properties) {
-                node.properties.target = "_blank";
-                node.properties.rel = "noopener noreferrer";
-              }
+          if (!isInternalLink) {
+            if (node.properties) {
+              node.properties.target = "_blank";
+              node.properties.rel = "noopener noreferrer";
             }
           }
         }
