@@ -49,7 +49,7 @@ export default function Home() {
         <BlogPost
           slug="javascript-value-vs-reference"
           title="JavaScript 中的值和引用"
-          description="理解 JavaScript 中的值和引用，以及其在程序中如何传递。"
+          description="理解 JavaScript 中的值和引用，以及在程序中如何传递。"
         />
         <BlogPost
           slug="add-post-views"
@@ -57,9 +57,9 @@ export default function Home() {
           description="使用 Severless 数据库 PlantScale 和 Prisma 实现文章浏览数量记录。"
         />
         <BlogPost
-          slug="typescript-union-type"
-          title="TypeScript 辨别联合类型"
-          description="TypeScript 联合类型的辨别方式及特性。"
+          slug="immer-with-react"
+          title="Immer & 不可变数据结构"
+          description="了解不可变数据结构以及 Immer 带来的便利。"
         />
         <Link href="/blog">
           <a className="flex text-sm md:text-base items-center transition-all text-gray-700 dark:text-gray-500 mt-4">
