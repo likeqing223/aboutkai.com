@@ -1,7 +1,7 @@
 ---
 title: JavaScript 中的值和引用
 publishedAt: 2021-12-22
-description: "理解 JavaScript 中的值和引用，以及在程序中如何传递。"
+description: '理解 JavaScript 中的值和引用，以及在程序中如何传递。'
 ---
 
 在 JavaScript 中，有 7 种原始数据类型通过值传递: `null`、`undefined`、`Boolean`、`Number`、`String`、`BigInt` 和 `Symbol`。
@@ -14,7 +14,7 @@ description: "理解 JavaScript 中的值和引用，以及在程序中如何传
 
 ```js
 var x = 10;
-var y = "abc";
+var y = 'abc';
 var z = null;
 ```
 
@@ -30,7 +30,7 @@ var z = null;
 
 ```js
 var x = 10;
-var y = "abc";
+var y = 'abc';
 
 var a = x;
 var b = y;
@@ -51,13 +51,13 @@ console.log(x, y, a, b); // -> 10, 'abc', 10, 'abc'
 
 ```js
 var x = 10;
-var y = "abc";
+var y = 'abc';
 
 var a = x;
 var b = y;
 
 a = 5;
-b = "def";
+b = 'def';
 
 console.log(x, y, a, b); // -> 10, 'abc', 5, 'def'
 ```
@@ -122,7 +122,7 @@ console.log(reference, refCopy); // -> [1, 2], [1, 2]
 当给变量重新赋值新的引用时，新引用将替换旧的引用。
 
 ```js
-var obj = { first: "reference" };
+var obj = { first: 'reference' };
 ```
 
 | 变量      | 值         | 地址 | 对象                     |
@@ -132,8 +132,8 @@ var obj = { first: "reference" };
 当我们给 `obj` 重新赋值时，变量获得了新的引用。
 
 ```js
-var obj = { first: "reference" };
-obj = { second: "ref2" };
+var obj = { first: 'reference' };
+obj = { second: 'ref2' };
 ```
 
 `obj` 持有的引用改变了，对象依然存在在内存中。
@@ -150,7 +150,7 @@ obj = { second: "ref2" };
 当我们在用 `==` 和 `===` 操作符比较引用类型的变量是否相等时，比较的是引用。如果两个变量持有相同的引用，则返回 `true`。
 
 ```js
-var arrRef = ["Hi!"];
+var arrRef = ['Hi!'];
 var arrRef2 = arrRef;
 console.log(arrRef === arrRef2); // -> true
 ```
@@ -158,8 +158,8 @@ console.log(arrRef === arrRef2); // -> true
 如果他们是不同的对象，即使他们包含相同的值，结果也为 `false`。
 
 ```js
-var arr1 = ["Hi!"];
-var arr2 = ["Hi!"];
+var arr1 = ['Hi!'];
+var arr2 = ['Hi!'];
 console.log(arr1 === arr2); // -> false
 ```
 
@@ -183,7 +183,7 @@ JSON.stringify(NaN) === JSON.stringify(null);
 JSON.stringify(Infinity) === JSON.stringify(null);
 // -> true
 
-JSON.stringify({ val1: 1 / 0, val2: parseInt("hi there"), val3: NaN }) ===
+JSON.stringify({ val1: 1 / 0, val2: parseInt('hi there'), val3: NaN }) ===
   JSON.stringify({ val1: NaN, val2: null, val3: null });
 // -> true
 ```
@@ -231,7 +231,7 @@ function changeAgeImpure(person) {
 }
 
 var alex = {
-  name: "Alex",
+  name: 'Alex',
   age: 30
 };
 
@@ -253,7 +253,7 @@ function changeAgePure(person) {
 }
 
 var alex = {
-  name: "Alex",
+  name: 'Alex',
   age: 30
 };
 
@@ -273,7 +273,7 @@ _changeAgePure_ 方法复制传入对象的值到一个新的对象，`newPerson
 function changeAgeAndReference(person) {
   person.age = 25;
   person = {
-    name: "John",
+    name: 'John',
     age: 50
   };
 
@@ -281,7 +281,7 @@ function changeAgeAndReference(person) {
 }
 
 var personObj1 = {
-  name: "Alex",
+  name: 'Alex',
   age: 30
 };
 
@@ -304,7 +304,7 @@ console.log(personObj2); // -> { name: "John", age: 50 }
 
 ```js
 var personObj1 = {
-  name: "Alex",
+  name: 'Alex',
   age: 30
 };
 
@@ -313,7 +313,7 @@ var person = personObj1;
 person.age = 25;
 
 person = {
-  name: "john",
+  name: 'john',
   age: 50
 };
 

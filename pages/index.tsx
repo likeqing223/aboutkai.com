@@ -1,10 +1,10 @@
-import Bangumis from "components/bilibili/Bangumis";
-import Videos from "components/bilibili/Videos";
-import BlogPost from "components/BlogPost";
-import Container from "components/Container";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import Bangumis from 'components/bilibili/Bangumis';
+import Videos from 'components/bilibili/Videos';
+import BlogPost from 'components/BlogPost';
+import Container from 'components/Container';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
               kaichi
             </h1>
             <p className="mb-4 text-gray-800 dark:text-gray-400">
-              前端开发{" "}
+              前端开发{' '}
               <a
                 className="font-medium"
                 target="_blank"

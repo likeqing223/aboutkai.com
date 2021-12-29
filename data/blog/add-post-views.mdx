@@ -1,6 +1,6 @@
 ---
 title: 记录博客文章浏览数量
-publishedAt: "2021-12-04"
+publishedAt: '2021-12-04'
 description: 使用 Severless 数据库 PlantScale 和 Prisma 实现文章浏览数量记录。
 ---
 
@@ -147,7 +147,7 @@ if (req.method === "GET") {
 useEffect(() => {
   const registerView = () =>
     fetch(`/api/views/${post.slug}`, {
-      method: "POST"
+      method: 'POST'
     });
 
   registerView();

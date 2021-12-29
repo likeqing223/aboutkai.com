@@ -1,15 +1,15 @@
-import { writeFileSync } from "fs";
-import { globby } from "globby";
-import prettier from "prettier";
+import { writeFileSync } from 'fs';
+import { globby } from 'globby';
+import prettier from 'prettier';
 
 async function generate() {
   const pages = await globby([
-    "pages/*.tsx",
-    "data/**/*.mdx",
-    "!data/*.mdx",
-    "!pages/_*.tsx",
-    "!pages/api",
-    "!pages/404.tsx"
+    'pages/*.tsx',
+    'data/**/*.mdx',
+    '!data/*.mdx',
+    '!pages/_*.tsx',
+    '!pages/api',
+    '!pages/404.tsx'
   ]);
 
   const sitemap = `
@@ -18,27 +18,27 @@ async function generate() {
         ${pages
           .map((page) => {
             const path = page
-              .replace("pages", "")
-              .replace("data", "")
-              .replace(".tsx", "")
-              .replace(".mdx", "");
-            const route = path === "/index" ? "" : path;
+              .replace('pages', '')
+              .replace('data', '')
+              .replace('.tsx', '')
+              .replace('.mdx', '');
+            const route = path === '/index' ? '' : path;
             return `
               <url>
                   <loc>${`https://aboutkai.com${route}`}</loc>
               </url>
             `;
           })
-          .join("")}
+          .join('')}
     </urlset>
     `;
 
   const formatted = prettier.format(sitemap, {
-    parser: "html"
+    parser: 'html'
   });
 
   // eslint-disable-next-line no-sync
-  writeFileSync("public/sitemap.xml", formatted);
+  writeFileSync('public/sitemap.xml', formatted);
 }
 
 generate();

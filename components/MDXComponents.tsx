@@ -1,11 +1,12 @@
-import Image, { ImageProps } from "next/image";
-import Link from "next/link";
-import React, { AnchorHTMLAttributes } from "react";
+import Image, { ImageProps } from 'next/image';
+import Link from 'next/link';
+import React, { AnchorHTMLAttributes } from 'react';
+import { QAndA } from './Q&A';
 
 const CustomLink = (props: AnchorHTMLAttributes<HTMLAnchorElement>) => {
   const { href } = props;
   const isInternalLink =
-    href && (href?.startsWith("/") || href?.startsWith("#"));
+    href && (href?.startsWith('/') || href?.startsWith('#'));
 
   if (isInternalLink) {
     return (
@@ -23,7 +24,8 @@ function RoundedImage(props: ImageProps) {
 
 const MDXCompnents = {
   // a: CustomLink,
-  Image: RoundedImage
+  Image: RoundedImage,
+  QAndA
 };
 
 export default MDXCompnents;

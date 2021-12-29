@@ -1,6 +1,6 @@
-import Container from "components/Container";
-import Giscus from "components/Giscus";
-import React from "react";
+import Container from 'components/Container';
+import Giscus from 'components/Giscus';
+import React from 'react';
 
 export default function Guestbook() {
   return (

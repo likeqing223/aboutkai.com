@@ -1,14 +1,14 @@
-import { allBlogs } from ".contentlayer/data";
-import BlogPost from "components/BlogPost";
-import Container from "components/Container";
-import { pick } from "lib/utils";
-import { InferGetStaticPropsType } from "next";
-import { useMemo, useState } from "react";
+import { allBlogs } from '.contentlayer/data';
+import BlogPost from 'components/BlogPost';
+import Container from 'components/Container';
+import { pick } from 'lib/utils';
+import { InferGetStaticPropsType } from 'next';
+import { useMemo, useState } from 'react';
 
 export default function Blog({
   posts
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
 
   const filteredBlogPosts = useMemo(
     () =>
@@ -73,7 +73,7 @@ export default function Blog({
 
 export function getStaticProps() {
   const posts = allBlogs.map((p) =>
-    pick(p, ["slug", "title", "description", "publishedAt"])
+    pick(p, ['slug', 'title', 'description', 'publishedAt'])
   );
 
   return { props: { posts } };

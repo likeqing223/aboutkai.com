@@ -1,8 +1,8 @@
-import cn from "classnames";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import styles from "styles/mobile-menu.module.css";
-import useDelayedRender from "use-delayed-render";
+import cn from 'classnames';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import styles from 'styles/mobile-menu.module.css';
+import useDelayedRender from 'use-delayed-render';
 
 export default function MobileMenu({
   menuItems
@@ -18,9 +18,9 @@ export default function MobileMenu({
   function toggleMenu() {
     setOpen((prev) => {
       if (prev) {
-        document.body.style.overflow = "";
+        document.body.style.overflow = '';
       } else {
-        document.body.style.overflow = "hidden";
+        document.body.style.overflow = 'hidden';
       }
 
       return !prev;
@@ -29,14 +29,14 @@ export default function MobileMenu({
 
   useEffect(() => {
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = '';
     };
   }, []);
 
   return (
     <>
       <button
-        className={cn(styles.burger, "visible md:hidden")}
+        className={cn(styles.burger, 'visible md:hidden')}
         aria-label="Toggle menu"
         type="button"
         onClick={toggleMenu}
@@ -48,7 +48,7 @@ export default function MobileMenu({
         <ul
           className={cn(
             styles.menu,
-            "flex flex-col absolute bg-white dark:bg-gray-900",
+            'flex flex-col absolute bg-white dark:bg-gray-900',
             rendered && styles.menuRendered
           )}
         >
@@ -69,7 +69,7 @@ export default function MobileMenu({
   );
 }
 
-function MenuIcon(props: JSX.IntrinsicElements["svg"]) {
+function MenuIcon(props: JSX.IntrinsicElements['svg']) {
   return (
     <svg
       className="h-6 w-6 absolute text-gray-900 dark:text-gray-300"
@@ -97,7 +97,7 @@ function MenuIcon(props: JSX.IntrinsicElements["svg"]) {
   );
 }
 
-function CrossIcon(props: JSX.IntrinsicElements["svg"]) {
+function CrossIcon(props: JSX.IntrinsicElements['svg']) {
   return (
     <svg
       className="h-6 w-6 absolute text-gray-900 dark:text-gray-300"

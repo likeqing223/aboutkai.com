@@ -1,6 +1,6 @@
 ---
 title: Immer & 不可变数据结构
-publishedAt: "2021-12-26"
+publishedAt: '2021-12-26'
 description: 了解不可变数据结构以及 Immer 带来的便利。
 ---
 
@@ -9,7 +9,7 @@ description: 了解不可变数据结构以及 Immer 带来的便利。
 思考这个问题前，我们先来看看 JavaScript 中的 `const` 关键字。`const` 关键字用来声明常量，常量的值是无法被改变的，也不能被重新赋值。这点通常使初学者很困惑，我们看下面这个例子。
 
 ```js
-const person = { name: "kaichi", age: 18 };
+const person = { name: 'kaichi', age: 18 };
 
 person.age = 19;
 
@@ -19,7 +19,7 @@ console.log(person); //-> ??
 最后会打印什么结果呢？答案是 `{ name: "kaichi", age: 19 }`。令人困惑的是，`person` 是用 `const` 声明的常量，为什么会被改变呢？`person` 确实没被改变，因为其持有的对象引用没变，但是对象本身变了（[详细解释](https://aboutkai.com/blog/javascript-value-vs-reference)）。
 
 ```js
-person = { name: "somebody", age: 20 };
+person = { name: 'somebody', age: 20 };
 //-> Uncaught TypeError: Assignment to constant variable.
 ```
 
@@ -33,7 +33,7 @@ person = { name: "somebody", age: 20 };
 
 ```jsx
 function Person() {
-  const [person, setPerson] = useState({ name: "kaichi", age: 18 });
+  const [person, setPerson] = useState({ name: 'kaichi', age: 18 });
 
   const updateAge = (newAge) =>
     setPerson((prev) => {
@@ -69,9 +69,9 @@ const updateAge = (newAge) =>
 
 ```js
 const [person, setPerson] = useState({
-  name: "kaichi",
+  name: 'kaichi',
   age: 18,
-  hobbies: ["code", "music", "game"]
+  hobbies: ['code', 'music', 'game']
 });
 ```
 
@@ -84,11 +84,11 @@ const [person, setPerson] = useState({
 ```js
 const state = [
   {
-    title: "学习 TypeScript",
+    title: '学习 TypeScript',
     done: true
   },
   {
-    title: "试一试 Immer",
+    title: '试一试 Immer',
     done: false
   }
 ];
@@ -100,34 +100,34 @@ nextState[1] = {
   done: true
 };
 
-nextState.push({ title: "学习新技能" });
+nextState.push({ title: '学习新技能' });
 ```
 
 试想 state 层级更深了呢？让我们试试 Immer。
 
 ```js
-import { produce } from "immer";
+import { produce } from 'immer';
 
 const nextState = produce(state, (draft) => {
   draft[1].done = true;
-  draft.push({ title: "学习新技能" });
+  draft.push({ title: '学习新技能' });
 });
 ```
 
 使用 Immer 就简单了。使用 `produce` 方法，只需要通过其传递出来的 `draft` 对状态进行修改，`produce` 便会记录下用以产生下个状态，负责处理所有必要的复制，以及冻结数据防止意外修改。应用到 react 中。
 
 ```js
-import React, { useState } from "react";
-import { produce } from "immer";
+import React, { useState } from 'react';
+import { produce } from 'immer';
 
 function Todos() {
   const [todos, setTodos] = useState([
     {
-      title: "学习 TypeScript",
+      title: '学习 TypeScript',
       done: true
     },
     {
-      title: "试一试 Immer",
+      title: '试一试 Immer',
       done: false
     }
   ]);

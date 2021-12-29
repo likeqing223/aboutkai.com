@@ -1,8 +1,8 @@
-import { allBlogs } from ".contentlayer/data";
-import components from "components/MDXComponents";
-import BlogLayout from "layouts/blog";
-import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { allBlogs } from '.contentlayer/data';
+import components from 'components/MDXComponents';
+import BlogLayout from 'layouts/blog';
+import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 
 export default function Post({
   post
