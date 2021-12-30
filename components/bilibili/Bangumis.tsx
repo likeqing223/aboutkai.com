@@ -3,17 +3,16 @@ import { BilibiliBangumi } from "lib/types";
 import useSWR from "swr";
 import Image from "next/image";
 
-export default function Bangumis() {
-  const { data } = useSWR<{ data: BilibiliBangumi[] }>(
-    "/api/bilibili/bangumi?userId=12951817",
-    fetcher
-  );
-
-  if (!data?.data) return <p>暂无追番</p>;
+export default function Bangumis({
+  bangumis
+}: {
+  bangumis: BilibiliBangumi[];
+}) {
+  if (!bangumis) return <p>暂无追番</p>;
 
   return (
     <div className="flex w-full gap-6 md:gap-8 flex-row">
-      {data?.data.slice(0, 4).map((d, i) => {
+      {bangumis.map((d, i) => {
         return (
           <div key={i}>
             <a
@@ -29,6 +28,7 @@ export default function Bangumis() {
                 width="120px"
                 height="120px"
                 className="rounded-md"
+                priority
               />
             </a>
             <a
@@ -44,6 +44,7 @@ export default function Bangumis() {
                 width="165px"
                 height="210px"
                 className="rounded-md"
+                priority
               />
             </a>
           </div>

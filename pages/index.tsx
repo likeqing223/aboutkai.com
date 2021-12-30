@@ -2,11 +2,21 @@ import Bangumis from "components/bilibili/Bangumis";
 import Videos from "components/bilibili/Videos";
 import BlogPost from "components/BlogPost";
 import Container from "components/Container";
+import fetcher from "lib/fetcher";
+import { BilibiliBangumi, BilibiliVideo } from "lib/types";
+import get from "lodash.get";
+import { InferGetStaticPropsType } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { allBlogs } from ".contentlayer/data";
+import { pick } from "lib/utils";
 
-export default function Home() {
+export default function Home({
+  videos,
+  bangumis,
+  posts
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Container title="主页 - kaichi">
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto pb-8">
@@ -43,24 +53,17 @@ export default function Home() {
         </div>
         <div className="flex items-center justify-between w-full mt-10 mb-2">
           <h3 className="text-xl md:text-2xl tracking-tight text-gray-800 dark:text-gray-200">
-            精选文章
+            最新文章
           </h3>
         </div>
-        <BlogPost
-          slug="javascript-value-vs-reference"
-          title="JavaScript 中的值和引用"
-          description="理解 JavaScript 中的值和引用，以及在程序中如何传递。"
-        />
-        <BlogPost
-          slug="add-post-views"
-          title="记录博客文章浏览数量"
-          description="使用 Severless 数据库 PlantScale 和 Prisma 实现文章浏览数量记录。"
-        />
-        <BlogPost
-          slug="immer-with-react"
-          title="Immer & 不可变数据结构"
-          description="了解不可变数据结构以及 Immer 带来的便利。"
-        />
+        {posts.map((p) => (
+          <BlogPost
+            key={p.slug}
+            slug={p.slug}
+            title={p.title}
+            description={p.description}
+          />
+        ))}
         <Link href="/blog">
           <a className="flex text-sm md:text-base items-center transition-all text-gray-700 dark:text-gray-500 mt-4">
             全部文章
@@ -77,7 +80,7 @@ export default function Home() {
             最新视频
           </h3>
         </div>
-        <Videos />
+        <Videos videos={videos} />
         <Link href="/blog">
           <a className="flex text-sm md:text-base items-center transition-all text-gray-700 dark:text-gray-500 mt-6">
             B 站主页
@@ -94,8 +97,35 @@ export default function Home() {
             最近在看
           </h3>
         </div>
-        <Bangumis />
+        <Bangumis bangumis={bangumis.slice(0, 4)} />
       </div>
     </Container>
   );
+}
+
+export async function getStaticProps() {
+  const datas = await Promise.all([
+    await fetcher(
+      `${process.env.NEXT_PUBLIC_ENDPOINT}/api/bilibili/videos?userId=12951817`
+    ),
+    await fetcher(
+      `${process.env.NEXT_PUBLIC_ENDPOINT}/api/bilibili/bangumi?userId=12951817`
+    )
+  ]);
+
+  return {
+    props: {
+      videos: get(datas, [0, "data"], []) as BilibiliVideo[],
+      bangumis: get(datas, [1, "data"], []) as BilibiliBangumi[],
+      posts: allBlogs
+        .map((post) =>
+          pick(post, ["slug", "title", "description", "publishedAt"])
+        )
+        .sort(
+          (a, b) =>
+            Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
+        )
+        .slice(0, 3)
+    }
+  };
 }

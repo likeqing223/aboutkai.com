@@ -5,17 +5,12 @@ import { BilibiliVideo } from "lib/types";
 import React from "react";
 import useSWR from "swr";
 
-export default function Videos() {
-  const { data } = useSWR<{ data: BilibiliVideo[] }>(
-    "/api/bilibili/videos?userId=12951817",
-    fetcher
-  );
-
-  if (!data?.data) return <p>暂无视频</p>;
+export default function Videos({ videos }: { videos: BilibiliVideo[] }) {
+  if (!videos) return <p>暂无视频</p>;
 
   return (
     <div className="w-full">
-      {data.data.map((v, i) => (
+      {videos.map((v, i) => (
         <a
           key={v.bvid}
           className="w-full"
