@@ -28,7 +28,7 @@ export default function Bangumis({
                 width="120px"
                 height="120px"
                 className="rounded-md"
-                priority
+                loading="lazy"
               />
             </a>
             <a
@@ -44,7 +44,7 @@ export default function Bangumis({
                 width="165px"
                 height="210px"
                 className="rounded-md"
-                priority
+                loading="lazy"
               />
             </a>
           </div>

@@ -27,7 +27,7 @@ export default function Videos({ videos }: { videos: BilibiliVideo[] }) {
           >
             <p>{v.title}</p>
             <span className=" text-sm flex items-center">
-              <span className="text-gray-600">{v.length}</span>
+              <span className="text-gray-700 dark:text-gray-600">{v.length}</span>
               <svg className="h-6 w-6 ml-1 md:ml-2" viewBox="0 0 24 24">
                 <path
                   fill="currentColor"

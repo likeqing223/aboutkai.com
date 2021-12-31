@@ -30,6 +30,7 @@ export default function Home({
               <a
                 className="font-medium"
                 target="_blank"
+                rel="noopener noreferer"
                 href="https://github.com/kaichii"
               >
                 @kaichii
@@ -45,7 +46,7 @@ export default function Home({
               alt="kaichi"
               height={160}
               width={160}
-              src="/avatar.jpeg"
+              src="/avatar.jpg"
               className="rounded-full filter"
               priority
             />
