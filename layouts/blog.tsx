@@ -48,7 +48,7 @@ export default function BlogLayout({
               alt="kaichi"
               height={24}
               width={24}
-              src="/avatar.jpeg"
+              src="/avatar.jpg"
               className="rounded-full"
             />
             <p className="text-sm ml-1">

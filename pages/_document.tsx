@@ -23,6 +23,8 @@ export default function Document() {
           sizes="16x16"
           type="image/png"
         />
+        <meta name="theme-color" content="#ffffff" />
+        <meta content="#ffffff" name="msapplication-TileColor" />
       </Head>
       <body>
         <Main />

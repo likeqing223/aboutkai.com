@@ -5,17 +5,12 @@ import { BilibiliVideo } from "lib/types";
 import React from "react";
 import useSWR from "swr";
 
-export default function Videos() {
-  const { data } = useSWR<{ data: BilibiliVideo[] }>(
-    "/api/bilibili/videos?userId=12951817",
-    fetcher
-  );
-
-  if (!data?.data) return <p>暂无视频</p>;
+export default function Videos({ videos }: { videos: BilibiliVideo[] }) {
+  if (!videos) return <p>暂无视频</p>;
 
   return (
     <div className="w-full">
-      {data.data.map((v, i) => (
+      {videos.map((v, i) => (
         <a
           key={v.bvid}
           className="w-full"
@@ -32,7 +27,7 @@ export default function Videos() {
           >
             <p>{v.title}</p>
             <span className=" text-sm flex items-center">
-              <span className="text-gray-600">{v.length}</span>
+              <span className="text-gray-700 dark:text-gray-600">{v.length}</span>
               <svg className="h-6 w-6 ml-1 md:ml-2" viewBox="0 0 24 24">
                 <path
                   fill="currentColor"
