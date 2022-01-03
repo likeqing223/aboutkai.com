@@ -55,6 +55,7 @@
   "prettier": {
     "tabWidth": 2,
     "arrowParens": "always",
-    "trailingComma": "none"
+    "trailingComma": "none",
+    "singleQuote": true
   }
 }
