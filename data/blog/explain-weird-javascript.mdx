@@ -1,10 +1,10 @@
 ---
-title: 奇怪的 JavaScript
-publishedAt: '2021-12-29'
-description: '1'
+title: 诡异的 JavaScript
+publishedAt: '2022-01-04'
+description: JavaScript 中有很多诡异的地方，有时候它不以你想象的方式运作。
 ---
 
-JavaScript 中有很多奇怪的地方，有时候它不以你想象的方式运作。即使作为日常使用者，也没法做到答案脱口而出。下面 25 题（[题目来源](https://jsisweird.com)），看看你能答对吗？
+JavaScript 中有很多诡异的地方，有时候它不以你想象的方式运作。即使作为日常使用者，也没法做到立刻说出答案。下面 25 题（[题目来源](https://jsisweird.com)），看看你能答对吗？
 
 <QAndA
   q="true + false"
@@ -12,7 +12,17 @@ JavaScript 中有很多奇怪的地方，有时候它不以你想象的方式运
   options={['"truefalse"', '1', 'NaN', 'SyntaxError']}
 />
 
+<details>
+  <summary>解释</summary>
+
+</details>
+
 <QAndA q="[,,,].length" a={1} options={['0', '3', '4', 'SyntaxError']} />
+
+<details>
+  <summary>解释</summary>
+
+</details>
 
 <QAndA
   q="[1,2,3] + [4,5,6]"
@@ -20,19 +30,49 @@ JavaScript 中有很多奇怪的地方，有时候它不以你想象的方式运
   options={['"123456"', '"1,2,34,5,6"', '"1,2,3,4,5,6"', 'NaN']}
 />
 
+<details>
+  <summary>解释</summary>
+
+</details>
+
 <QAndA
   q="0.2 + 0.1 === 0.3"
   a={1}
   options={['true', 'false', 'NaN', 'SyntaxError']}
 />
 
-<QAndA q="10,2" a={1} options={['10.2', '10', '2', '20']} />
+<details>
+  <summary>解释</summary>
+
+</details>
+
+<QAndA q="10,2" a={2} options={['10.2', '10', '2', '20']} />
+
+<details>
+  <summary>解释</summary>
+
+</details>
 
 <QAndA q='!!""' a={1} options={['true', 'false', 'undefined', 'SyntaxError']} />
 
+<details>
+  <summary>解释</summary>
+
+</details>
+
 <QAndA q="+!![]" a={3} options={['true', 'false', '0', '1']} />
 
+<details>
+  <summary>解释</summary>
+
+</details>
+
 <QAndA q="!!!true" a={1} options={['true', 'false', '0', 'SyntaxError']} />
+
+<details>
+  <summary>解释</summary>
+
+</details>
 
 <QAndA
   q='true == "true"'
@@ -40,13 +80,38 @@ JavaScript 中有很多奇怪的地方，有时候它不以你想象的方式运
   options={['true', 'false', 'undefined', 'SyntaxError']}
 />
 
+<details>
+  <summary>解释</summary>
+
+</details>
+
 <QAndA q="010 - 03" a={1} options={['7', '5', '3', 'NaN']} />
+
+<details>
+  <summary>解释</summary>
+
+</details>
 
 <QAndA q='"" - - ""' a={1} options={['""', '0', 'NaN', 'SyntaxError']} />
 
-<QAndA q="null + 0" a={1} options={['0', 'null0', 'NaN', 'TypeError']} />
+<details>
+  <summary>解释</summary>
+
+</details>
+
+<QAndA q="null + 0" a={0} options={['0', 'null0', 'NaN', 'TypeError']} />
+
+<details>
+  <summary>解释</summary>
+
+</details>
 
 <QAndA q="0/0" a={2} options={['0', 'Infinity', 'NaN', 'SyntaxError']} />
+
+<details>
+  <summary>解释</summary>
+
+</details>
 
 <QAndA
   q="1/0 > 10 ** 1000"
@@ -54,23 +119,63 @@ JavaScript 中有很多奇怪的地方，有时候它不以你想象的方式运
   options={['true', 'false', 'NaN', 'SyntaxError']}
 />
 
-<QAndA q="true++" a={1} options={['1', '2', 'NaN', 'SyntaxError']} />
+<details>
+  <summary>解释</summary>
 
-<QAndA q='"" - 1' a={1} options={['"1"', '"-1"', '-1', 'NaN']} />
+</details>
 
-<QAndA q='(null - 0) + "0"' a={1} options={['"null0"', '00', '0', 'NaN']} />
+<QAndA q="true++" a={3} options={['1', '2', 'NaN', 'SyntaxError']} />
+
+<details>
+  <summary>解释</summary>
+
+</details>
+
+<QAndA q='"" - 1' a={2} options={['"1"', '"-1"', '-1', 'NaN']} />
+
+<details>
+  <summary>解释</summary>
+
+</details>
+
+<QAndA q='(null - 0) + "0"' a={1} options={['"null0"', '"00"', '0', 'NaN']} />
+
+<details>
+  <summary>解释</summary>
+
+</details>
 
 <QAndA
   q='true + ("true" - 0)'
-  a={1}
+  a={2}
   options={['1', '2', 'NaN', 'SyntaxError']}
 />
 
-<QAndA q="!5 + !5" a={1} options={['0', '10', '25', 'NaN']} />
+<details>
+  <summary>解释</summary>
 
-<QAndA q="[] + []" a={1} options={['[]', '[,]', '""', 'NaN']} />
+</details>
 
-<QAndA q='1 + 2 + "3"' a={1} options={['6', '"123"', '"33"', 'NaN']} />
+<QAndA q="!5 + !5" a={0} options={['0', '10', '25', 'NaN']} />
+
+<details>
+  <summary>解释</summary>
+
+</details>
+
+<QAndA q="[] + []" a={2} options={['[]', '[,]', '""', 'NaN']} />
+
+<details>
+  <summary>解释</summary>
+
+</details>
+
+<QAndA q='1 + 2 + "3"' a={2} options={['6', '"123"', '"33"', 'NaN']} />
+
+<details>
+  <summary>解释</summary>
+
+</details>
 
 <QAndA
   q="typeof NaN"
@@ -78,12 +183,32 @@ JavaScript 中有很多奇怪的地方，有时候它不以你想象的方式运
   options={['"number"', '"nan"', '"undefined"', 'object']}
 />
 
+<details>
+  <summary>解释</summary>
+
+</details>
+
 <QAndA
   q="undefined + false"
-  a={1}
+  a={2}
   options={['"undefinedfalse"', '0', 'NaN', 'SyntaxError']}
 />
 
-<QAndA q='"" && -0' a={1} options={['true', 'false', '""', '-0']} />
+<details>
+  <summary>解释</summary>
 
-<QAndA q='+!!NaN * "" - - [,]' a={1} options={['0', '"0"', 'NaN', '钝角']} />
+</details>
+
+<QAndA q='"" && -0' a={2} options={['true', 'false', '""', '-0']} />
+
+<details>
+  <summary>解释</summary>
+
+</details>
+
+<QAndA q='+!!NaN * "" - - [,]' a={0} options={['0', '"0"', 'NaN', '钝角']} />
+
+<details>
+  <summary>解释</summary>
+
+</details>

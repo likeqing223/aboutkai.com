@@ -1,7 +1,7 @@
 ---
-title: Immer & 不可变数据结构
+title: Immer & 不可变数据
 publishedAt: '2021-12-26'
-description: 了解不可变数据结构以及 Immer 带来的便利。
+description: 了解不可变数据以及 Immer 带来的便利。
 ---
 
 ## `const` 关键字
@@ -27,7 +27,7 @@ person = { name: 'somebody', age: 20 };
 
 > `Object.freeze()` 可以*冻结*对象使其不能再被修改。
 
-## 不可变数据结构
+## 不可变数据
 
 上面的例子中，`person` 的持有的引用没变，但是对象变了，那么如果要追踪变化将会变得繁琐。试想如果一个组件依赖 `person` 的数据渲染，如果引用没变就可以认为对象没变的话，便可以高效的检测变化。看下面这个例子。
 
@@ -50,7 +50,7 @@ function Person() {
 }
 ```
 
-在点击按钮更新 `person.age` 时，`age` 确实更改了，但是视图没有更新。这不是 react 的 bug，react 期望不可变数据结构作为 state，这样使得追踪状态的变化变得简单。上面的例子中 `person` 引用没变，react 对比新旧 state 时发现是同一个引用，所以不需要重新渲染。
+在点击按钮更新 `person.age` 时，`age` 确实更改了，但是视图没有更新。这不是 react 的 bug，react 期望不可变数据作为 state，这样使得追踪状态的变化变得简单。上面的例子中 `person` 引用没变，react 对比新旧 state 时发现是同一个引用，所以不需要重新渲染。
 
 ```jsx
 const updateAge = (newAge) =>
@@ -65,7 +65,7 @@ const updateAge = (newAge) =>
   });
 ```
 
-修改代码修复这个 bug，并且在需要更新时更新。由于需要返回新的对象，使用 `...` 拷贝对象属性到新的对象中。对象中未变化的部分在内存中共享，因此拷贝的代价较低。例如 `person` 中有属性 `hobbies` 存储兴趣爱好。
+修改代码修复这个 bug，并且在需要更新时更新。由于需要返回新的对象，使用 `...` 拷贝对象属性到新的对象中。对象中未变化的部分在内存中共享结构，因此拷贝的代价较低。例如 `person` 中有属性 `hobbies` 存储兴趣爱好。
 
 ```js
 const [person, setPerson] = useState({
@@ -75,11 +75,11 @@ const [person, setPerson] = useState({
 });
 ```
 
-如果更新 `person` 时没有更新 `hobbies`，浅拷贝 `person` 时只是拷贝了 `hobbies` 的引用，因此结构可以在状态中共享。
+如果更新 `person` 时没有更新 `hobbies`，浅拷贝 `person` 时只是拷贝了 `hobbies` 的引用。
 
 ## [Immer]()
 
-虽然不可变数据结构带来了好处，但是在编写代码时非常恼人。因为不能更改 `Object`、`Array` 或 `Map` 的任何属性，而要始终创建一个更改过的副本。这意味着需要手动拷贝没被修改的部分。看下面这个例子。
+虽然不可变数据带来了好处，但是在编写代码时非常恼人。因为不能更改 `Object`、`Array` 或 `Map` 的任何属性，而要始终创建一个更改过的副本。这意味着需要手动拷贝没被修改的部分。看下面这个例子。
 
 ```js
 const state = [
@@ -194,4 +194,4 @@ function Todos() {
 
 ```
 
-`useImmer` 和 `useState` 的用法几乎一致，和 immer 搭配的 `useState` 使得不可变数据结构状态更新更加简便。
+`useImmer` 和 `useState` 的用法几乎一致，和 immer 搭配的 `useState` 使得不可变数据状态更新更加简洁。
