@@ -1,12 +1,12 @@
-import Container from "components/Container";
-import MDWrapper from "components/MDWrapper";
+import Container from 'components/Container';
+import MDWrapper from 'components/MDWrapper';
 import {
   ReasonPhrases,
   StatusCodes,
   getReasonPhrase,
   getStatusCode
-} from "http-status-codes";
-import React from "react";
+} from 'http-status-codes';
+import React from 'react';
 
 export default function Custom404() {
   const codes = Object.keys(StatusCodes)
@@ -17,11 +17,11 @@ export default function Custom404() {
     }, {});
 
   const CodeInfos: Record<number, string> = {
-    1: "信息响应",
-    2: "成功响应",
-    3: "重定向",
-    4: "客户端错误",
-    5: "服务器错误"
+    1: '信息响应',
+    2: '成功响应',
+    3: '重定向',
+    4: '客户端错误',
+    5: '服务器错误'
   };
 
   return (

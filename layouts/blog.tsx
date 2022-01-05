@@ -1,11 +1,11 @@
-import type { Blog } from ".contentlayer/types";
-import Container from "components/Container";
-import MDWrapper from "components/MDWrapper";
-import { format, parseISO } from "date-fns";
-import fetcher from "lib/fetcher";
-import Image from "next/image";
-import React, { PropsWithChildren, useEffect } from "react";
-import useSWR from "swr";
+import type { Blog } from '.contentlayer/types';
+import Container from 'components/Container';
+import MDWrapper from 'components/MDWrapper';
+import { format, parseISO } from 'date-fns';
+import fetcher from 'lib/fetcher';
+import Image from 'next/image';
+import React, { PropsWithChildren, useEffect } from 'react';
+import useSWR from 'swr';
 
 const editUrl = (slug: string) =>
   `https://github.com/kaichii/kaichii.github.io/edit/main/data/blog/${slug}.mdx`;
@@ -24,9 +24,9 @@ export default function BlogLayout({
   useEffect(() => {
     const registerView = () =>
       fetch(`/api/views/${post.slug}`, {
-        method: "POST"
+        method: 'POST'
       });
-    if (process.env.NODE_ENV === "production") {
+    if (process.env.NODE_ENV === 'production') {
       registerView();
     }
   }, [post.slug]);
@@ -52,8 +52,8 @@ export default function BlogLayout({
               className="rounded-full"
             />
             <p className="text-sm ml-1">
-              {"kaichi / "}
-              {format(parseISO(post.publishedAt), "yyyy-MM-dd")}
+              {'kaichi / '}
+              {format(parseISO(post.publishedAt), 'yyyy-MM-dd')}
             </p>
           </div>
           <p className="text-sm min-w-32">

@@ -1,12 +1,12 @@
-import { writeFileSync } from "fs";
-import RSS from "rss";
-import { allBlogs } from ".contentlayer/data";
+import { writeFileSync } from 'fs';
+import RSS from 'rss';
+import { allBlogs } from '.contentlayer/data';
 
 function generate() {
   const feed = new RSS({
-    title: "kaichi",
-    site_url: "https://aboutkai.com",
-    feed_url: "https://aboutkai.com/feed.xml"
+    title: 'kaichi',
+    site_url: 'https://aboutkai.com',
+    feed_url: 'https://aboutkai.com/feed.xml'
   });
 
   allBlogs.map((p) => {
@@ -18,7 +18,7 @@ function generate() {
     });
   });
 
-  writeFileSync("./public/feed.xml", feed.xml({ indent: true }));
+  writeFileSync('./public/feed.xml', feed.xml({ indent: true }));
 }
 
 generate();

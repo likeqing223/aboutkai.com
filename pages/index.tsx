@@ -1,16 +1,16 @@
-import Bangumis from "components/bilibili/Bangumis";
-import Videos from "components/bilibili/Videos";
-import BlogPost from "components/BlogPost";
-import Container from "components/Container";
-import fetcher from "lib/fetcher";
-import { BilibiliBangumi, BilibiliVideo } from "lib/types";
-import get from "lodash.get";
-import { InferGetStaticPropsType } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { allBlogs } from ".contentlayer/data";
-import { pick } from "lib/utils";
+import { allBlogs } from '.contentlayer/data';
+import Bangumis from 'components/bilibili/Bangumis';
+import Videos from 'components/bilibili/Videos';
+import BlogPost from 'components/BlogPost';
+import Container from 'components/Container';
+import fetcher from 'lib/fetcher';
+import { BilibiliBangumi, BilibiliVideo } from 'lib/types';
+import { pick } from 'lib/utils';
+import get from 'lodash.get';
+import { InferGetStaticPropsType } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 
 export default function Home({
   videos,
@@ -26,7 +26,7 @@ export default function Home({
               kaichi
             </h1>
             <p className="mb-4 text-gray-800 dark:text-gray-400">
-              前端开发{" "}
+              前端开发{' '}
               <a
                 className="font-medium"
                 target="_blank"
@@ -116,11 +116,11 @@ export async function getStaticProps() {
 
   return {
     props: {
-      videos: get(datas, [0, "data"], []) as BilibiliVideo[],
-      bangumis: get(datas, [1, "data"], []) as BilibiliBangumi[],
+      videos: get(datas, [0, 'data'], []) as BilibiliVideo[],
+      bangumis: get(datas, [1, 'data'], []) as BilibiliBangumi[],
       posts: allBlogs
         .map((post) =>
-          pick(post, ["slug", "title", "description", "publishedAt"])
+          pick(post, ['slug', 'title', 'description', 'publishedAt'])
         )
         .sort(
           (a, b) =>

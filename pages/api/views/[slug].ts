@@ -1,5 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import { prisma } from "lib/prisma";
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { prisma } from 'lib/prisma';
 
 export default async function handler(
   req: NextApiRequest,
@@ -9,7 +9,7 @@ export default async function handler(
     const slug = req.query.slug.toString();
 
     // 记录浏览次数
-    if (req.method === "POST") {
+    if (req.method === 'POST') {
       const upsertViews = await prisma.views.upsert({
         where: { slug },
         create: {
@@ -28,7 +28,7 @@ export default async function handler(
     }
 
     // 查询浏览次数
-    if (req.method === "GET") {
+    if (req.method === 'GET') {
       const views = await prisma.views.findUnique({
         where: {
           slug
