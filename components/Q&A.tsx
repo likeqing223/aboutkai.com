@@ -25,7 +25,7 @@ export function QAndA({ a, q, e, options }: QAndAProps) {
         {options.map((o, i) => (
           <button
             className={classNames(
-              'flex justify-between items-center w-full py-2 px-4 border dark:border-gray-700 rounded text-left',
+              'flex justify-between items-center w-full py-2 px-4 border dark:border-gray-700 rounded text-left transition-all',
               select === i
                 ? correct(i)
                   ? 'border-green-500 dark:border-green-500 bg-green-100 dark:bg-green-900'
@@ -39,7 +39,7 @@ export function QAndA({ a, q, e, options }: QAndAProps) {
             {select === i ? (
               correct(i) ? (
                 <svg
-                  className="w-6 h-6 text-green-500 dark:text-green-500"
+                  className="w-6 h-6 text-green-500 dark:text-green-500 transition-all"
                   viewBox="0 0 24 24"
                 >
                   <path
@@ -49,7 +49,7 @@ export function QAndA({ a, q, e, options }: QAndAProps) {
                 </svg>
               ) : (
                 <svg
-                  className="w-6 h-6 text-red-500 dark:text-red-500"
+                  className="w-6 h-6 text-red-500 dark:text-red-500 transition-all"
                   viewBox="0 0 24 24"
                 >
                   <path
