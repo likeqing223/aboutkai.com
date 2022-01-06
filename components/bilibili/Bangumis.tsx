@@ -1,7 +1,7 @@
-import fetcher from "lib/fetcher";
-import { BilibiliBangumi } from "lib/types";
-import useSWR from "swr";
-import Image from "next/image";
+import fetcher from 'lib/fetcher';
+import { BilibiliBangumi } from 'lib/types';
+import useSWR from 'swr';
+import Image from 'next/image';
 
 export default function Bangumis({
   bangumis
@@ -25,8 +25,8 @@ export default function Bangumis({
               <Image
                 src={d.square_cover}
                 alt={d.title}
-                width="120px"
-                height="120px"
+                width={120}
+                height={120}
                 className="rounded-md"
                 loading="lazy"
               />
@@ -41,8 +41,8 @@ export default function Bangumis({
               <Image
                 src={d.cover}
                 alt={d.title}
-                width="165px"
-                height="210px"
+                width={165}
+                height={210}
                 className="rounded-md"
                 loading="lazy"
               />

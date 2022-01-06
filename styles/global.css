@@ -21,6 +21,10 @@
   .prose details {
     @apply py-5;
   }
+
+  .prose blockquote p:first-of-type::before {
+    content: '';
+  }
 }
 
 @import 'prism-themes/themes/prism-one-dark.min.css' screen;

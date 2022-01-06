@@ -4,7 +4,7 @@ publishedAt: '2022-01-04'
 description: JavaScript 中有很多诡异的地方，有时候它不以你想象的方式运作。
 ---
 
-JavaScript 中有很多诡异的地方，有时候它不以你想象的方式运作。即使作为日常使用者，也没法做到立刻说出答案。下面 25 题（[题目来源](https://jsisweird.com)），看看你能答对吗？
+JavaScript 中有很多诡异的地方，有时候它不以你想象的方式运作。即使作为日常使用者，也没法立刻说出答案。下面 25 题（[题目来源](https://jsisweird.com)），看看你能答对吗？
 
 <QAndA
   q="true + false"
@@ -14,6 +14,12 @@ JavaScript 中有很多诡异的地方，有时候它不以你想象的方式运
 
 <details>
   <summary>解释</summary>
+
+二元运算符（+）计算两个数字的和，也可以连接字符串。如果其中一个操作数（operand）是字符串类型则执行字符串拼接（先类型转换为 `String`），否则计算数字之和（先类型转换为 `Numeric`）。
+
+题目中的两个操作数是 `Boolean` 类型，所以需要 [ToNumeric](https://tc39.es/ecma262/multipage/abstract-operations.html#sec-tonumeric) 转换类型后计算和。ToNumeric(true) 结果是 `1`，ToNumeric(false) 结果是 `0`，所以结果是 `1 + 0` => `1`。
+
+> 如果 ToNumeric 转换后两操作数类型不同则会抛出 **TypeError** 异常。
 
 </details>
 
