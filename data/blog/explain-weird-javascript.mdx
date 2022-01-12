@@ -15,11 +15,14 @@ JavaScript 中有很多诡异的地方，有时候它不以你想象的方式运
 <details>
   <summary>解释</summary>
 
-二元运算符（+）计算两个数字的和，也可以连接字符串。如果其中一个操作数（operand）是字符串类型则执行字符串拼接（先类型转换为 `String`），否则计算数字之和（先类型转换为 `Numeric`）。
+根据 [ECMA262 规范](https://262.ecma-international.org/#sec-addition-operator-plus)，两个布尔值相加结果为其转换为数值类型的值相加。
 
-题目中的两个操作数是 `Boolean` 类型，所以需要 [ToNumeric](https://tc39.es/ecma262/multipage/abstract-operations.html#sec-tonumeric) 转换类型后计算和。ToNumeric(true) 结果是 `1`，ToNumeric(false) 结果是 `0`，所以结果是 `1 + 0` => `1`。
+```js
+Number(true); // -> 1
+Number(false); // -> 0
 
-> 如果 ToNumeric 转换后两操作数类型不同则会抛出 **TypeError** 异常。
+1 + 0; // -> 1
+```
 
 </details>
 
@@ -27,6 +30,14 @@ JavaScript 中有很多诡异的地方，有时候它不以你想象的方式运
 
 <details>
   <summary>解释</summary>
+
+JavaScript 会忽略数组中的尾后逗号。
+
+```js
+[] + [] === [,] + [,]; // -> true
+```
+
+所以 `[,,,]` 和 `[1,2,3]` 的 `length` 都是 `3`。
 
 </details>
 
@@ -38,6 +49,15 @@ JavaScript 中有很多诡异的地方，有时候它不以你想象的方式运
 
 <details>
   <summary>解释</summary>
+
+根据 [ECMA262 规范](https://262.ecma-international.org/#sec-addition-operator-plus) 二元运算符(+) 在求值前会将操作数转换为原始类型[ToPrimitive](https://262.ecma-international.org/#sec-toprimitive)。数值通过调用 `Array.prototype.join()` 计算该值。
+
+```js
+[1, 2, 3].join(); // -> "1,2,3"
+[4, 5, 6].join(); // -> "4,5,6"
+
+'1,2,3' + '4,5,6'; // -> "1,2,34,5,6"
+```
 
 </details>
 
