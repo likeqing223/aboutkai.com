@@ -27,7 +27,7 @@ export default function Blog({
     <Container
       title="博客 - kaichi"
       description="在学习的过程中，优质的知识分享博客是我能够成长的主要输入来源，非常感谢认真做知识分享的博主。在分享中传播知识的同时有利于知识的巩固，所以我决定记录下我的学习历程。包括
-      JavaScript & TypeScript、 React、GraphQL、Flutter..."
+      JavaScript & TypeScript、 React、Rust、Flutter、GraphQL..."
     >
       <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-8">
         <h1 className="mb-4 text-2xl md:text-3xl font-medium tracking-tight">
