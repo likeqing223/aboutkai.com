@@ -1,0 +1,66 @@
+---
+title: CSS :nth-child() 选择器的一次踩坑
+publishedAt: '2022-01-27'
+description: ''
+---
+
+`:nth-child(an+b)` 允许我们通过 `an+b` 表达式匹配元素集合。具体细节看 [:nth-child](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:nth-child)。
+
+现在如果让你修改 `table` 的奇数行的背景色，你知道如何修改吗？
+
+```css
+table tbody tr:nth-child(odd) {
+  background: red; // 醒目的红色
+}
+```
+
+很简单对吧？但是在修改蚂蚁的 `table` 行背景色时，却出了问题。考虑下面这个例子。
+
+```html
+<div class="a">hidden content</div>
+<div class="b">content</div>
+<div class="b">content</div>
+<div class="b">content</div>
+<div class="b">content</div>
+<div class="b">content</div>
+```
+
+```css
+div.b {
+  color: red;
+}
+```
+
+现在文本 `content` 的颜色为红色，`hidden content` 不受影响（很好理解，没有选到 ）。
+
+```css
+div.b:nth-child(even) {
+  background: green;
+}
+```
+
+那么这个时候受影响的 `div` 是哪些呢？是 `class="b"` 的 `div` 的偶数项吗？答案是所有的 `div` 的偶数项。
+
+```css
+div:nth-child(even) {
+  background: green;
+}
+```
+
+和这样写效果一样。元素集合改变了！
+
+<iframe
+  height="300"
+  style={{ width: '100%' }}
+  scrolling="no"
+  title=":nth-child"
+  src="https://codepen.io/kaichii/embed/MWOYPRa?default-tab=css%2Cresult"
+  frameborder="no"
+  loading="lazy"
+  allowtransparency="true"
+  allowfullscreen="true"
+>
+  See the Pen <a href="https://codepen.io/kaichii/pen/MWOYPRa">:nth-child</a> by
+  kaichi (<a href="https://codepen.io/kaichii">@kaichii</a>) on{' '}
+  <a href="https://codepen.io">CodePen</a>.
+</iframe>
