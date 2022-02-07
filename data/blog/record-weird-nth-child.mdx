@@ -1,0 +1,109 @@
+---
+title: 记录关于 :nth-child 伪类选择器的奇怪现象
+publishedAt: '2022-02-07'
+description: :nth-child 伪类选择器没有如想象般工作而引发的问题。
+---
+
+`:nth-child(an+b)` 允许我们通过 `an+b` 表达式匹配元素集合，[文档在这](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:nth-child)。
+
+现在如果让你修改 `table` 的奇数行的背景色。
+
+```css
+table tbody tr:nth-child(odd) {
+  background: red; // 醒目的红色
+}
+```
+
+很简单对吧？但是在修改 [antd](https://ant.design/components/table-cn/) 的 `table` 行背景色时，却出了问题。考虑下面这个例子。
+
+```html:html
+<div class="a" hidden>hidden content</div>
+<div class="b">content</div>
+<div class="b">content</div>
+<div class="b">content</div>
+<div class="b">content</div>
+<div class="b">content</div>
+```
+
+```css:css
+div.b {
+  color: red;
+}
+```
+
+现在文本 content 的颜色为红色，hidden content 不受影响（很好理解，没有选到 ）。
+
+```css
+div.b:nth-child(even) {
+  background: green;
+}
+```
+
+那么这个时候受影响的 `div` 是哪些呢？是 `class="b"` 的 `div` 的偶数项吗？答案是所有的 `div` 的偶数项。
+
+```css
+div:nth-child(even) {
+  background: green;
+}
+```
+
+和上面这种写法效果一样。其实 `.b` 选择器是多余的（也不完全多余，至少可以提高权重），`:nth-child` 完整的选择器语法是 `E:nth-child(n)`，其中 `E` 为一个元素类型。这就是 `.b` 选择器没能影响元素集合的原因。
+
+自己试一试。
+
+<iframe
+  height="300"
+  style={{ width: '100%' }}
+  scrolling="no"
+  title="nth-child"
+  src="https://codepen.io/kaikaichi/embed/vYWEMJO?default-tab=css%2Cresult&editable=true"
+  frameBorder="no"
+  loading="lazy"
+  allowtransparency="true"
+  allowFullScreen={true}
+></iframe>
+
+## 解决
+
+### 方法一
+
+使用 `nth-of-type` 伪类选择器。
+
+```html:html
+<span class="a" hidden>hidden content</span>
+<div class="b">content</div>
+<div class="b">content</div>
+<div class="b">content</div>
+<div class="b">content</div>
+<div class="b">content</div>
+```
+
+```css
+div:nth-of-type(even) {
+  background: green;
+}
+```
+
+对于可以修改 DOM 结构的情况下适用。
+
+### 方法二
+
+> 此特性还在提案阶段。
+
+对于无法修改 DOM 结构的情况（例如 [antd table 组件](https://ant.design/components/table-cn/) 中的 `.ant-table-measure-row`），[Selectors Level 4](https://drafts.csswg.org/selectors-4/#nth-child-pseudo) 提案中的新 `:nth-child(an+b of S)` 伪类选择器，基于计算的元素集合是匹配 `S` 选择器的元素集合。上面的选择器可以改写成：
+
+```css
+div:nth-child(even of .b) {
+  background: green;
+}
+```
+
+此时就能确保只有 `class="b"` 的 `div` 的偶数项被选中。或者这样：
+
+```css
+div:nth-child(even of :not([hidden])) {
+  background: green;
+}
+```
+
+即使有隐藏元素，背景色也总是条纹状。
