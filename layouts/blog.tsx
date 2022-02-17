@@ -8,7 +8,7 @@ import React, { PropsWithChildren, useEffect } from 'react';
 import useSWR from 'swr';
 
 const editUrl = (slug: string) =>
-  `https://github.com/kaichii/kaichii.github.io/edit/main/data/blog/${slug}.mdx`;
+  `https://github.com/kaichii/aboutkai.com/edit/main/data/blog/${slug}.mdx`;
 
 export default function BlogLayout({
   children,
