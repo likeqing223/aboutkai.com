@@ -1,0 +1,180 @@
+---
+title: 'React: useImperativeHandle with Typescript'
+publishedAt: 2022-04-11
+description: react useImperativeHandle typescript cheet sheat
+---
+
+封装组件时，有时组件需要暴露命令式的 API 供外部调用，`useImperativeHandle` Hook 可以自定义要暴露的实例。比如：
+
+```jsx
+function Counter({ defaultValue = 0 }) {
+  const [count, setCount] = useState(defaultValue);
+
+  const increment = () => setCount((prev) => prev + 1);
+
+  return (
+    <>
+      {count}
+      <button onClick={increment}>click me</button>
+    </>
+  );
+}
+
+function App() {
+  return <Counter />;
+}
+```
+
+现在 `Counter` 组件内部完成对状态的控制，如果 `App` 要通过命令式的方式调用 `Counter` 的 `increment` 方法，可以使用 `useImperativeHandle` Hook 将该方法暴露出去。
+
+```jsx:Counter.jsx
+const Counter = forwardRef(({ defaultValue = 0 }, ref) => {
+  const [count, setCount] = useState(defaultValue);
+  const increment = () => setCount((prev) => prev + 1);
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      increment
+    }),
+    []
+  );
+
+  return (
+    <>
+      {count}
+      <button onClick={increment}>click me</button>
+    </>
+  );
+});
+
+export default Counter;
+```
+
+```jsx:App.jsx
+export default function App() {
+  const counterRef = useRef(null);
+  return (
+    <>
+      <Counter ref={counterRef} />
+      <button onClick={() => counterRef.current?.increment()}>click</button>
+    </>
+  );
+}
+```
+
+点击 `App` 中的按钮时，也能改变 `Counter` 内部的状态，但是如果用 _typescript_ 改写组件时，则会发现暴露出来的 API `increment` 方法的类型无法推断出来。
+
+![error](/static/images/react-useImperativeHandle-with-typescript/ts-error.png)
+
+改写一下 `Counter` 组件。
+
+```tsx:Counter.tsx
+type CounterHandle = {
+  increment: VoidFunction;
+};
+
+type CounterProps = {
+  defaultValue?: number;
+};
+
+const Counter: ForwardRefRenderFunction<CounterHandle, CounterProps> = (
+  { defaultValue = 0 },
+  ref
+) => {
+  const [count, setCount] = useState(defaultValue);
+  const increment = () => setCount((prev) => prev + 1);
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      increment
+    }),
+    []
+  );
+
+  return (
+    <>
+      {count}
+      <button onClick={increment}>click me</button>
+    </>
+  );
+};
+
+export default forwardRef(Counter);
+```
+
+在 `App` 中使用。
+
+```tsx:App.tsx
+function App() {
+  const counterRef = useRef<ElementRef<typeof Counter>>(null);
+  return (
+    <>
+      <Counter ref={counterRef} />
+      <button onClick={() => counterRef.current?.increment()}>click</button>
+    </>
+  );
+}
+```
+
+类型可以正常推导。以上，下面是全部代码。
+
+```tsx:Counter.tsx
+import {
+  forwardRef,
+  useState,
+  useImperativeHandle,
+  ForwardRefRenderFunction
+} from "react";
+
+type CounterHandle = {
+  increment: VoidFunction;
+};
+
+type CounterProps = {
+  defaultValue?: number;
+};
+
+const Counter: ForwardRefRenderFunction<CounterHandle, CounterProps> = (
+  { defaultValue = 0 },
+  ref
+) => {
+  const [count, setCount] = useState(defaultValue);
+  const increment = () => setCount((prev) => prev + 1);
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      increment
+    }),
+    []
+  );
+
+  return (
+    <>
+      {count}
+      <button onClick={increment}>click me</button>
+    </>
+  );
+};
+
+export default forwardRef(Counter);
+```
+
+```tsx:App.tsx
+import { ElementRef, useRef } from "react";
+import Counter from "./Counter";
+
+export default function App() {
+  const counterRef = useRef<ElementRef<typeof Counter>>(null);
+
+  return (
+    <>
+      <Counter defaultValue={1} ref={counterRef} />
+      <button onClick={() => counterRef.current?.increment()}>click</button>
+    </>
+  );
+}
+
+```
