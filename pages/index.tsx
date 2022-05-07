@@ -18,7 +18,7 @@ export default function Home({
   posts
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <Container title="主页 - kaichi">
+    <Container>
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto pb-8">
         <div className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex flex-col pr-8">

@@ -25,7 +25,11 @@ export default function Custom404() {
   };
 
   return (
-    <Container>
+    <Container
+      title="Page Not Found"
+      description="Page Not Found"
+      url="https://aboutkai.com/404"
+    >
       <div className="max-w-2xl mx-auto mb-8 w-full">
         <h1 className="mb-6">404 - 资源未找到</h1>
         <p className="text-gray-700 dark:text-gray-500 mb-8">

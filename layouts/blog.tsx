@@ -33,10 +33,11 @@ export default function BlogLayout({
 
   return (
     <Container
-      title={`${post.title} - kaichi`}
+      title={post.title}
       description={post.description}
       date={new Date(post.publishedAt).toISOString()}
       type="article"
+      url={`https://aboutkai.com/blog/${post.slug}`}
     >
       <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-8">
         <h1 className="text-3xl md:text-4xl font-medium tracking-tight mb-8">

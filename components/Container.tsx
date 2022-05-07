@@ -13,6 +13,7 @@ type ContainerProps = PropsWithChildren<{
   image?: string;
   type?: string;
   date?: string;
+  url?: string;
 }>;
 
 type NavItemProps = {
@@ -54,7 +55,9 @@ export default function Container(props: ContainerProps) {
   useEffect(() => setMounted(true), []);
 
   const meta = {
-    title: 'https://aboutkai.com',
+    title: 'kaichi',
+    url: 'https://aboutkai.com',
+    image: 'https://aboutkai.com/avatar.jpg',
     description:
       '分享个人观点、新学到的知识以及一些编程经验。 Knowledge Growth in Sharing.',
     ...customMeta
@@ -63,8 +66,12 @@ export default function Container(props: ContainerProps) {
   return (
     <div>
       <Head>
-        <title>{meta.title}</title>
-        <meta content={meta.description} name="description" />
+        <title>{meta.title} - kaichi</title>
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:url" content={meta.url} />
+        <meta property="og:type" content={meta.type ?? 'website'} />
+        <meta property="og:image" content={meta.image} />
         {meta.date && (
           <meta property="article:published_time" content={meta.date} />
         )}
