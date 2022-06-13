@@ -11,3 +11,5 @@ public/feed.xml
 public/sitemap.xml
 
 .vscode
+
+.DS_Store
