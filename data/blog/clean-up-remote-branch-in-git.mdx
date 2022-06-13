@@ -1,12 +1,14 @@
 ---
-title: '使用 prune 清理 Git 仓库的远程分支'
+title: '使用 `prune` 清理 Git 仓库的远程分支'
 publishedAt: '2022-06-13'
-description: 使用 prune 清理 Git 仓库的远程分支
+description: 使用 `prune` 清理 Git 仓库的远程分支
 ---
 
-Git 的好处之一就是其在删除数据方面尤为谨慎，因此我们很难丢失提交记录或者其它有用的数据。
+Git 的好处之一就是其在删除数据方面尤为谨慎，因此我们很难丢失提交记录或者其它有用的数据。但是这样的好处有时也会带来一些小麻烦，有时我们可能会看到实际上不再需要的旧数据。
 
-但是这样的好处有时也会带来一些小麻烦，有时我们可能会看到实际上不再需要的旧数据。最好的例子之一是已经删除的远程分支引用，可能某些分支在某种情况下在远程仓库中被删除，除非你明确指示 Git 进行清理，否则该分支仍然对你可见。当在这种情况下 `fetch` 分支信息会出现下面的报错。
+## 问题
+
+最好的例子之一是已经删除的远程分支引用，可能某些分支在某种情况下在远程仓库中被删除，除非你明确指示 Git 进行清理，否则该分支仍然对你可见。当在这种情况下 `fetch` 分支信息会出现下面的报错。
 
 ```bash
 $ error: cannot lock ref 'refs/remotes/origin/dev': 'refs/remotes/origin/dev' exists; cannot create 'refs/remotes/origin/dev'
@@ -14,11 +16,17 @@ $ error: cannot lock ref 'refs/remotes/origin/dev': 'refs/remotes/origin/dev' ex
 
 因为 `dev` 分支在远程已被删除，所以我们可以在本地创建 `dev` 分支进行修改并提交的远程。但当我们 `fetch` 时，两个相同的引用出现了冲突，产生了上述的错误。
 
+## 解决
+
+### 方法一
+
 那么怎么解决这个问题呢？最简单的方法是使用 `fetch` 的 `--prune` 参数。
 
 ```bash
 $ git fetch --prune origin
 ```
+
+### 方法二
 
 或者如果不想获取远程数据，可以使用 `remote` 指令。
 
@@ -27,6 +35,8 @@ $ git remote prune origin
 ```
 
 两种方法的结果是一样的，都将删除远程仓库上不再存在的远程分支的旧引用。
+
+### 方法三
 
 另一个一劳永逸的方法是 Git 全局配置，使其每次 `fetch` 时执行 `prune`。
 
