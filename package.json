@@ -32,6 +32,7 @@
     "use-delayed-render": "^0.0.7"
   },
   "devDependencies": {
+    "@types/hast": "^2.3.4",
     "@types/lodash.get": "^4.4.6",
     "@types/react": "^17.0.37",
     "autoprefixer": "^10.4.0",
