@@ -9,7 +9,7 @@ export default function Guestbook() {
       description="欢迎大家评论留言。"
       url="https://aboutkai.com/guestbook"
     >
-      <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-8 w-full">
+      <div className="max-w-xl mx-auto mb-8">
         <h1 className="mb-4 text-2xl md:text-3xl font-medium tracking-tight">
           留言板
         </h1>

@@ -1,5 +1,3 @@
-const { spacing } = require('tailwindcss/defaultTheme');
-
 module.exports = {
   mode: 'jit',
   content: ['./pages/**/*.tsx', './components/**/*.tsx', './layout/**/*.tsx'],

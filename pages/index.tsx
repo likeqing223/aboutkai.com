@@ -19,7 +19,7 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Container>
-      <div className="flex flex-col justify-center items-start max-w-2xl mx-auto pb-8">
+      <div className="max-w-xl mx-auto pb-8">
         <div className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex flex-col pr-8">
             <h1 className="font-medium text-4xl md:text-5xl tracking-tight mb-2">

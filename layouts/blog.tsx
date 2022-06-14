@@ -39,12 +39,12 @@ export default function BlogLayout({
       type="article"
       url={`https://aboutkai.com/blog/${post.slug}`}
     >
-      <article className="flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-8">
+      <article className="max-w-xl mx-auto mb-8">
         <h1 className="text-3xl md:text-4xl font-medium tracking-tight mb-8">
           {post.title}
         </h1>
-        <div className="flex items-start justify-between w-full text-gray-600 mb-6">
-          <div className="flex items-center">
+        <div className="flex items-center text-gray-600 mb-6 justify-between">
+          <div className="items-center" style={{ display: 'inline-flex' }}>
             <Image
               alt="kaichi"
               height={24}
@@ -52,10 +52,10 @@ export default function BlogLayout({
               src="/avatar.jpg"
               className="rounded-full"
             />
-            <p className="text-sm ml-1">
-              {'kaichi / '}
+            <span className="text-sm font-medium" style={{ marginLeft: 8 }}>
+              {'kaichi • '}
               {format(parseISO(post.publishedAt), 'yyyy-MM-dd')}
-            </p>
+            </span>
           </div>
           <p className="text-sm min-w-32">
             {`${Math.round(post.readingTime)} 分钟`} • {`${views} 阅读`}
