@@ -5,13 +5,13 @@ import React from 'react';
 export default function Guestbook() {
   return (
     <Container
-      title="留言板"
+      title="留言"
       description="欢迎大家评论留言。"
       url="https://aboutkai.com/guestbook"
     >
       <div className="max-w-xl mx-auto mb-8">
         <h1 className="mb-4 text-2xl md:text-3xl font-medium tracking-tight">
-          留言板
+          留言
         </h1>
         <p className="mb-6 text-gray-700 dark:text-gray-500">
           欢迎大家评论留言。

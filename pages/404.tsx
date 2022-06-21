@@ -1,12 +1,6 @@
 import Container from 'components/Container';
 import MDWrapper from 'components/MDWrapper';
-import {
-  ReasonPhrases,
-  StatusCodes,
-  getReasonPhrase,
-  getStatusCode
-} from 'http-status-codes';
-import React from 'react';
+import { getReasonPhrase, StatusCodes } from 'http-status-codes';
 
 export default function Custom404() {
   const codes = Object.keys(StatusCodes)
@@ -32,7 +26,7 @@ export default function Custom404() {
     >
       <div className="max-w-xl mx-auto mb-8">
         <h1 className="mb-6">404 - 资源未找到</h1>
-        <p className="text-gray-700 dark:text-gray-500 mb-8">
+        <p className="text-gray-700 dark:text-gray-500 mb-16">
           这里本来有什么？或者什么也没有。
         </p>
         <MDWrapper>

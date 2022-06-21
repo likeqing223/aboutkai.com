@@ -84,7 +84,7 @@ export default function Home({
         <Videos videos={videos} />
         <Link href="/blog">
           <a className="flex text-sm md:text-base items-center transition-all text-gray-700 dark:text-gray-500 mt-6">
-            B 站主页
+            哔哩哔哩
             <svg className="h-6 w-6" viewBox="0 0 24 24">
               <path
                 fill="currentColor"
@@ -95,7 +95,7 @@ export default function Home({
         </Link>
         <div className="flex items-center justify-between w-full mt-8 mb-6">
           <h3 className="text-xl md:text-2xl tracking-tight text-gray-800 dark:text-gray-200">
-            最近在看
+            最近在看（番剧）
           </h3>
         </div>
         <Bangumis bangumis={bangumis.slice(0, 4)} />
