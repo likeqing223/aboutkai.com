@@ -31,6 +31,11 @@ export default function Footer() {
               博客
             </a>
           </Link>
+          <Link href="/notes">
+            <a className="text-gray-600 hover:text-gray-700 dark:hover:text-gray-400">
+              笔记
+            </a>
+          </Link>
           <Link href="/guestbook">
             <a className="text-gray-600 hover:text-gray-700 dark:hover:text-gray-400">
               留言

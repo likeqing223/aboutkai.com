@@ -24,7 +24,7 @@ export default function Custom404() {
       description="Page Not Found"
       url="https://aboutkai.com/404"
     >
-      <div className="max-w-xl mx-auto mb-8">
+      <div className="max-w-xl mx-auto mb-8 px-2">
         <h1 className="mb-6">404 - 资源未找到</h1>
         <p className="text-gray-700 dark:text-gray-500 mb-16">
           这里本来有什么？或者什么也没有。

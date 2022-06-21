@@ -8,12 +8,14 @@ import Footer from './Footer';
 import MobileMenu from './MobileMenu';
 
 type ContainerProps = PropsWithChildren<{
+  author?: string;
   title?: string;
   description?: string;
   image?: string;
   type?: string;
   date?: string;
   url?: string;
+  update_time?: string;
 }>;
 
 type NavItemProps = {
@@ -49,12 +51,14 @@ export default function Container(props: ContainerProps) {
   const menuItems = [
     { href: '/', text: '主页' },
     { href: '/blog', text: '博客' },
+    { href: '/notes', text: '笔记' },
     { href: '/guestbook', text: '留言' }
   ];
 
   useEffect(() => setMounted(true), []);
 
   const meta = {
+    author: 'kaichi',
     title: 'kaichi',
     url: 'https://aboutkai.com',
     image: 'https://aboutkai.com/avatar.jpg',
@@ -67,6 +71,7 @@ export default function Container(props: ContainerProps) {
     <div>
       <Head>
         <title>{meta.title} - kaichi</title>
+        <meta property="author" content={meta.author} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:url" content={meta.url} />

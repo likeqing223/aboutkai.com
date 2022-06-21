@@ -1,0 +1,9 @@
+### 忽略已被 Git 追踪的文件
+
+> 更新时间: 2022-06-21
+
+已被 Git 追踪的文件在之后被添加到 `.gitignore` 后不会被忽略，需要将该文件从 _Index_ 中删除并重新提交。
+
+```shell
+$ git rm -r --cached <filename>
+```
