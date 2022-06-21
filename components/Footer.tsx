@@ -46,6 +46,9 @@ export default function Footer() {
           <ExternalLink href="https://github.com/kaichii/aboutkai.com">
             GitHub
           </ExternalLink>
+          <ExternalLink href="https://twitter.com/imkaichi">
+            Twitter
+          </ExternalLink>
           <ExternalLink href="https://music.163.com/#/user/home?id=276894900">
             网易云
           </ExternalLink>
