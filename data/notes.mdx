@@ -1,9 +1,37 @@
+### `Array.prototype.fill()` 使用对象填充数组，填充的是对象的引用
+
+> 更新时间: 2022-06-21
+
+例如，初始化一个二维数组：
+
+```js
+const matrix = new Array(3).fill(new Array(3).fill(false));
+
+matrix[0][0] = true;
+// [[true, false, false],
+//  [true, false, false],
+//  [true, false, false]]
+```
+
+使用 `Array.from` 创建：
+
+```js
+const matrix = Array.from({ length: 3 }, () => new Array(3).fill(false));
+
+matrix[0][0] = true;
+// [[true , false, false],
+//  [false, false, false],
+//  [false, false, false]]
+```
+
 ### 忽略已被 Git 追踪的文件
 
 > 更新时间: 2022-06-21
 
-已被 Git 追踪的文件在之后被添加到 `.gitignore` 后不会被忽略，需要将该文件从 _Index_ 中删除并重新提交。
+已被 Git 追踪的文件在之后被添加到 `.gitignore` 后不会被忽略，需要将该文件从 **Index** 中删除并重新提交。
 
 ```shell
 $ git rm -r --cached <filename>
 ```
+
+更多关于 `git rm` 指令，[🔎 详情](https://git-scm.com/docs/git-rm)。
