@@ -1,0 +1,122 @@
+---
+title: 你可能不需要 Effect
+publishedAt: 2022-06-22
+description: '移除不必要的 Effect 可以使代码效率更高且不易出错'
+---
+
+Effect（或者叫它“副作用”）被用来将外部系统（例如：当计数器改变时将其同步到文档标题中，这里指 DOM，其他如：网络，非 React 组件）和组件（React 组件）状态进行同步。如果不涉及外部系统状态同步，则不需要 Effect。移除不必要的 Effect 可以使代码效率更高且不易出错。
+
+## 如何移除不必要的 Effects
+
+下面两种常见的情况是不需要 Effects 的：
+
+- **不要转换数据进而渲染**。例如你想在列表被展示前过滤它，你可能想在 Effect 里监听列表变化并更改组件 state。这么做是效率很低的，因为当你更新组件 state 时，React 会先调用组件计算什么该渲染，然后[提交](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/learn/render-and-commit)变动给 DOM，然后更新视图。然后 React 再去执行 Effect，如果你的 Effect*又*立即更新了 state，前面的整个过程又得从头来过。为了避免不必要的渲染，在组件外部进行数据转换，这样当 state 或 props 更改时，组件会自动更新。
+- **不要在 Effect 里处理用户事件**。例如你想在用户购买商品时发送请求并弹出提示。在购买按钮的点击事件里，你知道实际发生了什么。但是在 Effect 里处理，你丢失了这些信息（例如，用户点了哪个购买按钮？）。
+
+Effect 用来同步外部系统状态，例如使用 Effect 将 JQuery 组件和 React 组件状态保持同步。也可以在 Effect 里请求数据，例如根据当前关键词同步搜索结果。但是通常是不需要的，有很多其他库提供了效率更高的在组件内请求数据的方式。
+
+### 根据 state 或 props 更新 state
+
+假设有一个组件内部有两个 state：`firstName` 和 `lastName`。你可能想通过这两个状态得到 `fullName`。并且想在 `firstName` 或 `lastName` 更新时同步更新 `fullName`，首先想到的可能是添加一个 `fullName` state，并在 Effect 里更新它。
+
+```jsx
+function Form() {
+  const [firstName, setFirstName] = useState('Taylor');
+  const [lastName, setLastName] = useState('Swift');
+
+  // 🔴 Avoid: 多余的状态和不必要的 Effect
+  const [fullName, setFullName] = useState('');
+  useEffect(() => {
+    setFullName(firstName + ' ' + lastName);
+  }, [firstName, lastName]);
+  // ...
+}
+```
+
+这不是必不必要的问题，这会变得更加复杂。而且效率低下：组件根据旧的 `fullName` 执行整个渲染过程，然后立刻根据新的 `fullName` 重新渲染。移除 Effect 和 state：
+
+```jsx
+function Form() {
+  const [firstName, setFirstName] = useState('Taylor');
+  const [lastName, setLastName] = useState('Swift');
+  // ✅ Good: 在渲染时计算
+  const fullName = firstName + ' ' + lastName;
+  // ...
+}
+```
+
+**当有需要根据 props 或 state 计算的状态时，[不要使用 state](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/learn/choosing-the-state-structure#avoid-redundant-state)，应该在渲染时计算**。这使代码更快（避免了额外的“级联”更新），更少（删除了一些代码）和更不容易出错（避免了不同 state 更新不同步而导致的错误）。
+
+### 缓存昂贵的计算
+
+这个组件根据 `todos` 和 props 中的 `filter` 属性计算 `visibleTodos`，你可能会想在一个 state 中存储结果并在 Effect 里更新：
+
+```jsx
+function TodoList({ todos, filter }) {
+  const [newTodo, setNewTodo] = useState('');
+
+  // 🔴 Avoid: 多余的状态和不必要的 Effect
+  const [visibleTodos, setVisibleTodos] = useState([]);
+  useEffect(() => {
+    setVisibleTodos(getFilteredTodos(todos, filter));
+  }, [todos, filter]);
+
+  // ...
+}
+```
+
+和前面的一个例子类似，都是不必要的并且效率很低。移除 Effect 和 state：
+
+```jsx
+function TodoList({ todos, filter }) {
+  const [newTodo, setNewTodo] = useState('');
+  // ✅ getFilteredTodos() 不慢的话是 👌 的
+  const visibleTodos = getFilteredTodos(todos, filter);
+  // ...
+}
+```
+
+大部分情况，这样写是没问题的。但是可能 `getFilteredTodos()` 很慢或者 `todos` 有大量的数据，这种情况下你不想在一些无关的 state（例如 `newTodo`）更新时重新执行 `getFilteredTodos()`，可以使用 `useMemo` 对昂贵的计算进行缓存：
+
+```jsx
+import { useMemo, useState } from 'react';
+
+function TodoList({ todos, filter }) {
+  const [newTodo, setNewTodo] = useState('');
+  // ✅ todos 或 filter 更新时才重新执行 getFilteredTodos()
+  const visibleTodos = useMemo(
+    () => getFilteredTodos(todos, filter),
+    [todos, filter]
+  );
+  // ...
+}
+```
+
+**这告诉 React 我们不想被包裹的函数重新执行除非 `todos` 或 `filter` 有更新**。React 会记住 `getFilteredTodos()` 在第一次渲染的返回值，在之后的渲染中，React 会检查 `todos` 或 `filter` 是否有更改。如果没有更改，`useMemo` 会返回上次的值，如果有更新，就重新执行 `getFilteredTodos()` 储存结果并返回。
+
+### props 更改时重置所有 state
+
+### props 更改时更改某些 state
+
+### 在事件处理中共享代码逻辑
+
+### 发送 POST 请求
+
+### 组件 state 更新时通知父组件
+
+### 传递数据给父组件
+
+### 订阅外部状态
+
+### 获取数据
+
+## 回顾
+
+- 如果可以在渲染期间计算某些内容，则不需要 Effect。
+- 要缓存昂贵的计算，使用 `useMemo` 而不是 `useEffect`。
+- 要重置组件内的所有状态，给它一个不同的 `key`。
+- props 更改时重置特定的 state，请在渲染期间执行。
+- 因为组件*显示*而需要执行的代码应该在 Effects 里，其余的应该在事件里。
+- 如果需要更新多个组件的状态，最好在单个事件中进行。
+- 每当你尝试同步不同组件中的状态时，考虑状态提升。
+- 可以在 Effect 中请求数据，但是需要实现清理以避免竞态（竞争状态）。

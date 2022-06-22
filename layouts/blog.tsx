@@ -39,7 +39,7 @@ export default function BlogLayout({
       type="article"
       url={`https://aboutkai.com/blog/${post.slug}`}
     >
-      <article className="max-w-xl mx-auto mb-8 px-2">
+      <article className="max-w-prose mx-auto mb-8 px-2">
         <h1 className="text-3xl md:text-4xl font-medium tracking-tight mb-8">
           {post.title}
         </h1>

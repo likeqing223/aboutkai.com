@@ -82,7 +82,7 @@ export default function Container(props: ContainerProps) {
         )}
       </Head>
       <div className="px-8">
-        <nav className="flex items-center justify-between w-full max-w-xl mx-auto relative pt-8 pb-8 md:pb-12">
+        <nav className="flex items-center justify-between w-full max-w-prose mx-auto relative pt-8 pb-8 md:pb-12">
           <a href="#skip" className="skip-nav">
             Skip to content
           </a>
