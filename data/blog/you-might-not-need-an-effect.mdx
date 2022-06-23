@@ -182,7 +182,7 @@ function List({ items }) {
 }
 ```
 
-现在根本不需要”调整“状态。如果被选择项的 ID 在 list 中，仍然会被选择。如果不存在，`selection` 则会在渲染时计算，结果将会时 `null`。This behavior is a bit different, but arguably it’s better because most changes to items now preserve the selection. However, you’d need to use `selection` in all the logic below because an item with `selectedId` might not exist.
+现在根本不需要”调整“状态。如果被选择项的 ID 在 list 中，仍然会被选择。如果不存在，`selection` 则会在渲染时计算，结果将会是 `null`。This behavior is a bit different, but arguably it’s better because most changes to items now preserve the selection. However, you’d need to use `selection` in all the logic below because an item with `selectedId` might not exist.
 
 ### 在 event handler 中复用代码逻辑
 
