@@ -68,7 +68,7 @@ export default function Home({
         <Link href="/blog">
           <a className="flex text-sm md:text-base items-center transition-all text-gray-700 dark:text-gray-500 mt-4">
             全部文章
-            <svg className="h-6 w-6" viewBox="0 0 24 24">
+            <svg className="h-4 w-4 md:h-6 md:w-6" viewBox="0 0 24 24">
               <path
                 fill="currentColor"
                 d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
@@ -85,7 +85,7 @@ export default function Home({
         <Link href="/blog">
           <a className="flex text-sm md:text-base items-center transition-all text-gray-700 dark:text-gray-500 mt-6">
             哔哩哔哩
-            <svg className="h-6 w-6" viewBox="0 0 24 24">
+            <svg className="h-4 w-4 md:h-6 md:w-6" viewBox="0 0 24 24">
               <path
                 fill="currentColor"
                 d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"

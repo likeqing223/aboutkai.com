@@ -24,14 +24,14 @@ module.exports = {
       },
       fontSize: {
         xs: ['12px', '1rem'],
-        sm: ['14px', '1.25rem'],
-        base: ['16px', '1.5rem'],
-        lg: ['18px', '1.75rem'],
-        xl: ['20px', '1.75rem'],
-        '2xl': ['24px', '2rem'],
-        '3xl': ['28px', '2.25rem'],
-        '4xl': ['32px', '1'],
-        '5xl': ['36px', '1']
+        sm: ['12px', '1.25rem'],
+        base: ['14px', '1.5rem'],
+        lg: ['16px', '1.75rem'],
+        xl: ['18px', '1.75rem'],
+        '2xl': ['20px', '2rem'],
+        '3xl': ['24px', '2.25rem'],
+        '4xl': ['28px', '1'],
+        '5xl': ['32px', '1']
       },
       typography: ({ theme }) => ({
         gray: {

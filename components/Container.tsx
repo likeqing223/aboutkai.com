@@ -34,7 +34,7 @@ function NavItem({ href, text }: NavItemProps) {
           isActive
             ? 'font-medium text-gray-800 dark:text-gray-200'
             : 'text-gray-700 dark:text-gray-400',
-          'hidden md:inline-block hover:bg-gray-200 dark:hover:bg-gray-800 transition-all rounded-md p-1 sm:py-2 sm:px-3 md:font-'
+          'hidden md:inline-block hover:bg-gray-200 dark:hover:bg-gray-800 transition-all rounded-md p-1 sm:py-2 sm:px-3'
         )}
       >
         <span>{text}</span>
@@ -59,7 +59,7 @@ export default function Container(props: ContainerProps) {
 
   const meta = {
     author: 'kaichi',
-    title: 'kaichi',
+    title: 'Home',
     url: 'https://aboutkai.com',
     image: 'https://aboutkai.com/avatar.jpg',
     description:

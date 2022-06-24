@@ -55,7 +55,7 @@ export default function MobileMenu({
           {menuItems.map((m, i) => (
             <li
               key={i}
-              className="border-b border-gray-300 dark:border-gray-800 text-gray-900 dark:text-gray-400 text-sm font-medium"
+              className="border-b border-gray-300 dark:border-gray-800 text-gray-900 dark:text-gray-400 text-base font-medium"
               style={{ transitionDelay: `${150 + i * 25}ms` }}
             >
               <Link href={m.href}>
