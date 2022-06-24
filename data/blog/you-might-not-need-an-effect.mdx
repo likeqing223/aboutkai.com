@@ -1,25 +1,26 @@
 ---
 title: 你可能不需要 Effect
-publishedAt: 2022-06-23
-description: '移除不必要的 Effect 可以使代码效率更高且不易出错'
+publishedAt: 2022-06-24
+description: 如何移除不必要的 Effect 以使代码效率更高且不易出错
 ---
 
-> 翻译自 [You Might Not Need an Effect](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/learn/you-might-not-need-an-effect) - [React beta Doc](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/)
+> 翻译自 [You Might Not Need an Effect](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/learn/you-might-not-need-an-effect)
 
-Effect（或者叫它“副作用”）被用来将外部系统（例如：当计数器改变时将其同步到文档标题中，这里指 DOM，其他如：网络，非 React 组件）和组件（React 组件）状态进行同步。如果不涉及外部系统状态同步，则不需要 Effect。移除不必要的 Effect 可以使代码效率更高且不易出错。
+Effect（或者叫它“副作用”）被用来将外部状态（例如：当计数器改变时将其同步到文档标题中，这里指 DOM，其他如：网络，非 React 组件）和 React 组件状态进行同步。如果不涉及外部状态同步，则不需要 Effect。移除不必要的 Effect 可以使代码效率更高且不易出错。
 
 ## 如何移除不必要的 Effects
 
 下面两种常见的情况是不需要 Effects 的：
 
-- **不要转换数据进而渲染**。例如你想在列表被展示前过滤它，你可能想在 Effect 里监听列表变化并更改组件 state。这么做是效率很低的，因为当你更新组件 state 时，React 会先调用组件计算什么该渲染，然后[提交](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/learn/render-and-commit)变动给 DOM，然后更新视图。然后 React 再去执行 Effect，如果你的 Effect*又*立即更新了 state，前面的整个过程又得从头来过。为了避免不必要的渲染，在组件外部进行数据转换，这样当 state 或 props 更改时，组件会自动更新。
-- **不要在 Effect 里处理用户事件**。例如你想在用户购买商品时发送请求并弹出提示。在购买按钮的点击事件里，你知道实际发生了什么。但是在 Effect 里处理，你丢失了这些信息（例如，用户点了哪个购买按钮？）。
+- **不要在 Effect 里更新需要渲染的数据 state**。例如你想在列表被展示前过滤它，你可能想在 Effect 里监听列表变化并更新组件状态。这样是效率不高的，因为当你更新组件状态时，React 会先调用组件决定什么该渲染，然后[提交](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/learn/render-and-commit)变动给 DOM，最后更新视图。然后 React 再去执行 Effect，如果你的 Effect*又*立即更新了组件状态，前面的整个过程又得从头来过。为了避免不必要的渲染，在组件外部处理需要渲染的数据，这样当状态或 props 更新时，组件会自动更新。
 
-Effect 用来同步外部系统状态，例如使用 Effect 将 JQuery 组件和 React 组件状态保持同步。也可以在 Effect 里请求数据，例如根据当前关键词同步搜索结果。但是通常是不需要的，有很多其他库提供了效率更高的在组件内请求数据的方式。
+- **不要在 Effect 里处理用户事件**。例如你想在用户购买商品时发送请求并弹出提示。在购买按钮的点击事件里，你知道实际发生了什么（用户点了购买按钮）。但是在 Effect 里处理，你丢失了这些信息（例如，用户点了哪个购买按钮？）。
+
+Effect 用来同步外部系统状态，例如使用 Effect 将 JQuery 组件和 React 组件状态保持同步。也可以在 Effect 里请求数据，例如根据当前关键词同步搜索结果。但是通常是不需要的，有很多第三方框架提供了效率更高的在组件内请求数据的机制。
 
 ### 根据 state 或 props 更新 state
 
-假设有一个组件内部有两个 state：`firstName` 和 `lastName`。你可能想通过这两个状态得到 `fullName`。并且想在 `firstName` 或 `lastName` 更新时同步更新 `fullName`，首先想到的可能是添加一个 `fullName` state，并在 Effect 里更新它。
+假设一个组件内部有两个状态：`firstName` 和 `lastName`。你可能想通过这两个状态计算得到 `fullName`。并且想在 `firstName` 或 `lastName` 更新时同步更新 `fullName`，首先想到的可能是添加一个 `fullName` 状态变量，并在 Effect 里更新它。
 
 ```jsx
 function Form() {
@@ -35,23 +36,23 @@ function Form() {
 }
 ```
 
-这不是必不必要的问题，这会变得更加复杂。而且效率低下：组件根据旧的 `fullName` 执行整个渲染过程，然后立刻根据新的 `fullName` 重新渲染。移除 Effect 和 state：
+这不是必不必要的问题，这会使整个过程变得更加复杂。而且效率低下：组件先根据旧的 `fullName` 执行整个渲染过程，然后*又*立刻根据新的 `fullName` 重新渲染。移除 Effect 和状态变量：
 
 ```jsx
 function Form() {
   const [firstName, setFirstName] = useState('Taylor');
   const [lastName, setLastName] = useState('Swift');
-  // ✅ Good: 在渲染时计算
+  // ✅ Good: 在渲染期间计算
   const fullName = firstName + ' ' + lastName;
   // ...
 }
 ```
 
-**当有需要根据 props 或 state 计算的状态时，[不要使用 state](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/learn/choosing-the-state-structure#avoid-redundant-state)，应该在渲染时计算**。这使代码更快（避免了额外的“级联”更新），更少（删除了一些代码）和更不容易出错（避免了不同 state 更新不同步而导致的错误）。
+**当有需要根据 props 或 state 计算的状态时，[不要使用 state](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/learn/choosing-the-state-structure#avoid-redundant-state)，应该在渲染期间计算**。这使代码更快（避免了额外的“级联”更新），更少（删除了一些代码）和更不容易出错（避免了不同 state 更新不同步而导致的错误）。
 
 ### 缓存昂贵的计算
 
-这个组件根据 `todos` 和 props 中的 `filter` 属性计算 `visibleTodos`，你可能会想在一个 state 中存储结果并在 Effect 里更新：
+该组件根据 props 中的 `todos` 和 `filter` 属性计算 `visibleTodos`，你可能会想在一个状态变量中存储结果并在 Effect 里更新：
 
 ```jsx
 function TodoList({ todos, filter }) {
@@ -67,7 +68,7 @@ function TodoList({ todos, filter }) {
 }
 ```
 
-和前面的一个例子类似，都是不必要的并且效率很低。移除 Effect 和 state：
+和前面的一个例子类似，都是不必要的并且效率很低。移除 Effect 和状态变量：
 
 ```jsx
 function TodoList({ todos, filter }) {
@@ -78,7 +79,7 @@ function TodoList({ todos, filter }) {
 }
 ```
 
-大部分情况，这样写是没问题的。但是可能 `getFilteredTodos()` 很慢或者 `todos` 有大量的数据，这种情况下你不想在一些无关的 state（例如 `newTodo`）更新时重新执行 `getFilteredTodos()`，可以使用 `useMemo` 对昂贵的计算进行缓存：
+大部分情况，这样写是没问题的。但是可能 `getFilteredTodos()` 执行很慢或者 `todos` 有大量的数据，这种情况下你不想在一些无关的状态（例如 `newTodo`）更新时重新执行 `getFilteredTodos()`，可以使用 `useMemo` 对昂贵的计算进行缓存：
 
 ```jsx
 import { useMemo, useState } from 'react';
@@ -94,9 +95,9 @@ function TodoList({ todos, filter }) {
 }
 ```
 
-**这告诉 React 我们不想被包裹的函数重新执行除非 `todos` 或 `filter` 有更新**。React 会记住 `getFilteredTodos()` 在第一次渲染的返回值，在之后的渲染中，React 会检查 `todos` 或 `filter` 是否有更改。如果没有更改，`useMemo` 会返回上次的值，如果有更新，就重新执行 `getFilteredTodos()` 储存结果并返回。
+**这告诉 React 我们不想被包裹的函数重新执行除非 `todos` 或 `filter` 有更新**。React 会记住 `getFilteredTodos()` 在第一次渲染的返回值，在之后的渲染中，React 会检查 `todos` 或 `filter` 是否有更新。如果没有，`useMemo` 会返回上次缓存的结果，如果有更新，就重新执行 `getFilteredTodos()` 缓存结果并返回。
 
-### props 更改时重置所有 state
+### props 更改时重置组件所有状态
 
 `ProfilePage` 组件接收一个 `userId` 参数，这个页面有一个评论输入框，状态储存在 `comment` 中。有一天，你发现了一个 bug：当跳转到另一个 profile 时，`comment` 状态没有被重置，仍然是跳转前的值。因此会很容易在错误的 profile 评论。为了修复这个 bug，你可能会想在 `userId` 变化时清空 `comment`：
 
@@ -104,7 +105,7 @@ function TodoList({ todos, filter }) {
 function ProfilePage({ userId }) {
   const [comment, setComment] = useState('');
 
-  // 🔴 Avoid: 在 Effect 里重置 state 当 props 改变
+  // 🔴 Avoid: 当 props 更新时，在 Effect 里重置状态
   useEffect(() => {
     setComment('');
   }, [userId]);
@@ -112,7 +113,7 @@ function ProfilePage({ userId }) {
 }
 ```
 
-这么做是效率很低的，`ProfilePage` 和 `children` 组件先根据旧的状态进行渲染，然后再根据新的状态再来一遍整个过程。更复杂的是你需要在 `ProfilePage` 的每个需要这个 state 的子组件中这么做。例如，如果评论组件是嵌套的，你需要清空所有的嵌套组件的 `commnet` 状态。
+这么做是效率很低的，`ProfilePage` 和其子组件先根据旧的状态进行渲染，然后再根据新的状态再来一遍整个过程。更复杂的是你需要在 `ProfilePage` 的每个需要该状态的子组件中这么做。例如，如果评论组件还有子组件，你需要清空所有的嵌套组件的 `commnet` 状态。
 
 最好的办法是，将 `userId` 做为 `key` 传递给 profile：
 
@@ -128,20 +129,20 @@ function Profile({ userId }) {
 }
 ```
 
-React 通常会保留同一个组件在同一个位置渲染时的状态。**通过将 `userId` 做为 `key` 传递给 `Profile`，告诉 React 不同的 `userId` 对应的 `Profile` 是不同的组件，它们之间不应该共享任何状态**。当 `key`（这里指 `userId`）改变时，React 将重建 DOM 并重置 `Profile` 以及其子组件的所有状态，因此在 `Profile` 切换时，`commnet` 组件的状态会*自动*被清除。
+React 通常会保留同一个组件在同一个位置渲染时的状态。**通过将 `userId` 做为 `key` 传递给 `Profile`，告诉 React 不同的 `userId` 对应的不同的 `Profile` 组件，它们之间不应该共享任何状态**。当 `key`（这里指 `userId`）改变时，React 将重建 DOM 并重置 `Profile` 以及其子组件的所有状态，因此在 `Profile` 切换时，`commnet` 组件的状态会*自动*被清除。
 
-### props 更改时更改某些 state
+### props 更改时更新组件的某些状态
 
-有时候你可能不想在 props 改变时重置所有 state，而只是部分。
+有时候你可能想在 props 改变时更新组件的部分状态，而不是全部。
 
-`List` 组件接收 `items` 属性，并且持有被选择项的 state `selection`，你可能想在 `items` 变动时将 `selection` 清除：
+`List` 组件接收 `items` 属性，并且持有被选择项的状态 `selection`，你可能想在 `items` 变动时将 `selection` 清除：
 
 ```jsx
 function List({ items }) {
   const [isReverse, setIsReverse] = useState(false);
   const [selection, setSelection] = useState(null);
 
-  // 🔴 Avoid: 在 Effect 里重置 state 当 props 改变
+  // 🔴 Avoid: 当 props 改变时，在 Effect 里重置状态
   useEffect(() => {
     setSelection(null);
   }, [items]);
@@ -149,9 +150,9 @@ function List({ items }) {
 }
 ```
 
-每次 `items` 改变，`List` 和其子组件先根据旧的 `selection` 值渲染，然后 React 更新 DOM，执行 Effect，`setSelection(null)` 执行，导致 `List` 和其子组件重新渲染，重复上面的整个过程。
+每次 `items` 更新，`List` 和其子组件先根据旧的 `selection` 值渲染，然后 React 更新 DOM，执行 Effect，`setSelection(null)` 执行，导致 `List` 和其子组件重新渲染，重复上面的整个过程。
 
-删除 Effect，在渲染期间更新 state：
+删除 Effect，在渲染期间更新状态：
 
 ```jsx
 function List({ items }) {
@@ -170,7 +171,7 @@ function List({ items }) {
 
 **这种写法有点儿不好理解，但是比在 Effect 里更新 state 好**。在上面的例子中，`setSelection` 在渲染期间调用。React 会在 `return` 前立即重渲染 `List`。在此之前，React 还没有渲染 `List` 及其子组件或者更新 DOM，得以让 `List` 及其子组件跳过了根据旧的 `selection` state 渲染。[更多实际用例](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/apis/usestate#storing-information-from-previous-renders)。
 
-那么有没有更简单在渲染期间计算某些值的办法呢？例如，不存储（重置）被选择项，只存储被选择项的 ID：
+那么有没有更简单在渲染期间计算某些值的办法呢？例如，不存储（或重置）被选择项，只存储被选择项的 ID：
 
 ```jsx
 function List({ items }) {
@@ -182,7 +183,7 @@ function List({ items }) {
 }
 ```
 
-现在根本不需要”调整“状态。如果被选择项的 ID 在 list 中，仍然会被选择。如果不存在，`selection` 则会在渲染时计算，结果将会是 `null`。This behavior is a bit different, but arguably it’s better because most changes to items now preserve the selection. However, you’d need to use `selection` in all the logic below because an item with `selectedId` might not exist.
+现在根本不需要”重置“状态。如果被选择项的 ID 在 list 中，仍然会被选择。如果不存在，`selection` 则会在渲染时计算，结果将会是 `null`。
 
 ### 在 event handler 中复用代码逻辑
 
@@ -209,7 +210,7 @@ function ProductPage({ product, addToCart }) {
 }
 ```
 
-这里的 Effect 是没什么必要的，而且容易产生 bugs。例如假设你的应用在页面重新加载后“记住”了购物车。如果你把商品加入到购物车然后刷新页面，则会再次弹出加入购物车的提示信息，而且每次刷新页面都会提示。很显然 `product.isInCart` 在页面加载后是 `true`，所以 Effect 里的 `showToast()` 被调用。
+这里的 Effect 是没有必要的，而且容易产生 bug。假设你的应用在页面重新加载后“记住”了购物车状态。如果你把商品加入到购物车然后刷新页面，则会再次弹出加入购物车的提示信息，而且每次刷新页面都会提示。很显然 `product.isInCart` 在页面加载后是 `true`，所以 Effect 里的 `showToast()` 被调用。
 
 **当你不确定一些代码应该放在 Effect 里还是 event handler 中，问问自己为什么这些代码需要执行。Effect 里的代码应该在组件展示给用户后调用**。在这个例子中，弹出提示是因为用户点击了按钮，而不是页面被展示给用户。删除 Effect 把需要复用的逻辑写在一个方法里，然后在 event handler 复用这个方法。
 
@@ -265,9 +266,9 @@ function Form() {
 }
 ```
 
-因为分析事件需要在表单被展示给用户后发送，所以应该在 Effect 里。（它会在开发环境中触发两次，请参阅[此处](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/learn/synchronizing-with-effects#sending-analytics)了解如何处理。）
+因为分析事件数据需要在表单被展示给用户后发送，所以应该在 Effect 里。（它会在开发环境中触发两次，请参阅[此处](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/learn/synchronizing-with-effects#sending-analytics)了解如何处理。）
 
-然而，发送给 `/api/register` 的请求不是在表单被展示给用户触发。你只想在一个具体的时间（用户点击提交按钮）发送。删除第二个 Effect，在表单提交的事件里发送请求：
+然而，发送给 `/api/register` 的请求不是在表单被展示给用户触发。你只想在一个具体的时间（用户点击提交按钮时）发送。删除第二个 Effect，在表单提交的事件里发送请求：
 
 ```jsx
 function Form() {
@@ -281,16 +282,16 @@ function Form() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // ✅ Good: 在提交事件里处理具体的逻辑
+    // ✅ Good: 在提交事件里处理具体的事件逻辑
     post('/api/register', { firstName, lastName });
   }
   // ...
 }
 ```
 
-当您选择是否将某些逻辑放入 event handler 或 Effect 时，您需要回答的主要问题是从用户的角度来看它是哪种逻辑。如果此逻辑是由特定交互引起的，请在 event handler 中处理。如果它是由用户在屏幕上看到组件引起的，请 Effect 中处理。
+当你选择是否将某些逻辑放入 event handler 或 Effect 时，你需要回答的主要问题是从用户的角度来看它是哪种逻辑。如果此逻辑是由特定交互引起的，请在 event handler 中处理。如果它是由用户在屏幕上看到组件引起的，请 Effect 中处理。
 
-### 组件 state 更新时通知父组件
+### 组件状态更新时通知父组件
 
 假设你在写一个 `Toggle` 组件，内部有一个 `isOn` 的布尔状态。有不同的方式切换状态（点击或者拖动）。你想在 `isOn` 状态更新时，通过在 Effect 里调用 `onChange` 事件通知父组件状态更新：
 
@@ -319,7 +320,7 @@ function Toggle({ onChange }) {
 }
 ```
 
-和前面类似，`Toggle` 先更新 state，然后 React 更新视图。React 执行 Effect 里父组件传递 `onChange` 事件回调。然后父组件更新自己的 state，又一次渲染过程。最好在一次渲染过程中做完所有这些。
+和前面类似，`Toggle` 先更新状态，然后 React 更新视图。React 执行 Effect 里父组件传递的 `onChange` 事件回调。然后父组件更新自己的状态，又一次渲染过程。最好在一次渲染过程中做完所有这些。
 
 删除 Effect，在 event handler 中同时更新两个组件（`Toggle` 和父组件）的状态：
 
@@ -351,7 +352,7 @@ function Toggle({ onChange }) {
 
 这样的话，`Toggle` 和其父组件的状态都将在一个事件中得到更新。React [批量更新](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/learn/queueing-a-series-of-state-updates) 不同组件的状态，因此只需要一次渲染过程。
 
-你也可以移除 `Toggle` 内部的 `isOn` state，通过父组件传递下来：
+你也可以移除 `Toggle` 内部的 `isOn` 状态，通过父组件传递下来：
 
 ```jsx
 // ✅ Also good: 组件状态完全受父组件控制
@@ -372,7 +373,7 @@ function Toggle({ isOn, onChange }) {
 }
 ```
 
-[“状态提升”](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/learn/sharing-state-between-components) 让父组件根据自己的状态控制 `Toggle` 的状态。这也意味着父组件必须包含更多的逻辑，但是总体需要关心的状态减少了。当你试图将两个状态保持同步时，是尝试状态提升的信号！
+[“状态提升”](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/learn/sharing-state-between-components) 让父组件根据自己的状态控制 `Toggle` 的状态。这也意味着父组件必须包含更多的逻辑，但是减少了总体需要关心的状态。当你试图将两个状态保持同步时，是尝试状态提升的信号！
 
 ### 传递数据给父组件
 
@@ -412,11 +413,11 @@ function Child({ data }) {
 }
 ```
 
-这让数据流向变得简单，以及更可预测：数据从上（父）到下（子）流动。
+这让数据流向变得简单和更可预测：数据从上（父）到下（子）流动。
 
 ### 订阅外部状态
 
-有的时候，你的组件可能需要订阅 React 状态之外的数据状态。这些数据可能来值第三方库或者浏览器 API。由于这些数据可能会在 React 不知情的情况下更新，因此通常需要手动在组件内通过 Effect 监听这些更新：
+有的时候，你的组件可能需要订阅 React 状态之外的数据状态。这些数据可能来至第三方库或者浏览器 API。由于这些数据可能会在 React 不知情的情况下更新，因此通常需要手动在组件内通过 Effect 监听这些更新：
 
 ```jsx
 function useOnlineStatus() {
@@ -445,7 +446,7 @@ function ChatIndicator() {
 }
 ```
 
-组件订阅了外部数据源（这里是浏览器的 `navigator.onLine` API）。由于该 API 在服务端是不存在的（因此不能用来生产初始 HTML），初始状态设置为 `true`。每当浏览器中该数据的值改变时，组件会更新状态。
+组件订阅了外部数据源（这里是浏览器的 `navigator.onLine` API）。由于该 API 在服务端是不存在的（因此不能用来生成初始 HTML），初始状态设置为 `true`。每当浏览器中该数据的值改变时，组件会更新状态。
 
 尽管为此使用 Effect 很常见，但 React 有一个用于订阅外部 store 而专门构建的 Hook，删除 Effect 使用 [`useSyncExternalStore`](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/apis/usesyncexternalstore)：
 
@@ -462,7 +463,7 @@ function subscribe(callback) {
 function useOnlineStatus() {
   // ✅ Good: 使用内置 Hook 订阅外部 store
   return useSyncExternalStore(
-    subscribe, // 相同的函数 React 不会重新订阅
+    subscribe, // 传递相同的函数时，React 不会重复订阅
     () => navigator.onLine, // 客户端怎么获取数据
     () => true // 服务端怎么获取数据
   );
@@ -478,7 +479,7 @@ function ChatIndicator() {
 
 ### 获取数据
 
-很多应用通过 Effect 请求数据。通常这样写：
+很多应用通过 Effect 请求数据。例如：
 
 ```jsx
 function SearchResults({ query }) {
@@ -501,9 +502,9 @@ function SearchResults({ query }) {
 
 不需要把请求移到 event handler 中。
 
-这似乎和之前需要将逻辑放到 event handler 的例子相矛盾！但是，考虑用户输入不是获取数据主要原因，搜索关键字通常通过 URL 预填，用户可以在不输入的情况下向前或向后导航，但是你希望页面和查询结果和远程的数据保持同步，这就是为什么使用 Effect。
+这似乎和之前需要将逻辑放到 event handler 的例子相矛盾！但是，考虑用户输入不一定是需要请求数据的唯一因素，搜索关键字通常也来自 URL，用户可以在不输入的情况下向前或向后导航，但是你希望页面的查询结果和远程的数据保持同步，这就是为什么使用 Effect。
 
-然而，上面的代码有一个 bug。想象你快速的打出 `"hello"`，然后 `query` 会从 `"h"`，`"he"`，`"hel"`，`"hell"` 最后变到 `"hello"`。这会发出几个请求，但不能保证结果按什么顺序返回。例如 `"hell"`的响应在 `"hello"` 的响应返回后返回。因此 `"hell"` 的结果会最后 set 给 `results`，展示了错误的搜索结果。这叫做[”竞态“](https://en.wikipedia.org/wiki/Race_condition)：两个不同请求相互“竞争”，并以非预期顺序返回。
+然而，上面的代码有一个 bug。想象你快速的打出 `"hello"`，然后 `query` 会从 `"h"`，`"he"`，`"hel"`，`"hell"` 最后变到 `"hello"`。这会发出几个请求，但不能保证其响应按什么顺序返回。例如 `"hell"`的响应在 `"hello"` 的响应返回后返回。因此 `"hell"` 的结果会最后 set 给 `results`，这样搜索结果就是错的。这叫做[”竞态“](https://en.wikipedia.org/wiki/Race_condition)：两个不同请求相互“竞争”，并以非预期顺序返回。
 
 **为了修复这种竞争状态，你需要添加一个[清理方法](https://beta-reactjs-org-git-you-might-not-fbopensource.vercel.app/learn/learn/synchronizing-with-effects#fetching-data)以忽略旧的请求响应：**
 
@@ -532,9 +533,9 @@ function SearchResults({ query }) {
 
 这确保了在 Effect 中获取数据时，除了最后一个请求的响应之外的所有响应都将被忽略。
 
-处理竞态并不是实现数据请求的唯一困难。你可能也想缓存结果（以便用户返回上个页面时不用重新加载数据），如何在服务端获取数据（以便生成服务端渲染的初始 HTML 时包含获取到的数据），如何避免 network waterfalls（以便子组件不必等到所有父组件获取完数据才能开始获取自己的数据）。这些问题不仅在 React 中存在，任何的 UI 库都有。解决它们也并非易事，这就是现代框架提供比直接在组件中编写更有效的内置数据获取机制的原因。
+处理竞态并不是实现数据请求的唯一困难。你可能也想缓存结果（以便用户返回上个页面时不用重新请求数据），如何在服务端获取数据（以便在生成服务端渲染的初始 HTML 时包含获取到的数据），如何避免 network waterfalls（以便子组件不必等到所有父组件获取完数据后才能开始获取自己的数据）。这些问题不仅在 React 中存在，任何的 UI 库都有。解决它们也并非易事，这就是现代框架提供比直接在组件中编写更有效的内置数据获取机制的原因。
 
-如果你不使用框架（并且不想构建自己的框架）但希望从 Effects 中获取数据更符合直觉，考虑将获取逻辑提取到自定义 Hook 中：
+如果你不使用框架（并且不想构建自己的框架）但希望从 Effects 中获取数据时更通畅，考虑将获取逻辑提取到自定义 Hook 中：
 
 ```jsx
 function SearchResults({ query }) {
@@ -567,7 +568,7 @@ function useData(url) {
 }
 ```
 
-你可能想添加一些错误处理的逻辑和追踪内容是否正在加载。你可以构建自己的 Hook，也可以使用 React 生态中的众多解决方案之一。**尽管这不会和使用框架内置的数据获取机制那么高效，但是这些逻辑移动到自定义 Hook 后，后续更换更加高效的数据获取策略更方便**。
+你可能想添加一些错误处理和追踪内容是否正在加载的逻辑。你可以构建自己的 Hook，也可以使用 React 生态中的众多解决方案之一。**尽管这不会和使用框架内置的数据获取机制那么高效，但是这些逻辑移动到自定义 Hook 后，后续更换更加高效的数据获取策略时更方便**。
 
 一般来说，当你不得不需要使用 Effect 时，请留意是否可以将一部分功能提取到自定义 Hook 中，并使用像上面 `useData` 等更具声明性和专门构建的 API。组件中原始
 `useEffect` 的调用越少，应用就越容易维护。
@@ -577,7 +578,7 @@ function useData(url) {
 - 如果可以在渲染期间计算某些内容，则不需要 Effect。
 - 要缓存昂贵的计算，使用 `useMemo` 而不是 `useEffect`。
 - 要重置组件内的所有状态，给它一个不同的 `key`。
-- props 更改时修改某些 state，请在渲染期间执行。
+- props 更改时更新组件的某些状态，请在渲染期间执行。
 - 因为组件*展示*而需要执行的代码应该在 Effects 里，其余的应该在 event handler 里。
 - 如果需要更新多个组件的状态，最好在单个 event handler 中进行。
 - 每当你尝试将不同组件中的状态保持同步时，考虑状态提升。
