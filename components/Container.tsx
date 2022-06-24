@@ -81,7 +81,7 @@ export default function Container(props: ContainerProps) {
           <meta property="article:published_time" content={meta.date} />
         )}
       </Head>
-      <div className="px-8">
+      <div className="px-4 md:px-8">
         <nav className="flex items-center justify-between w-full max-w-prose mx-auto relative pt-8 pb-8 md:pb-12">
           <a href="#skip" className="skip-nav">
             Skip to content
@@ -117,7 +117,7 @@ export default function Container(props: ContainerProps) {
           </button>
         </nav>
       </div>
-      <main id="skip" className="px-8">
+      <main id="skip" className="px-4 md:px-8">
         {children}
         <Footer />
       </main>
