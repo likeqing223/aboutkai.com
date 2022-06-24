@@ -29,7 +29,7 @@ export default function Blog({
       description="写博客对于知识的梳理、理解的加深有很大帮助，有时也会发现自己理解错误的地方。另外，也可以帮助到其他需要这些知识的人，希望我的博客对你有所帮助。"
       url="https://aboutkai.com/blog"
     >
-      <div className="max-w-xl mx-auto mb-8 px-2">
+      <div className="max-w-prose mx-auto mb-8 px-2">
         <h1 className="mb-4 text-2xl md:text-3xl font-medium tracking-tight">
           博客
         </h1>

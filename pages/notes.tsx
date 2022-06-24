@@ -17,7 +17,7 @@ export default function Notes({
       type="article"
       url={`https://aboutkai.com/notes`}
     >
-      <article className="max-w-xl mx-auto mb-8 px-2">
+      <article className="max-w-prose mx-auto mb-8 px-2">
         <MDWrapper>
           <Component components={components} />
         </MDWrapper>
