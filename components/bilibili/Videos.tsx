@@ -1,9 +1,9 @@
-import classNames from "classnames";
-import { format, fromUnixTime } from "date-fns";
-import fetcher from "lib/fetcher";
-import { BilibiliVideo } from "lib/types";
-import React from "react";
-import useSWR from "swr";
+import classNames from 'classnames';
+import { format, fromUnixTime } from 'date-fns';
+import fetcher from 'lib/fetcher';
+import { BilibiliVideo } from 'lib/types';
+import React from 'react';
+import useSWR from 'swr';
 
 export default function Videos({ videos }: { videos: BilibiliVideo[] }) {
   if (!videos) return <p>暂无视频</p>;
@@ -21,14 +21,19 @@ export default function Videos({ videos }: { videos: BilibiliVideo[] }) {
         >
           <div
             className={classNames(
-              "transform hover:scale-[1.01] transition-all",
-              "border-b py-4 flex font-medium items-center justify-between border-gray-200 dark:border-gray-700"
+              'transform hover:scale-[1.01] transition-all',
+              'border-b py-4 flex font-medium items-center justify-between border-gray-200 dark:border-gray-700'
             )}
           >
             <p>{v.title}</p>
             <span className=" text-sm flex items-center">
-              <span className="text-gray-700 dark:text-gray-600">{v.length}</span>
-              <svg className="h-6 w-6 ml-1 md:ml-2" viewBox="0 0 24 24">
+              <span className="text-gray-700 dark:text-gray-600">
+                {v.length}
+              </span>
+              <svg
+                className="h-5 w-5 md:h-6 md:w-6 ml-1 md:ml-2"
+                viewBox="0 0 24 24"
+              >
                 <path
                   fill="currentColor"
                   d="M10,16.5V7.5L16,12M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"

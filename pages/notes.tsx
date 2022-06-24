@@ -22,7 +22,7 @@ export default function Notes({
           <Component components={components} />
         </MDWrapper>
         <a
-          className="flex items-center text-sm text-gray-600 hover:text-gray-700 dark:hover:text-gray-400 font-medium mt-6"
+          className="flex items-center text-gray-600 hover:text-gray-700 dark:hover:text-gray-400 font-medium mt-6"
           href={`https://github.com/kaichii/aboutkai.com/edit/main/data/notes.mdx`}
           target="_blank"
           rel="noopener noreferrer"
