@@ -8,6 +8,13 @@ description: 如何移除不必要的 Effect 以使代码效率更高且不易�
 
 Effect（或者叫它“副作用”）被用来将外部状态（例如：当计数器改变时将其同步到文档标题中，这里指 DOM，其他如：网络，非 React 组件）和 React 组件状态进行同步。如果不涉及外部状态同步，则不需要 Effect。移除不必要的 Effect 可以使代码效率更高且不易出错。
 
+## 前置知识
+
+为了更好的理解，你可能需要先看看下面两篇文章：
+
+- [函数式组件与类组件有何不同？](https://overreacted.io/zh-hans/how-are-function-components-different-from-classes/)
+- [useEffect 完整指南](https://overreacted.io/zh-hans/a-complete-guide-to-useeffect/)
+
 ## 如何移除不必要的 Effects
 
 下面两种常见的情况是不需要 Effects 的：
