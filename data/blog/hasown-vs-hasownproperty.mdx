@@ -1,0 +1,69 @@
+---
+title: '`hasOwn` vs. `hasOwnProperty`'
+publishedAt: 2022-07-06
+description: '`Object.hasOwn` 和 `Object.prototype.hasOwnProperty` 有什么区别？'
+---
+
+上个月，TC39 通过了 ES2022 语言规范，为我们带来了许多[新特性](https://h3manth.com/ES2022/)，其中 `Object.hasOwn` 用来替代 `Object.prototype.hasOwnProperty`，它们都用来判断对象中是否存在某属性，那么它们有什么区别呢？
+
+让我们先看看两者的用法：
+
+```js
+const jack = { name: 'jack' };
+
+console.log(Object.hasOwn(jack, 'name')); // true
+console.log(jack.hasOwnProperty('name')); // true
+
+console.log(Object.hasOwn(jack, 'age')); // false
+console.log(jack.hasOwnProperty('age')); // false
+
+const john = Object.create({ name: 'john' });
+
+console.log(Object.hasOwn(john, 'name')); // false
+console.log(john.prototype.hasOwnProperty('name')); // false
+// name 属性存在于 john 的 prototype 上，不是其 own property
+```
+
+看起来好像没什么区别，那么为什么应该用 `Object.hasOwn` 而不是 `Object.prototype.hasOwnProperty` 呢？因为对于通过 `Object.create(null)` 创建的和 `hasOwnProperty` 被 _override_ 的对象，`Object.hasOwn` 也适用。
+
+1. 通过 `Object.create(null)` 创建的对象
+
+```js
+const person = Object.create(null);
+person.name = 'jack';
+
+console.log(Object.hasOwn(person, 'name')); // true
+console.log(person.hasOwnProperty('name')); // error: person.hasOwnProperty is not a function
+```
+
+2. `hasOwnProperty` 被 _override_ 的对象
+
+```js
+const person = {
+  name: 'jack',
+  hasOwnProperty() {
+    return false;
+  }
+};
+
+console.log(Object.hasOwn(person, 'name')); // true
+console.log(person.hasOwnProperty('name')); // false
+// fix
+console.log(Object.prototype.hasOwnProperty.call(person, 'name')); // true
+```
+
+虽然也可以通过 `Object.prototype.hasOwnProperty.call(person, 'name')` 的方式解决这个问题，但是 `Object.hasOwn` 使用起来更方便。
+
+那么 `Object.hasOwn` 也被 _override_ 了怎么办呢？
+
+```js
+const person = { name: 'jack' };
+
+Object.hasOwn = function () {
+  return false;
+};
+
+console.log(Object.hasOwn(person, 'name')); // false
+```
+
+虽然也会发生这种情况，但显然，前者发生的情况更普遍（我是这么理解的）。
