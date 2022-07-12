@@ -2,7 +2,7 @@
 ## aboutkai.com
 
 ![Website](https://img.shields.io/website?up_message=online&url=https%3A%2F%2Faboutkai.com)
-![Visitor Badge](https://visitor-badges.glitch.me?username=kaichii&repo=aboutkai.com&label=visitor&style=flat&color=%23457BFF&contentType=svg)
+![visitors](https://visitor-badge.glitch.me/badge?page_id=aboutkai.com)
 
 个人网站，使用 [nextjs](https://nextjs.org/) 构建，[vercel](https://vercel.com/) 部署。
 
