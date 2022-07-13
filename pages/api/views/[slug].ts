@@ -6,25 +6,27 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    const slug = req.query.slug.toString();
+    const slug = req.query.slug?.toString();
 
-    // 记录浏览次数
-    if (req.method === 'POST') {
-      const upsertViews = await prisma.views.upsert({
-        where: { slug },
-        create: {
-          slug
-        },
-        update: {
-          count: {
-            increment: 1
+    if (slug) {
+      if (req.method === 'POST') {
+        // 记录浏览次数
+        const upsertViews = await prisma.views.upsert({
+          where: { slug },
+          create: {
+            slug
+          },
+          update: {
+            count: {
+              increment: 1
+            }
           }
-        }
-      });
+        });
 
-      return res.status(200).json({
-        total: upsertViews.count.toString()
-      });
+        return res.status(200).json({
+          total: upsertViews.count.toString()
+        });
+      }
     }
 
     // 查询浏览次数
