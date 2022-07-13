@@ -1,4 +1,4 @@
-import { allBlogs } from '.contentlayer/generated';
+import { allBlogs } from 'contentlayer/generated';
 import components from 'components/MDXComponents';
 import BlogLayout from 'layouts/blog';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
