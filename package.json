@@ -61,5 +61,12 @@
     "arrowParens": "always",
     "trailingComma": "none",
     "singleQuote": true
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "react": "17"
+      }
+    }
   }
 }
