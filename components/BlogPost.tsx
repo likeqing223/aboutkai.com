@@ -1,4 +1,4 @@
-import type { Blog } from '.contentlayer/types';
+import type { Blog } from 'contentlayer/generated';
 import fetcher from 'lib/fetcher';
 import Link from 'next/link';
 import useSWR from 'swr';

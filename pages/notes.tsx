@@ -1,4 +1,4 @@
-import { note } from '.contentlayer/data';
+import { note } from 'contentlayer/generated';
 import { InferGetStaticPropsType } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import components from 'components/MDXComponents';
