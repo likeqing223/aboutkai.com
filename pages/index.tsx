@@ -1,4 +1,4 @@
-import { allBlogs } from '.contentlayer/data';
+import { allBlogs } from '.contentlayer/generated';
 import Bangumis from 'components/bilibili/Bangumis';
 import Videos from 'components/bilibili/Videos';
 import BlogPost from 'components/BlogPost';

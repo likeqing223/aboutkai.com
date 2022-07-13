@@ -1,4 +1,4 @@
-import { allBlogs } from '.contentlayer/data';
+import { allBlogs } from '.contentlayer/generated';
 import BlogPost from 'components/BlogPost';
 import Container from 'components/Container';
 import { pick } from 'lib/utils';

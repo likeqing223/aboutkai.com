@@ -1,4 +1,4 @@
-import type { Blog } from '.contentlayer/types';
+import { type Blog } from '.contentlayer/generated';
 import Container from 'components/Container';
 import MDWrapper from 'components/MDWrapper';
 import { format, parseISO } from 'date-fns';
