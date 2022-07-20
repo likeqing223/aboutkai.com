@@ -70,7 +70,7 @@ export default function Container(props: ContainerProps) {
   return (
     <div>
       <Head>
-        <title>{meta.title} - kaichi</title>
+        <title>{`${meta.title} - kaichi`}</title>
         <meta property="author" content={meta.author} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:description" content={meta.description} />
