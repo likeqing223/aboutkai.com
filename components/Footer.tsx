@@ -67,6 +67,11 @@ export default function Footer() {
               404
             </a>
           </Link>
+          <Link href="mailto:me@aboutkai.com">
+            <a className="text-gray-600 hover:text-gray-700 dark:hover:text-gray-400">
+              Me
+            </a>
+          </Link>
         </div>
       </div>
     </footer>

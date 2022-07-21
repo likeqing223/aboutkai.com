@@ -36,7 +36,7 @@ export default function Guestbook() {
           留言
         </h1>
         <p className="mb-6 text-gray-700 dark:text-gray-500">
-          欢迎大家评论留言。
+          欢迎大家评论留言（下面的评论组件可能会有点儿慢）。
         </p>
         <Giscus
           id="comments"
