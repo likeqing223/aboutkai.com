@@ -62,6 +62,7 @@ export default function Container(props: ContainerProps) {
     title: 'Home',
     url: 'https://aboutkai.com',
     image: 'https://aboutkai.com/avatar.jpg',
+    type: 'website',
     description:
       '分享个人观点、新学到的知识以及一些编程经验。 Knowledge Growth in Sharing.',
     ...customMeta
@@ -70,13 +71,23 @@ export default function Container(props: ContainerProps) {
   return (
     <div>
       <Head>
+        {/* Primary Meta Tags */}
         <title>{`${meta.title} - kaichi`}</title>
-        <meta property="author" content={meta.author} />
+        <meta name="title" content={meta.title} />
+        <meta name="description" content={meta.description} />
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content={meta.type} />
+        <meta property="og:url" content={meta.url} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:description" content={meta.description} />
-        <meta property="og:url" content={meta.url} />
-        <meta property="og:type" content={meta.type ?? 'website'} />
         <meta property="og:image" content={meta.image} />
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={meta.url} />
+        <meta property="twitter:title" content={meta.title} />
+        <meta property="twitter:description" content={meta.description} />
+        <meta property="twitter:image" content={meta.image} />
+
         {meta.date && (
           <meta property="article:published_time" content={meta.date} />
         )}
