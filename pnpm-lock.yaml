@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@giscus/react': 2.1.1
+  '@giscus/react': 2.2.0
   '@prisma/client': 4.1.1
   '@tailwindcss/typography': 0.5.4
   '@types/hast': 2.3.4
@@ -42,7 +42,7 @@ specifiers:
   use-delayed-render: 0.0.7
 
 dependencies:
-  '@giscus/react': 2.1.1_biqbaboplfbrettd7655fr4n2y
+  '@giscus/react': 2.2.0_biqbaboplfbrettd7655fr4n2y
   '@prisma/client': 4.1.1_prisma@4.1.1
   '@tailwindcss/typography': 0.5.4_tailwindcss@3.1.7
   classnames: 2.3.1
@@ -301,13 +301,13 @@ packages:
     resolution: {integrity: sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==}
     dev: false
 
-  /@giscus/react/2.1.1_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-YTZBbOILVKkWg0kUy+SRlkM6InSRWG7mefVEDcHQmC2saD1Voci16hT7cUqZPie3O1IG9M4yXIU4LxKWvxxE5g==}
+  /@giscus/react/2.2.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-MXjKAQyO85ZdC8OVApNQsJhPvTJcuUf5GmQw2KdvNcBVivUpVrA+NUppdwsrI+lK6jEX4ZMVOCnbJ5GaQddaAA==}
     peerDependencies:
       react: ^16 || ^17 || ^18 || 18
       react-dom: ^16 || ^17 || ^18
     dependencies:
-      giscus: 1.1.1
+      giscus: 1.2.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
@@ -2089,8 +2089,8 @@ packages:
       get-intrinsic: 1.1.2
     dev: true
 
-  /giscus/1.1.1:
-    resolution: {integrity: sha512-WE0cjvf/OZ58EpYzdX8c1minxroSIXRSUy6APNQeaSwQBHwL6DjLH0Cn9n/D/LPlE8d3jxzy3sBFE6A00q586g==}
+  /giscus/1.2.0:
+    resolution: {integrity: sha512-IpfWvU0/hYbMGQKuoPlED8wWmluRYIOjtrBCnL7logsWjMpPRxiAC2pUIC0+SC0pDMOqXrk1onTYMHgwgRpRzg==}
     dependencies:
       lit: 2.2.8
     dev: false
