@@ -18,7 +18,7 @@ specifiers:
   http-status-codes: '*'
   lodash.get: 4.4.2
   next: 12.2.4
-  next-contentlayer: 0.2.6
+  next-contentlayer: 0.2.7
   next-themes: 0.2.0
   nprogress: 0.2.0
   postcss: 8.4.14
@@ -51,7 +51,7 @@ dependencies:
   http-status-codes: 2.2.0
   lodash.get: 4.4.2
   next: 12.2.4_biqbaboplfbrettd7655fr4n2y
-  next-contentlayer: 0.2.6_vyccxgqxcnj5vudpssiumaxlme
+  next-contentlayer: 0.2.7_vyccxgqxcnj5vudpssiumaxlme
   next-themes: 0.2.0_vyccxgqxcnj5vudpssiumaxlme
   nprogress: 0.2.0
   prism-themes: 1.9.0
@@ -123,37 +123,6 @@ packages:
       - supports-color
     dev: false
 
-  /@contentlayer/core/0.2.6:
-    resolution: {integrity: sha512-HStutEpmVdRCBZPa/KgnuZYoLCyP2hT+C8KVMGUlehU35Y4FsgyaCHyiCY8LB2Ezr3rv2tSbwUug3SWj9RNgYg==}
-    peerDependencies:
-      markdown-wasm: 1.x
-    peerDependenciesMeta:
-      date-fns:
-        optional: true
-      esbuild:
-        optional: true
-      markdown-wasm:
-        optional: true
-    dependencies:
-      '@contentlayer/utils': 0.2.6
-      camel-case: 4.1.2
-      comment-json: 4.2.2
-      date-fns: 2.29.1
-      esbuild: 0.13.15
-      gray-matter: 4.0.3
-      mdx-bundler: 9.0.1_esbuild@0.13.15
-      rehype-stringify: 9.0.3
-      remark-frontmatter: 4.0.1
-      remark-parse: 10.0.1
-      remark-rehype: 10.1.0
-      source-map-support: 0.5.21
-      type-fest: 2.18.0
-      unified: 10.1.2
-    transitivePeerDependencies:
-      - '@effect-ts/otel-node'
-      - supports-color
-    dev: false
-
   /@contentlayer/core/0.2.7:
     resolution: {integrity: sha512-rvJGIuM2GXcPe/9ldUd7meWHcp1yOpYzWwSa5dev53C6on9cmOGGT0OF3aYIwjhZ9oROkmehKa6JL9ZwtF3S8Q==}
     peerDependencies:
@@ -199,37 +168,6 @@ packages:
       - '@effect-ts/otel-node'
       - markdown-wasm
       - supports-color
-    dev: false
-
-  /@contentlayer/utils/0.2.6:
-    resolution: {integrity: sha512-+KchRJOfmh9KfFq9PGBpa6gJvP9L1nkradTzn/DPJRGpyqWsU9zibIo/f7V+zYz/3FFXKosoZAg0wovBgKKt0A==}
-    peerDependencies:
-      '@effect-ts/otel-node': '*'
-    peerDependenciesMeta:
-      '@effect-ts/core':
-        optional: true
-      '@effect-ts/otel':
-        optional: true
-      '@effect-ts/otel-node':
-        optional: true
-    dependencies:
-      '@effect-ts/core': 0.58.1
-      '@effect-ts/otel': 0.13.0_352kdg4qbmo6ttznywgm56xt3y
-      '@effect-ts/otel-exporter-trace-otlp-grpc': 0.13.0_oz5lob2ldzojxghrjmznfsllna
-      '@effect-ts/otel-sdk-trace-node': 0.13.0_t2mpuh2snbwh73wydf5tce2hci
-      '@opentelemetry/api': 1.0.4
-      '@opentelemetry/core': 1.0.1_@opentelemetry+api@1.0.4
-      '@opentelemetry/exporter-trace-otlp-grpc': 0.27.0_@opentelemetry+api@1.0.4
-      '@opentelemetry/resources': 1.0.1_@opentelemetry+api@1.0.4
-      '@opentelemetry/sdk-trace-base': 1.0.1_@opentelemetry+api@1.0.4
-      '@opentelemetry/sdk-trace-node': 1.0.1_@opentelemetry+api@1.0.4
-      '@opentelemetry/semantic-conventions': 1.0.1
-      chokidar: 3.5.3
-      hash-wasm: 4.9.0
-      inflection: 1.13.2
-      oo-ascii-tree: 1.63.2
-      ts-pattern: 4.0.5
-      type-fest: 2.18.0
     dev: false
 
   /@contentlayer/utils/0.2.7:
@@ -3347,19 +3285,18 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
-  /next-contentlayer/0.2.6_vyccxgqxcnj5vudpssiumaxlme:
-    resolution: {integrity: sha512-4k1mkW7P0vpvJ/XngJH23ZJAupKrhIS44y8eoGRQF8mEX+G+IhLlI7T95BsxB8U6I8JYOA2L6m8yxol4P6CCLQ==}
+  /next-contentlayer/0.2.7_vyccxgqxcnj5vudpssiumaxlme:
+    resolution: {integrity: sha512-xbJ2J/qKF25V7VTTKZUpaJRtpXjfh9zYzuU1SQ258K89+we1x663AWSHZkLFMcUtkvj1E/e1nYe4sebAA/5zDQ==}
     peerDependencies:
       next: ^12
       react: '*'
       react-dom: '*'
     dependencies:
-      '@contentlayer/core': 0.2.6
-      '@contentlayer/utils': 0.2.6
+      '@contentlayer/core': 0.2.7
+      '@contentlayer/utils': 0.2.7
       next: 12.2.4_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      rxjs: 7.5.5
     transitivePeerDependencies:
       - '@effect-ts/otel-node'
       - markdown-wasm
@@ -4057,12 +3994,6 @@ packages:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
     dependencies:
       queue-microtask: 1.2.3
-
-  /rxjs/7.5.5:
-    resolution: {integrity: sha512-sy+H0pQofO95VDmFLzyaw9xNJU4KTRSwQIGM6+iG3SypAtCiLDzpeG8sJrNCWn2Up9km+KhkvTdbkrdy+yzZdw==}
-    dependencies:
-      tslib: 2.4.0
-    dev: false
 
   /sade/1.8.1:
     resolution: {integrity: sha512-xal3CZX1Xlo/k4ApwCFrHVACi9fBqJ7V+mwhBsuf/1IOKbBy098Fex+Wa/5QMubw09pSZ/u8EY8PWgevJsXp1A==}
