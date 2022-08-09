@@ -1,3 +1,35 @@
+## 怎么理解 `Array.prototype.filter()` ？
+
+> 更新时间: 2022-08-09
+
+看个简单的例子：
+
+```js
+const result = [1, 2, 3, 4].filter((n) => n > 2);
+```
+
+描述上述逻辑：
+
+1. 过滤掉数组中 `n <= 2` 的项
+2. 过滤掉数组中不满足 `n > 2` 的项
+
+描述 1 和代码 `n > 2` 相反，描述 2 则相同，哪种描述更好理解？看下面这个例子：
+
+```js
+const people = [
+  { name: 'Peter', hasCat: false },
+  { name: 'Jackie', hasCat: true }
+];
+
+const result = people.filter((p) => !p.hasCat);
+```
+
+`result` 的结果是什么？养猫的还是没有养猫的？思考一会儿，噢！`result` 是那些没有养猫的人，就是过滤掉那些养猫的人。
+
+怎么将结果更直观的体现在 `p.hasCat` 上呢？第一个例子中的描述 2 用到了两个否定「过滤」和「不满足」，将其合并，则 `!p.hasCat` 为真的项会在 `result` 中，所以那些没猫的人是结果。
+
+在写逻辑时，把过滤丢掉，考虑 `predicate` 为真的是结果就好了。
+
 ## `Array.prototype.fill()` 使用对象填充数组，填充的是对象的引用
 
 > 更新时间: 2022-06-21
