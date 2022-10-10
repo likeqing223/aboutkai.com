@@ -1,8 +1,11 @@
-
-## aboutkai.com
+<a href="https://aboutkai.com#gh-light-mode-only">
+  <img src="https://svg.bookmark.style/api?url=https://aboutkai.com&mode=light&style=horizontal" alt="Bookmark Light"/>
+</a>
+<a href="https://aboutkai.com#gh-dark-mode-only">
+  <img src="https://svg.bookmark.style/api?url=https://aboutkai.com&mode=dark&style=horizontal" alt="Bookmark Dark"/>
+</a>
 
 ![Website](https://img.shields.io/website?up_message=online&url=https%3A%2F%2Faboutkai.com)
-![visitors](https://visitor-badge.glitch.me/badge?page_id=aboutkai.com)
 
 个人网站，使用 [nextjs](https://nextjs.org/) 构建，[vercel](https://vercel.com/) 部署。
 
