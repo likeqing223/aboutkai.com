@@ -1,11 +1,6 @@
-<a href="https://aboutkai.com#gh-light-mode-only">
-  <img src="https://svg.bookmark.style/api?url=https://aboutkai.com&mode=light&style=horizontal" alt="Bookmark Light"/>
-</a>
-<a href="https://aboutkai.com#gh-dark-mode-only">
-  <img src="https://svg.bookmark.style/api?url=https://aboutkai.com&mode=dark&style=horizontal" alt="Bookmark Dark"/>
-</a>
-
+## [aboutkai](https://aboutkai.com)
 ![Website](https://img.shields.io/website?up_message=online&url=https%3A%2F%2Faboutkai.com)
+
 
 个人网站，使用 [nextjs](https://nextjs.org/) 构建，[vercel](https://vercel.com/) 部署。
 
@@ -21,3 +16,10 @@
 
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/kaichii/aboutkai.com/tree/main/)
+
+<a href="https://aboutkai.com#gh-light-mode-only">
+  <img src="https://svg.bookmark.style/api?url=https://aboutkai.com&mode=light&style=horizontal" alt="Bookmark Light"/>
+</a>
+<a href="https://aboutkai.com#gh-dark-mode-only">
+  <img src="https://svg.bookmark.style/api?url=https://aboutkai.com&mode=dark&style=horizontal" alt="Bookmark Dark"/>
+</a>
